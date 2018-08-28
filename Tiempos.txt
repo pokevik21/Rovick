@@ -42,3 +42,6 @@ MONTAR ROBOT:
 Calibrar un brazo:
 (hacer prueba de giro y de agarre)
 2,30h
+
+Programar movimientos:
+4h
