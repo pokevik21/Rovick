@@ -44,4 +44,4 @@ Calibrar un brazo:
 2,30h
 
 Programar movimientos:
-4h
+6,30h
