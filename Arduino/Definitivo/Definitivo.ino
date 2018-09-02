@@ -2,7 +2,7 @@
 #include <Adafruit_PWMServoDriver.h>
 
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
-
+boolean inPosIni = false;
 
 //     __     __                 _           _       _              
 //     \ \   / /   __ _   _ __  (_)   __ _  | |__   | |   ___   ___ 
@@ -70,12 +70,15 @@ void fin(){
   pwm.setPWM(pinIzqBr, 0, izqMid);
   pwm.setPWM(pinUpBr, 0, upMid);
   pwm.setPWM(pinBajoBr, 0, bajoMid);
-  delay(1000);
+  delay(1000);E
   
 
+  
+  doMove(pinDerAg,derDesAgarrado);
+  doMove(pinIzqAg,izqDesAgarrado);
   doMove(pinUpAg,upDesAgarrado);
-  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
   doMove(pinBajoAg,bajoDesAgarrado);
+  inPosIni=false;
 }
 
 void setup()
@@ -84,7 +87,6 @@ void setup()
   pwm.begin();
   toDo.reserve(100);
   pwm.setPWMFreq(FREQUENCY);
-  posIni();
   Serial.println("Listo!");
 }
 /******************************************** FIN INICIO ***************************************************/
@@ -105,6 +107,31 @@ void sameTime(int pin1, int pin2 , int pos1, int pos2){
   pwm.setPWM(pin2, 0, pos2);
   delay(500);
 }
+
+//          _                     _   _   _                             
+//         / \     _   _  __  __ (_) | | (_)   __ _   _ __    ___   ___ 
+//        / _ \   | | | | \ \/ / | | | | | |  / _` | | '__|  / _ \ / __|
+//       / ___ \  | |_| |  >  <  | | | | | | | (_| | | |    |  __/ \__ \
+//      /_/   \_\  \__,_| /_/\_\ |_| |_| |_|  \__,_| |_|     \___| |___/
+
+void ida(){
+  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
+  sameTime(pinBajoBr,pinUpBr,bajoL,upR);
+  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
+  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
+  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
+  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+}
+
+void vuelta(){
+  sameTime(pinBajoBr,pinUpBr,bajoR,upL);
+  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
+  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
+  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
+  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  
+}
+
 
 //      ____                                _             
 //     |  _ \    ___   _ __    ___    ___  | |__     __ _ 
@@ -188,6 +215,8 @@ void D(){
   doMove(pinBajoAg,bajoAgarrado);
 }
 
+
+
 //      _____                          _             _ 
 //     |  ___|  _ __    ___    _ __   | |_    __ _  | |
 //     | |_    | '__|  / _ \  | '_ \  | __|  / _` | | |
@@ -195,82 +224,68 @@ void D(){
 //     |_|     |_|     \___/  |_| |_|  \__|  \__,_| |_|
 
 void Fo(){
-  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoL,upR);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  ida();
   doMove(pinDerBr,derUp);
   doMove(pinDerAg,derDesAgarrado);
   doMove(pinDerBr,derMid);
   doMove(pinIzqAg,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoR,upL);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  vuelta();
 }
 
-
 void FD(){
-  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoL,upR);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  ida();
   doMove(pinDerBr,derDown);
   doMove(pinDerAg,derDesAgarrado);
   doMove(pinDerBr,derMid);
   doMove(pinIzqAg,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoR,upL);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  vuelta();
 }
 
 void FIda(){
-  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoL,upR);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
-  doMove(pinDerBr,derUp);
-  doMove(pinDerAg,derDesAgarrado);
-  doMove(pinDerBr,derMid);
-  doMove(pinDerAg,derAgarrado);
+  ida();
+  R();
 }
 
-void FDIda(){
-  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoL,upR);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
-  doMove(pinDerBr,derDown);
-  doMove(pinDerAg,derDesAgarrado);
-  doMove(pinDerBr,derMid);
-  doMove(pinDerAg,derAgarrado);
+void FDda(){
+  ida();
+  RD();
 }
 
-void FVuelta(){
-  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinBajoBr,pinUpBr,bajoR,upL);
-  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
-}
 
 //      ____                   _    
 //     | __ )    __ _    ___  | | __
 //     |  _ \   / _` |  / __| | |/ /
 //     | |_) | | (_| | | (__  |   < 
 //     |____/   \__,_|  \___| |_|\_\
+
+void B(){
+  ida();
+  doMove(pinIzqBr,izqUp);
+  doMove(pinIzqAg,izqDesAgarrado);
+  doMove(pinIzqBr,izqMid);
+  doMove(pinDerAg,derDesAgarrado);
+  vuelta();
+}
+
+void BD(){
+  ida();
+  doMove(pinIzqBr,izqDown);
+  doMove(pinIzqAg,izqDesAgarrado);
+  doMove(pinIzqBr,izqMid);
+  doMove(pinDerAg,derDesAgarrado);
+  vuelta();
+}
+
+void BIda(){
+  ida();
+  L();
+}
+
+void BDIda(){
+  ida();
+  LD();
+}
+
 
 
 /******************************************** FIN METODOS ***************************************************/
@@ -301,6 +316,12 @@ void serialEvent() {
 void loop() {
 
    if (TransmisionCompleta) {
+    
+     if(!inPosIni){
+      posIni();
+      inPosIni = true; 
+     }
+     
     char first = toDo.charAt(0);
     if(toDo.length() == 1){
         //solo acciones con un caracter
@@ -321,18 +342,21 @@ void loop() {
             Fo();
           break;
        case 'B':
-            
-          break;
-       case 'I':
-            FIda();
+            B();
           break;
        case 'V':
-            FVuelta();
-          break;     
+            vuelta();
+          break;
+       case 'S':
+            posIni();
+          break;
+       case 'E':
+            fin();
+          break; 
       }
       
     }else if(toDo.length() > 1){
-
+      char sec = toDo.charAt(1);
       switch(first){
         case 'R':
             RD();
@@ -347,34 +371,40 @@ void loop() {
             DD();
           break;
        case 'F':
-            FD();
+            switch(sec){
+              case 'D':
+                if(toDo.length() > 2){
+                  FIda();
+                }else{
+                  FD();
+                }
+                break;
+              case 'I':
+                  FIda();
+                break;
+            }
           break;
        case 'B':
-            
-          break;   
-       case 'S':
-            posIni();
-          break;
-       case 'E':
-            fin();
-          break; 
-       case 'I':
-            FDIda();
-          break;    
-       case 'V':
-            FVuelta();
-          break;  
+            switch(sec){
+              case 'D':
+                if(toDo.length() > 2){
+                  BDIda();
+                }else{
+                  BD();
+                }
+                break;
+              case 'I':
+                  BIda();
+                break;
+            }
       }
-      
     }
 
-    
     
     toDo = "";  //Limpiar el String
     TransmisionCompleta = false;  //Limpiar la bandera
 }
 
-  
+}
   
 
-}
