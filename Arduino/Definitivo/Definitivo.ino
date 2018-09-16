@@ -70,9 +70,7 @@ void fin(){
   pwm.setPWM(pinIzqBr, 0, izqMid);
   pwm.setPWM(pinUpBr, 0, upMid);
   pwm.setPWM(pinBajoBr, 0, bajoMid);
-  delay(1000);E
-  
-
+  delay(1000);
   
   doMove(pinDerAg,derDesAgarrado);
   doMove(pinIzqAg,izqDesAgarrado);
@@ -87,7 +85,7 @@ void setup()
   pwm.begin();
   toDo.reserve(100);
   pwm.setPWMFreq(FREQUENCY);
-  Serial.println("Listo!");
+  fin();
 }
 /******************************************** FIN INICIO ***************************************************/
 
@@ -403,6 +401,7 @@ void loop() {
     
     toDo = "";  //Limpiar el String
     TransmisionCompleta = false;  //Limpiar la bandera
+    Serial.print("1");
 }
 
 }
