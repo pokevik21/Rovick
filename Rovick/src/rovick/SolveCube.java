@@ -1,3 +1,5 @@
+package rovick;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -166,13 +168,7 @@ public class SolveCube {
 
 		s.cube = cube;
 
-		try {
-			
-			solution = c.solver(c,s);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+                solution = c.solver(c,s); // TODO Auto-generated catch block
 		return solution ; 
 	}
 
