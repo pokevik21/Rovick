@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SolveCube {
 
@@ -168,7 +170,11 @@ public class SolveCube {
 
 		s.cube = cube;
 
+            try {
                 solution = c.solver(c,s); // TODO Auto-generated catch block
+            } catch (IOException ex) {
+                Logger.getLogger(SolveCube.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		return solution ; 
 	}
 
