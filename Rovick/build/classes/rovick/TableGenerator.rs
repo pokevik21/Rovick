@@ -1,2 +1,0 @@
-TableGenerator
-TableGenerator$1
