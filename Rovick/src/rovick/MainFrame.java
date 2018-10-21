@@ -1,6 +1,7 @@
 package rovick;
 
 
+import com.fazecast.jSerialComm.SerialPort;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         confInicial();
+        confArduinoConnection();
     }
     
     private void confInicial(){
@@ -49,6 +51,14 @@ public class MainFrame extends javax.swing.JFrame {
         this.tiempo = new GregorianCalendar();
         tiempo.setTime(date);
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
+    }
+    
+    private void confArduinoConnection(){
+        SerialPort[] ports = SerialPort.getCommPorts();
+        for (SerialPort port : ports) {
+            System.out.println("puerto:"+port.getSystemPortName());
+        }
+        //System.out.println("pueto:"+SerialPort.getCommPort("COM[*]").getPortDescription());
     }
     
     private void resetMoves(){
@@ -219,6 +229,11 @@ public class MainFrame extends javax.swing.JFrame {
         ta_movimientos = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lb_RD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RD.png"))); // NOI18N
         lb_RD.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -583,6 +598,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void bt_resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_resolverActionPerformed
         resetMoves();
     }//GEN-LAST:event_bt_resolverActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     
     
