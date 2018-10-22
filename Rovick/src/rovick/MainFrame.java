@@ -1,12 +1,26 @@
 package rovick;
 
 
-import com.fazecast.jSerialComm.SerialPort;
+import com.panamahitek.ArduinoException;
+import com.panamahitek.PanamaHitek_Arduino;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import jssc.SerialPortException;
 
 
 public class MainFrame extends javax.swing.JFrame {
@@ -24,7 +38,11 @@ public class MainFrame extends javax.swing.JFrame {
     private GregorianCalendar tiempo = null;
     private SimpleDateFormat sdf = null;
     private String[] posiblesMovs = {"R","RD","L","LD","U","UD","D","DD","F","FD","B","BD"};
-    Random rand = null;
+    private Random rand = null;
+    private CuentaAtras cuentsAtas = null;
+    //Parametos de Arduino:
+    private SelectPort selPort = null;
+    private PanamaHitek_Arduino arduino;
     //*********************************** FIN VARIABLES *********************************************
     
     
@@ -34,38 +52,14 @@ public class MainFrame extends javax.swing.JFrame {
 //       | |  | | |  __/ | |_  | (_) | | (_| | | (_) | \__ \
 //       |_|  |_|  \___|  \__|  \___/   \__,_|  \___/  |___/
 
-    public MainFrame() {
-        initComponents();
-        confInicial();
-        confArduinoConnection();
-    }
-    
-    private void confInicial(){
-        setLocationRelativeTo(null);
-        this.setTitle("Rovick - resolvedor de cubos de rubick hecho por Victor Pastor Urueña");
-        setResizable(false);
-        movimientos = new ArrayList();
-        rand = new Random();
-        this.ta_movimientos.setEditable(false);
-        this.date = new Date(0);
-        this.tiempo = new GregorianCalendar();
-        tiempo.setTime(date);
-        this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
-    }
-    
-    private void confArduinoConnection(){
-        SerialPort[] ports = SerialPort.getCommPorts();
-        for (SerialPort port : ports) {
-            System.out.println("puerto:"+port.getSystemPortName());
-        }
-        //System.out.println("pueto:"+SerialPort.getCommPort("COM[*]").getPortDescription());
-    }
+    //<editor-fold defaultstate="collapsed" desc="AUXILIARES">
     
     private void resetMoves(){
         movimientos.clear();
         tiempo.clear();
         this.numMovimientos = 0;
         imprimirMovimientos();
+        this.pb_progreso.setValue(0);
     }
     
     private String sumarNumeroMove(String Move){
@@ -80,8 +74,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void imprimirMovimientos(){
-       this.ta_movimientos.setText("");
-       for (int i = 0; i < movimientos.size(); i++) {
+        this.ta_movimientos.setText("");
+        for (int i = 0; i < movimientos.size(); i++) {
             String movimiento = movimientos.get(i);
             if(movimiento.length()>1 && movimiento.charAt(1) == 'D'){
                 String cadena = "";
@@ -108,35 +102,10 @@ public class MainFrame extends javax.swing.JFrame {
         return false;
     }
     
-    private void removeTime(String move){
-        int seg = 0;
-        if(Utiles.tieneNumero(move)){
-            String lastMoveSinNum = move.substring(0, Utiles.primerNum(move));
-            int numerMovs = Utiles.extraerNumero(move);
-            switch (lastMoveSinNum) {
-            case "F":
-            case "FD":
-            case "B":
-            case "BD":
-                    seg = 6;
-                break;
-            }
-            this.numMovimientos -= numerMovs;
-            seg += 2*numerMovs;
-        }else{
-            switch (move) {
-            case "F":
-            case "FD":
-            case "B":
-            case "BD":
-                    seg = 8;
-                break;
-            default:
-                seg = 2;
-        }
-            this.numMovimientos --;
-        }
-        tiempo.add(GregorianCalendar.SECOND, -1*seg);
+    private void finisMove(String finMove){
+        int movimientos = Integer.parseInt(this.lb_movs.getText());
+        if (movimientos > 0) --movimientos;
+        this.lb_movs.setText(String.valueOf(movimientos));
     }
     
     private void addTime(String tipoMove){
@@ -181,13 +150,169 @@ public class MainFrame extends javax.swing.JFrame {
         imprimirMovimientos();
     }
     
+    private void removeTime(String move){
+        int seg = 0;
+        if(Utiles.tieneNumero(move)){
+            String lastMoveSinNum = move.substring(0, Utiles.primerNum(move));
+            int numerMovs = Utiles.extraerNumero(move);
+            switch (lastMoveSinNum) {
+                case "F":
+                case "FD":
+                case "B":
+                case "BD":
+                    seg = 6;
+                    break;
+            }
+            this.numMovimientos -= numerMovs;
+            seg += 2*numerMovs;
+        }else{
+            switch (move) {
+                case "F":
+                case "FD":
+                case "B":
+                case "BD":
+                    seg = 8;
+                    break;
+                default:
+                    seg = 2;
+            }
+            this.numMovimientos --;
+        }
+        tiempo.add(GregorianCalendar.SECOND, -1*seg);
+    }
+    
+    private void removeLastMove(){
+        if(!movimientos.isEmpty()){
+            removeTime(movimientos.get(movimientos.size()-1));
+            movimientos.remove(movimientos.size()-1);
+            imprimirMovimientos();
+      }
+    }
+    
+    private void desableButtons(){
+        
+    }
+    
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="IMPORTANTES">
+    
+    public MainFrame() {
+        initComponents();
+        confInicial();
+        confArduinoConnection();
+    }
+    
+    private void confInicial(){
+        setLocationRelativeTo(null);
+        this.setTitle("Rovick - resolvedor de cubos de rubick hecho por Victor Pastor Urueña");
+        setResizable(false);
+        movimientos = new ArrayList();
+        rand = new Random();
+        this.ta_movimientos.setEditable(false);
+        this.date = new Date(0);
+        this.tiempo = new GregorianCalendar();
+        tiempo.setTime(date);
+        this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
+        arduino = new PanamaHitek_Arduino();
+        selPort=new SelectPort(this, rootPaneCheckingEnabled);
+        cuentsAtas = new CuentaAtras(this);
+    }
+    
+    private void confArduinoConnection(){
+       String connection = "";
+        if (arduino.getPortsAvailable()>1){ 
+            selPort.setVisible(true);
+            int result = selPort.getReturnStatus();
+            if (result == SelectPort.RET_OK){
+                connection= selPort.getPort();
+            }else{
+                JOptionPane.showMessageDialog(null, "Nose ha podido conectar a nungun puerto", "Error", JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            }
+        }else{
+              connection = arduino.getSerialPorts().get(0).toString();
+       }
+        
+        try {
+            arduino.arduinoTX(connection, 9600);
+            System.out.println("Conexion realizada en el puerto "+connection);
+        } catch (ArduinoException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void botonMovimiento(String mov){
         if(!this.cb_hacerSegunPulsas.isSelected()){
             addMove(mov);
         }else{
-            
+            doMove(mov,false);
         }
     }
+    
+    private void doMove(String move,boolean borrar){
+        int espera = 0;
+        switch (move) {
+            case "R":
+            case "L":
+            case "U":
+            case "D":
+            case "RD":
+            case "LD":
+            case "UD":
+            case "DD":
+                espera = 2;
+                break;
+            case "F":
+            case "B":
+            case "FD":
+            case "BD":
+                espera = 8;
+                break;
+            case "V":
+            case "I":
+            case "FDI":
+            case "BDI":
+                espera = 3;
+                break;
+            case "E":
+            case "S":
+                espera = 1;
+                break;
+        }
+        try {
+            arduino.sendData(move);
+            Thread.sleep(espera * 1000);
+            if(borrar)finisMove(move);
+            System.out.println("Terminado: "+move);
+        } catch (ArduinoException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SerialPortException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void doAllMovs(){
+        if(!movimientos.isEmpty()){
+            cuentsAtas.start();
+            for (String movimiento : movimientos) {
+                int repetir = 1;
+                String movARealizar = movimiento;
+                if(Utiles.tieneNumero(movimiento)){
+                    repetir = Utiles.extraerNumero(movimiento);
+                    movARealizar = movimiento.substring(0,Utiles.primerNum(movimiento));
+                }
+                
+                
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"No hay movimiento que hacer","Sin movimientos",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+//</editor-fold>
     
     //*********************************** FIN METODOS ********************************************
     
@@ -342,6 +467,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         bt_realizarMovs.setText("Realizar movimientos");
+        bt_realizarMovs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_realizarMovsActionPerformed(evt);
+            }
+        });
 
         bt_deshacer.setText("Movimientos aleatorios");
         bt_deshacer.addActionListener(new java.awt.event.ActionListener() {
@@ -574,7 +704,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_BDMouseClicked
 
     private void bt_soltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_soltarActionPerformed
-        botonMovimiento("E");
+        doMove("E",false);
     }//GEN-LAST:event_bt_soltarActionPerformed
 //</editor-fold>
     
@@ -583,9 +713,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_limpiarMovsActionPerformed
 
     private void bl_borrarUltimoMoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bl_borrarUltimoMoveActionPerformed
-        removeTime(movimientos.get(movimientos.size()-1));
-        movimientos.remove(movimientos.size()-1);
-        imprimirMovimientos();
+      removeLastMove();
     }//GEN-LAST:event_bl_borrarUltimoMoveActionPerformed
 
     private void bt_deshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deshacerActionPerformed
@@ -600,11 +728,17 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_resolverActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
+        try {
+            arduino.killArduinoConnection();
+        } catch (ArduinoException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowClosing
 
-    
-    
+    private void bt_realizarMovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_realizarMovsActionPerformed
+        doAllMovs();
+    }//GEN-LAST:event_bt_realizarMovsActionPerformed
+
     
     //*********************************** FIN EVENTOS ********************************************
     
@@ -676,6 +810,176 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_deshacer;
     private javax.swing.JTextArea ta_movimientos;
     // End of variables declaration//GEN-END:variables
+
+    public ArrayList<String> getMovimientos() {
+        return movimientos;
+    }
+
+    public int getNumMovimientos() {
+        return numMovimientos;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public GregorianCalendar getTiempo() {
+        return tiempo;
+    }
+
+    public SimpleDateFormat getSdf() {
+        return sdf;
+    }
+
+    public String[] getPosiblesMovs() {
+        return posiblesMovs;
+    }
+
+    public Random getRand() {
+        return rand;
+    }
+
+    public CuentaAtras getCuentsAtas() {
+        return cuentsAtas;
+    }
+
+    public SelectPort getSelPort() {
+        return selPort;
+    }
+
+    public PanamaHitek_Arduino getArduino() {
+        return arduino;
+    }
+
+    public JButton getBl_borrarUltimoMove() {
+        return bl_borrarUltimoMove;
+    }
+
+    public JButton getBt_deshacer() {
+        return bt_deshacer;
+    }
+
+    public JButton getBt_limpiarMovs() {
+        return bt_limpiarMovs;
+    }
+
+    public JButton getBt_realizarMovs() {
+        return bt_realizarMovs;
+    }
+
+    public JButton getBt_resolver() {
+        return bt_resolver;
+    }
+
+    public JButton getBt_soltar() {
+        return bt_soltar;
+    }
+
+    public JCheckBox getCb_hacerSegunPulsas() {
+        return cb_hacerSegunPulsas;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JLabel getLb_B() {
+        return lb_B;
+    }
+
+    public JLabel getLb_BD() {
+        return lb_BD;
+    }
+
+    public JLabel getLb_D() {
+        return lb_D;
+    }
+
+    public JLabel getLb_DD() {
+        return lb_DD;
+    }
+
+    public JLabel getLb_F() {
+        return lb_F;
+    }
+
+    public JLabel getLb_FD() {
+        return lb_FD;
+    }
+
+    public JLabel getLb_L() {
+        return lb_L;
+    }
+
+    public JLabel getLb_LD() {
+        return lb_LD;
+    }
+
+    public JLabel getLb_R() {
+        return lb_R;
+    }
+
+    public JLabel getLb_RD() {
+        return lb_RD;
+    }
+
+    public JLabel getLb_U() {
+        return lb_U;
+    }
+
+    public JLabel getLb_UD() {
+        return lb_UD;
+    }
+
+    public JLabel getLb_estado() {
+        return lb_estado;
+    }
+
+    public JLabel getLb_movimientos() {
+        return lb_movimientos;
+    }
+
+    public JLabel getLb_movs() {
+        return lb_movs;
+    }
+
+    public JLabel getLb_movsAlDeshacer() {
+        return lb_movsAlDeshacer;
+    }
+
+    public JLabel getLb_numMovs() {
+        return lb_numMovs;
+    }
+
+    public JLabel getLb_tiempo() {
+        return lb_tiempo;
+    }
+
+    public JLabel getLb_txt_tiempo() {
+        return lb_txt_tiempo;
+    }
+
+    public JProgressBar getPb_progreso() {
+        return pb_progreso;
+    }
+
+    public JSeparator getSep_arriba() {
+        return sep_arriba;
+    }
+
+    public JSeparator getSep_bajo() {
+        return sep_bajo;
+    }
+
+    public JSpinner getSp_deshacer() {
+        return sp_deshacer;
+    }
+
+    public JTextArea getTa_movimientos() {
+        return ta_movimientos;
+    }
 //</editor-fold>
 
+    
+    
 }
