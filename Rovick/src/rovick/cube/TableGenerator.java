@@ -1,4 +1,4 @@
-package rovick;
+package rovick.cube;
 
 
 import java.io.FileNotFoundException;

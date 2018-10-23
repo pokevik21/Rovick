@@ -1,4 +1,4 @@
-package rovick;
+package rovick.cube;
 
 import com.panamahitek.PanamaHitek_Arduino;
 import java.awt.event.ActionEvent;
