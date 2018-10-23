@@ -362,8 +362,8 @@ void loop() {
        case 'E':
             fin();
           break; 
-       case 'P':
-            steps();
+       case 'I':
+            ida();
           break; 
       }
       

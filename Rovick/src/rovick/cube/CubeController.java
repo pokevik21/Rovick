@@ -16,11 +16,12 @@ public class CubeController{
     private MainFrame vistaPrincipal = null;
     private PanamaHitek_Arduino arduino;
     private SelectPort selPort = null;
-
+    private boolean agarrado = false;
+    
     public CubeController(MainFrame vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
         arduino=new PanamaHitek_Arduino();
-        selPort=new SelectPort(vistaPrincipal, false);
+        selPort=new SelectPort(vistaPrincipal, true);
         confArduinoConnection();
     }
 
@@ -34,14 +35,14 @@ public class CubeController{
     private void confArduinoConnection(){
        String connection = "";
         if (arduino.getPortsAvailable()>1){ 
-            selPort.setVisible(true);
-            int result = selPort.getReturnStatus();
-            if (result == SelectPort.RET_OK){
+           selPort.setVisible(true);
+           int result = selPort.getReturnStatus();
+           if (result == SelectPort.RET_OK){
                 connection= selPort.getPort();
             }else{
                 JOptionPane.showMessageDialog(null, "Nose ha podido conectar a nungun puerto", "Error", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
-            }
+           }
         }else if (arduino.getPortsAvailable()==1){
               connection = arduino.getSerialPorts().get(0).toString();
        }else{
@@ -55,11 +56,13 @@ public class CubeController{
         } catch (ArduinoException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
     }
     
     
     public void doMove(String move,boolean borrar){
         int espera = 0;
+        agarrado = true;
         switch (move) {
             case "R":
             case "L":
@@ -89,7 +92,7 @@ public class CubeController{
                 break;
         }
         try {
-            arduino.sendData(move);
+            arduino.sendData(move+";");
             Thread.sleep(espera * 1000);
             if(borrar)vistaPrincipal.finisMove(move);
             System.out.println("Terminado: "+move);
@@ -156,6 +159,14 @@ public class CubeController{
 
     public PanamaHitek_Arduino getArduino() {
         return arduino;
+    }
+
+    public boolean isAgarrado() {
+        return agarrado;
+    }
+
+    public void setAgarrado(boolean agarrado) {
+        this.agarrado = agarrado;
     }
     
     

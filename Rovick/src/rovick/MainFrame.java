@@ -127,6 +127,10 @@ public class MainFrame extends javax.swing.JFrame {
             default:
                 seg = 2;
         }
+        if (!cuboController.isAgarrado()){
+            seg+=2;
+            cuboController.setAgarrado(true);
+        }
         tiempo.add(GregorianCalendar.SECOND, seg);
     }
     
@@ -386,6 +390,11 @@ public class MainFrame extends javax.swing.JFrame {
         lb_tiempo.setText("00 min 00 seg");
 
         cb_hacerSegunPulsas.setText("Hacer según pulsas");
+        cb_hacerSegunPulsas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_hacerSegunPulsasActionPerformed(evt);
+            }
+        });
 
         lb_movimientos.setText("Movimientos:");
 
@@ -641,7 +650,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_BDMouseClicked
 
     private void bt_soltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_soltarActionPerformed
-        cuboController.doMove("E",false);
+        if(cuboController.isAgarrado())cuboController.doMove("E",false);
+        cuboController.setAgarrado(false);
     }//GEN-LAST:event_bt_soltarActionPerformed
 //</editor-fold>
     
@@ -676,6 +686,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void bt_realizarMovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_realizarMovsActionPerformed
         cuboController.doAllMovs();
     }//GEN-LAST:event_bt_realizarMovsActionPerformed
+
+    private void cb_hacerSegunPulsasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hacerSegunPulsasActionPerformed
+        resetMoves();
+    }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
 
     
     //*********************************** FIN EVENTOS ********************************************
