@@ -33,8 +33,6 @@ public class CuentaAtras extends Thread{
             }
         }
         
-        JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
-        vistaPrincipal.resetMoves();
     }
     
 }

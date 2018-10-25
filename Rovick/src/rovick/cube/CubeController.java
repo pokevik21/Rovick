@@ -61,100 +61,23 @@ public class CubeController{
     
     
     public void doMove(String move,boolean borrar){
-        int espera = 0;
         agarrado = true;
-        switch (move) {
-            case "R":
-            case "L":
-            case "U":
-            case "D":
-            case "RD":
-            case "LD":
-            case "UD":
-            case "DD":
-                espera = 2;
-                break;
-            case "F":
-            case "B":
-            case "FD":
-            case "BD":
-                espera = 8;
-                break;
-            case "V":
-            case "I":
-            case "FDI":
-            case "BDI":
-                espera = 3;
-                break;
-            case "E":
-            case "S":
-                espera = 1;
-                break;
-        }
+        DoMove hacerMovimiento = new DoMove(move,arduino);
+        hacerMovimiento.start();
         try {
-            arduino.sendData(move+";");
-            Thread.sleep(espera * 1000);
-            if(borrar)vistaPrincipal.finisMove(move);
-            System.out.println("Terminado: "+move);
-        } catch (ArduinoException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SerialPortException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            hacerMovimiento.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if(borrar)vistaPrincipal.finisMove(move);
+        System.out.println("Terminado: "+move);
     }
     
     public void doAllMovs(){
-        if(!vistaPrincipal.getMovimientos().isEmpty()){
-            CuentaAtras cuentsAtas = new CuentaAtras(vistaPrincipal);
-            cuentsAtas.start();
-            for (int k=0; k < vistaPrincipal.getMovimientos().size(); k++) {
-                int repetir = 1;
-                String movARealizar = vistaPrincipal.getMovimientos().get(k);
-                if(Utiles.tieneNumero(vistaPrincipal.getMovimientos().get(k))){
-                    repetir = Utiles.extraerNumero(vistaPrincipal.getMovimientos().get(k));
-                    movARealizar = vistaPrincipal.getMovimientos().get(k).substring(0,Utiles.primerNum(vistaPrincipal.getMovimientos().get(k)));
-                    boolean conVuelta = false;
-                    
-                    switch (String.valueOf(movARealizar.charAt(0))) {
-                        case "F":
-                        case "B":
-                            conVuelta = true;
-                            break;
-                    }
-                    for (int i = 0; i < repetir; i++) {
-                        if(conVuelta && i==0)doMove("I", false);
-                        switch (movARealizar) {
-                            case "F":
-                                doMove("R", true);
-                                if (i==repetir-1)doMove("V", false);
-                                break;
-                            case "FD":
-                                doMove("RD", true);
-                                if (i==repetir-1)doMove("V", false);
-                                break;
-                            case "B":
-                                doMove("L", true);
-                                if (i==repetir-1)doMove("V", false);
-                                break;
-                            case "BD":
-                                doMove("LD", true);
-                                if (i==repetir-1)doMove("V", false);
-                                break;
-                            default:
-                                doMove(movARealizar, true);
-                        }
-                    }
-                }else{
-                    doMove(movARealizar, true);
-                }
-                vistaPrincipal.getMovimientos().remove(k);
-                vistaPrincipal.imprimirMovimientos();
-            }
-        }else{
-            JOptionPane.showMessageDialog(vistaPrincipal,"No hay movimiento que hacer","Sin movimientos",JOptionPane.INFORMATION_MESSAGE);
-        }
+        
+        DoAllMoves doAllMoves = new DoAllMoves(vistaPrincipal, arduino);
+        doAllMoves.start();
+        
     }
 
     public PanamaHitek_Arduino getArduino() {

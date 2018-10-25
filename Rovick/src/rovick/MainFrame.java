@@ -196,7 +196,7 @@ public class MainFrame extends javax.swing.JFrame {
       }
     }
     
-    private void desableButtons(boolean estado){
+    public void desableButtons(boolean estado){
         this.bt_deshacer.setEnabled(estado);
         this.bt_limpiarMovs.setEnabled(estado);
         this.bt_realizarMovs.setEnabled(estado);
