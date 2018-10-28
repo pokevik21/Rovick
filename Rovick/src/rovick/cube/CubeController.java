@@ -52,6 +52,7 @@ public class CubeController{
         
         try {
             arduino.arduinoTX(connection, 9600);
+            vistaPrincipal.getLb_port().setText(connection);
             System.out.println("Conexion realizada en el puerto "+connection);
         } catch (ArduinoException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,6 +72,7 @@ public class CubeController{
         }
         if(borrar)vistaPrincipal.finisMove(move);
         System.out.println("Terminado: "+move);
+        if(move.equals("E"))agarrado = false;
     }
     
     public void doAllMovs(){

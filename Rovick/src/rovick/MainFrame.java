@@ -1,29 +1,23 @@
 package rovick;
 
 
-import rovick.Utils.CuentaAtras;
 import rovick.Utils.Utiles;
-import rovick.cube.SelectPort;
 import com.panamahitek.ArduinoException;
-import com.panamahitek.PanamaHitek_Arduino;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import jssc.SerialPortException;
 import rovick.cube.CubeController;
 
 
@@ -44,6 +38,7 @@ public class MainFrame extends javax.swing.JFrame {
     private String[] posiblesMovs = {"R","RD","L","LD","U","UD","D","DD","F","FD","B","BD"};
     private Random rand = null;
     private CubeController cuboController = null;
+    private boolean flagFinish = false;
     
     
     //*********************************** FIN VARIABLES *********************************************
@@ -59,10 +54,12 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void resetMoves(){
         movimientos.clear();
-        tiempo.clear();
+        tiempo.setTime(new Date(0));
         this.numMovimientos = 0;
+        this.lb_movs.setText("0");
         imprimirMovimientos();
         this.pb_progreso.setValue(0);
+        flagFinish = false;
     }
     
     public String sumarNumeroMove(String Move){
@@ -92,7 +89,6 @@ public class MainFrame extends javax.swing.JFrame {
             this.ta_movimientos.setText(this.ta_movimientos.getText()+movimiento);
             if (i != movimientos.size()-1) this.ta_movimientos.setText(this.ta_movimientos.getText()+" - ");
         }
-        this.lb_movs.setText(String.valueOf(this.numMovimientos));
         this.lb_tiempo.setText(sdf.format(tiempo.getTime()));
     }
     
@@ -129,14 +125,17 @@ public class MainFrame extends javax.swing.JFrame {
         }
         if (!cuboController.isAgarrado()){
             seg+=2;
-            cuboController.setAgarrado(true);
+        }
+        if (!flagFinish){
+            seg+=2;//Para la accion de soltar el cubo
+            flagFinish=true;
         }
         tiempo.add(GregorianCalendar.SECOND, seg);
     }
     
-    public void addMove(String Move){
+    public void addMove(String move){
         if (movimientos.isEmpty()){
-            movimientos.add(Move);
+            movimientos.add(move);
         }else{
             int ultPos = movimientos.size()-1;
             String ultimoMove = movimientos.get(ultPos);
@@ -146,14 +145,15 @@ public class MainFrame extends javax.swing.JFrame {
                 ultimoMoveSinNum=ultimoMove.substring(0,Utiles.primerNum(ultimoMove));
             }
             
-            if (ultimoMoveSinNum.equals(Move)){
+            if (ultimoMoveSinNum.equals(move)){
                 movimientos.set(ultPos, sumarNumeroMove(ultimoMove));
             }else{
-                movimientos.add(Move);
+                movimientos.add(move);
             }
         }
-        addTime(Move);
+        addTime(move);
         this.numMovimientos++;
+        this.lb_movs.setText(String.valueOf(this.numMovimientos));
         imprimirMovimientos();
     }
     
@@ -191,8 +191,15 @@ public class MainFrame extends javax.swing.JFrame {
     public void removeLastMove(){
         if(!movimientos.isEmpty()){
             removeTime(movimientos.get(movimientos.size()-1));
+            if(Utiles.tieneNumero(movimientos.get(movimientos.size()-1))){
+                int movs = Utiles.extraerNumero(movimientos.get(movimientos.size()-1));
+                this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-movs));;
+            }else{
+               this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-1));
+            }
             movimientos.remove(movimientos.size()-1);
             imprimirMovimientos();
+            if(movimientos.isEmpty())resetMoves();
       }
     }
     
@@ -241,8 +248,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
         cuboController = new CubeController(this);
     }
-    
-    
 
     private void botonMovimiento(String mov){
         if(!this.cb_hacerSegunPulsas.isSelected()){
@@ -293,6 +298,8 @@ public class MainFrame extends javax.swing.JFrame {
         bl_borrarUltimoMove = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_movimientos = new javax.swing.JTextArea();
+        lb_txtPort = new javax.swing.JLabel();
+        lb_port = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -452,6 +459,12 @@ public class MainFrame extends javax.swing.JFrame {
         ta_movimientos.setRows(5);
         jScrollPane1.setViewportView(ta_movimientos);
 
+        lb_txtPort.setText("Puerto:");
+
+        lb_port.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lb_port.setForeground(new java.awt.Color(0, 102, 255));
+        lb_port.setText("port");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -470,6 +483,10 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lb_movsAlDeshacer)
+                                .addGap(55, 55, 55)
+                                .addComponent(lb_txtPort)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_port)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bt_realizarMovs)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -534,7 +551,7 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(bt_soltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -580,14 +597,19 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_estado)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bt_realizarMovs)
-                        .addComponent(bt_resolver)
-                        .addComponent(bt_deshacer)
-                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lb_movsAlDeshacer)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lb_estado)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_realizarMovs)
+                            .addComponent(bt_resolver)
+                            .addComponent(bt_deshacer)
+                            .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_movsAlDeshacer)
+                            .addComponent(lb_txtPort)
+                            .addComponent(lb_port))
+                        .addContainerGap())))
         );
 
         pack();
@@ -688,6 +710,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_realizarMovsActionPerformed
 
     private void cb_hacerSegunPulsasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hacerSegunPulsasActionPerformed
+        if (this.cuboController.isAgarrado()){
+            cuboController.doMove("E", false);
+        }else{
+            
+        }
         resetMoves();
     }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
 
@@ -754,7 +781,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lb_movs;
     private javax.swing.JLabel lb_movsAlDeshacer;
     private javax.swing.JLabel lb_numMovs;
+    private javax.swing.JLabel lb_port;
     private javax.swing.JLabel lb_tiempo;
+    private javax.swing.JLabel lb_txtPort;
     private javax.swing.JLabel lb_txt_tiempo;
     private javax.swing.JProgressBar pb_progreso;
     private javax.swing.JSeparator sep_arriba;
@@ -918,8 +947,12 @@ public class MainFrame extends javax.swing.JFrame {
     public JTextArea getTa_movimientos() {
         return ta_movimientos;
     }
+    
+       public JLabel getLb_port() {
+        return lb_port;
+    }
+    
 //</editor-fold>
 
-    
-    
+       
 }

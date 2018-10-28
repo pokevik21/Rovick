@@ -13,7 +13,7 @@ public class DoAllMoves extends Thread{
     
     private MainFrame vistaPrincipal= null;
     private PanamaHitek_Arduino arduino;
-    CuentaAtras cuentsAtas = new CuentaAtras(vistaPrincipal);
+    CuentaAtras cuentsAtas = null;
     
     public DoAllMoves(MainFrame vista,PanamaHitek_Arduino arduino) {
         this.arduino = arduino;
@@ -36,6 +36,7 @@ public class DoAllMoves extends Thread{
     public void run() {
         if(!vistaPrincipal.getMovimientos().isEmpty()){
             vistaPrincipal.desableButtons(false);
+            cuentsAtas = new CuentaAtras(vistaPrincipal);
             cuentsAtas.start();
             int movs =vistaPrincipal.getMovimientos().size();
             for (int k=0; k < movs; k++) {
@@ -81,10 +82,7 @@ public class DoAllMoves extends Thread{
         }else{
             JOptionPane.showMessageDialog(vistaPrincipal,"No hay movimiento que hacer","Sin movimientos",JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
-        vistaPrincipal.resetMoves();
-        vistaPrincipal.desableButtons(true);
+        doMove("E", true);
     }
     
     

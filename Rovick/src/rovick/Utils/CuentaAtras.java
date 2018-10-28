@@ -21,18 +21,20 @@ public class CuentaAtras extends Thread{
     public void run() {
         vistaPrincipal.getPb_progreso().setValue(0);
         int segs = (int) (vistaPrincipal.getTiempo().getTimeInMillis()/1000);
-        vistaPrincipal.getPb_progreso().setMaximum(segs);
+        ProgressBar p_pb = new ProgressBar(vistaPrincipal.getPb_progreso(), vistaPrincipal.getTiempo().getTimeInMillis()/1000 -1, 10);
+        p_pb.start();
         for (int i = 0; i < segs; i++) {
             try {
                 vistaPrincipal.getTiempo().add(GregorianCalendar.SECOND, -1);
                 vistaPrincipal.getLb_tiempo().setText(sdf.format(vistaPrincipal.getTiempo().getTime()));
-                vistaPrincipal.getPb_progreso().setValue(i+1);
                 this.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(CuentaAtras.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
+        vistaPrincipal.resetMoves();
+        vistaPrincipal.desableButtons(true);
     }
     
 }
