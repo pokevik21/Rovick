@@ -123,11 +123,8 @@ public class MainFrame extends javax.swing.JFrame {
             default:
                 seg = 2;
         }
-        if (!cuboController.isAgarrado()){
-            seg+=2;
-        }
         if (!flagFinish){
-            seg+=2;//Para la accion de soltar el cubo
+            seg+=4;//Para la accion de soltar el cubo
             flagFinish=true;
         }
         tiempo.add(GregorianCalendar.SECOND, seg);
