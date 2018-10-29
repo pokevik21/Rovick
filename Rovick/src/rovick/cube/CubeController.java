@@ -5,12 +5,12 @@ import com.panamahitek.PanamaHitek_Arduino;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import jssc.SerialPortException;
 import rovick.MainFrame;
-import rovick.Utils.CuentaAtras;
-import rovick.Utils.Utiles;
 
-
+/**
+ * Clase que se encarga de los movimientos del cubo de rubick.
+ * @author Victor Pastor Urueña
+ */
 public class CubeController{
     
     private MainFrame vistaPrincipal = null;
@@ -31,7 +31,6 @@ public class CubeController{
 //       | |  | | |  __/ | |_  | (_) | | (_| | | (_) | \__ \
 //       |_|  |_|  \___|  \__|  \___/   \__,_|  \___/  |___/
 
-    
     private void confArduinoConnection(){
        String connection = "";
         if (arduino.getPortsAvailable()>1){ 
@@ -60,7 +59,13 @@ public class CubeController{
     
     }
     
-    
+    /**
+     * Metodo que envia al arduino la orden de hacer un movimiento.
+     * Llama al proceso DoMove pora ello.
+     * @param move El movimiento ha realizar
+     * @param borrar si se quiere que se borre del contador de movimientos o no.
+     * @see DoMove
+     */
     public void doMove(String move,boolean borrar){
         agarrado = true;
         DoMove hacerMovimiento = new DoMove(move,arduino);
@@ -75,8 +80,12 @@ public class CubeController{
         if(move.equals("E"))agarrado = false;
     }
     
+    /**
+     * Metodo que se encarga de realizar todas los movimientos.
+     * Llama al proceso DoAllMoves para ello.
+     * @see DoAllMoves
+     */
     public void doAllMovs(){
-        
         DoAllMoves doAllMoves = new DoAllMoves(vistaPrincipal, arduino);
         doAllMoves.start();
         

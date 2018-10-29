@@ -7,7 +7,12 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import rovick.MainFrame;
 
-
+/**
+ * Proceso que se encarga de llevar la cuenta atrás del tiempo,
+ * este llama al proceso de PrograssBar a su vez.
+ * Cuando termina muesta un mensaje de Terminado.
+ * @author Victor Pastor Urueña
+ */
 public class CuentaAtras extends Thread{
     
     private MainFrame vistaPrincipal = null;
@@ -31,6 +36,11 @@ public class CuentaAtras extends Thread{
             } catch (InterruptedException ex) {
                 Logger.getLogger(CuentaAtras.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        try {
+            p_pb.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CuentaAtras.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
         vistaPrincipal.resetMoves();

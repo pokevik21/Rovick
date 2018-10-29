@@ -48,8 +48,7 @@
                               <Component id="bt_realizarMovs" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lb_estado" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -182,24 +181,16 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lb_estado" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="bt_realizarMovs" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_resolver" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_movsAlDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_port" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bt_realizarMovs" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_resolver" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb_movsAlDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb_port" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -377,8 +368,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_realizarMovsActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lb_estado">
     </Component>
     <Component class="javax.swing.JButton" name="bt_deshacer">
       <Properties>

@@ -7,7 +7,11 @@ import java.util.logging.Logger;
 import jssc.SerialPortException;
 import rovick.MainFrame;
 
-
+/**
+ * Proceso que se encoraga de realizar un movimiento,
+ * el que se le pasa en el contructor.
+ * @author Victor Pastor Urueña
+ */
 public class DoMove extends Thread{
     
     private String move;

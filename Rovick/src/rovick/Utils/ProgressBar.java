@@ -1,10 +1,14 @@
+
 package rovick.Utils;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JProgressBar;
 
-
+/**
+ * Proceso que se encarga de aumentar los valores la ProgresBar de la vista principal.
+ * @author Victor Pastor Urueña
+ */
 public class ProgressBar extends Thread{
     
     private JProgressBar pb = null;

@@ -8,7 +8,10 @@ import rovick.MainFrame;
 import rovick.Utils.CuentaAtras;
 import rovick.Utils.Utiles;
 
-
+/**
+ * Proceso que se encarga de hacer todos los movimientos del ArrayList movimientos.
+ * @author Victor Pastor Urueña
+ */
 public class DoAllMoves extends Thread{
     
     private MainFrame vistaPrincipal= null;

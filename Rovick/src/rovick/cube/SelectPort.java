@@ -10,7 +10,10 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
-
+/**
+ * Pequeña vista para seleccionar el puerto en el que está el arduino conectado.
+ * @author Victor Pastor Urueña
+ */
 public class SelectPort extends javax.swing.JDialog {
 
 
@@ -21,6 +24,7 @@ public class SelectPort extends javax.swing.JDialog {
     public SelectPort(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Seleccion de puerto del arduino");
         rellenarPorts();
         setLocationRelativeTo(null);
 
@@ -36,6 +40,9 @@ public class SelectPort extends javax.swing.JDialog {
         });
     }
 
+    /**
+     * Se encarga de rellenar el ComboBox de puertos disponibles.
+     */
     private void rellenarPorts(){
         PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
         List<String> ports = ino.getSerialPorts();

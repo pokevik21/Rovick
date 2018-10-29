@@ -10,17 +10,15 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import rovick.cube.CubeController;
 
-
+/**
+ * Vista pincipal del resolvedor de cubos de rubick
+ * @author Victor Pastor Urueña
+ */
 public class MainFrame extends javax.swing.JFrame {
     
     
@@ -29,7 +27,7 @@ public class MainFrame extends javax.swing.JFrame {
 //         \ \ / /   / _` | | '__| | |  / _` | | '_ \  | |  / _ \ / __|
 //          \ V /   | (_| | | |    | | | (_| | | |_) | | | |  __/ \__ \
 //           \_/     \__,_| |_|    |_|  \__,_| |_.__/  |_|  \___| |___/
-    
+
     private ArrayList<String> movimientos = null;
     private int numMovimientos = 0;
     private Date date = null;
@@ -51,7 +49,10 @@ public class MainFrame extends javax.swing.JFrame {
 //       |_|  |_|  \___|  \__|  \___/   \__,_|  \___/  |___/
 
     //<editor-fold defaultstate="collapsed" desc="AUXILIARES">
-    
+
+    /**
+     *Limpia la interface y duvuelve las variables a su estado por defecto.
+     */
     public void resetMoves(){
         movimientos.clear();
         tiempo.setTime(new Date(0));
@@ -62,17 +63,25 @@ public class MainFrame extends javax.swing.JFrame {
         flagFinish = false;
     }
     
-    public String sumarNumeroMove(String Move){
+    /**
+     *Suma al string move un movimiento. Ej:"F"->"F2"
+     * @param move String(move) al que le sumar un movimiento. 
+     * @return Devuelve el numero con numero ya sumado.
+     */
+    public String sumarNumeroMove(String move){
         String resultado="";
-        if(Utiles.tieneNumero(Move)){
-            int numMove = Utiles.extraerNumero(Move)+1;
-            resultado = Move.substring(0,Utiles.primerNum(Move)) + numMove;
+        if(Utiles.tieneNumero(move)){
+            int numMove = Utiles.extraerNumero(move)+1;
+            resultado = move.substring(0,Utiles.primerNum(move)) + numMove;
         }else{
-            resultado = Move+"2";
+            resultado = move+"2";
         }
         return resultado;
     }
     
+    /**
+     *Encorgado de rellenar el TextArea de los movimientos a partir del ArrayList movimientos
+     */
     public void imprimirMovimientos(){
         this.ta_movimientos.setText("");
         for (int i = 0; i < movimientos.size(); i++) {
@@ -92,6 +101,11 @@ public class MainFrame extends javax.swing.JFrame {
         this.lb_tiempo.setText(sdf.format(tiempo.getTime()));
     }
     
+    /**
+     *Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move
+     * @param move Al que busca en el utimo del Arraylist de movimientos
+     * @return Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move
+     */
     public boolean ultimoContiene (String move){
         String lastMove = movimientos.get(movimientos.size()-1);
         if(Utiles.tieneNumero(lastMove)){
@@ -101,12 +115,20 @@ public class MainFrame extends javax.swing.JFrame {
         return false;
     }
     
+    /**
+     *Resta el String finMove al numero de movimientos,Jlabel lb_movs.
+     * @param finMove Es el movimiento que termina
+     */
     public void finisMove(String finMove){
         int movimientos = Integer.parseInt(this.lb_movs.getText());
         if (movimientos > 0) --movimientos;
         this.lb_movs.setText(String.valueOf(movimientos));
     }
     
+    /**
+     *Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo.
+     * @param tipoMove El movimiento el cual tarda X segundos.
+     */
     public void addTime(String tipoMove){
         int seg = 0;
         switch (tipoMove) {
@@ -124,12 +146,16 @@ public class MainFrame extends javax.swing.JFrame {
                 seg = 2;
         }
         if (!flagFinish){
-            seg+=4;//Para la accion de soltar el cubo
+            seg+=4;//Por las acciones de aggarar el cubo y soltarlo.
             flagFinish=true;
         }
         tiempo.add(GregorianCalendar.SECOND, seg);
     }
     
+    /**
+     *Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea.
+     * @param move El movimiento ha añadir.
+     */
     public void addMove(String move){
         if (movimientos.isEmpty()){
             movimientos.add(move);
@@ -154,6 +180,10 @@ public class MainFrame extends javax.swing.JFrame {
         imprimirMovimientos();
     }
     
+    /**
+     *Resta tiempo al GregorianCalendar tiempo dependiendo de que movimiento sea.
+     * @param move El movimiento que tiene que restar.
+     */
     public void removeTime(String move){
         int seg = 0;
         if(Utiles.tieneNumero(move)){
@@ -185,12 +215,15 @@ public class MainFrame extends javax.swing.JFrame {
         tiempo.add(GregorianCalendar.SECOND, -1*seg);
     }
     
+    /**
+     *Borra el ultimo movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos.
+     */
     public void removeLastMove(){
         if(!movimientos.isEmpty()){
             removeTime(movimientos.get(movimientos.size()-1));
             if(Utiles.tieneNumero(movimientos.get(movimientos.size()-1))){
                 int movs = Utiles.extraerNumero(movimientos.get(movimientos.size()-1));
-                this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-movs));;
+                this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-movs));
             }else{
                this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-1));
             }
@@ -200,6 +233,11 @@ public class MainFrame extends javax.swing.JFrame {
       }
     }
     
+    /**
+     *Activa o desactiva los botones para que no se pueda hacer nada 
+     * mientas que se haga el proceso de hacer todos los movimientos.
+     * @param estado Al estado al que los cambias.
+     */
     public void desableButtons(boolean estado){
         this.bt_deshacer.setEnabled(estado);
         this.bt_limpiarMovs.setEnabled(estado);
@@ -244,8 +282,15 @@ public class MainFrame extends javax.swing.JFrame {
         tiempo.setTime(date);
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
         cuboController = new CubeController(this);
+        //this.setIconImage(new Image);
     }
 
+    /**
+     * Metodo al que llaman los Botones de los movimientos,
+     * Si el checkBox cb_hacerSegunPulsas esta activado, hace el movimiento,
+     * si no lo añade al ArrayList llamando al metodo addMove.
+     * @param mov El botón que se ha pulsado.
+     */
     private void botonMovimiento(String mov){
         if(!this.cb_hacerSegunPulsas.isSelected()){
             addMove(mov);
@@ -254,9 +299,15 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Metodo que genera los movimientos necesarios para resolver el cubo.
+     */
+    private void resolverCubo(){
+        
+    }
     
 //</editor-fold>
-    
+
     //*********************************** FIN METODOS ********************************************
     
     @SuppressWarnings("unchecked")
@@ -285,7 +336,6 @@ public class MainFrame extends javax.swing.JFrame {
         bt_resolver = new javax.swing.JButton();
         bt_limpiarMovs = new javax.swing.JButton();
         bt_realizarMovs = new javax.swing.JButton();
-        lb_estado = new javax.swing.JLabel();
         bt_deshacer = new javax.swing.JButton();
         bt_soltar = new javax.swing.JButton();
         sp_deshacer = new javax.swing.JSpinner();
@@ -486,8 +536,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(lb_port)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bt_realizarMovs)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_estado))
+                        .addGap(6, 6, 6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,20 +642,15 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lb_estado)
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bt_realizarMovs)
-                            .addComponent(bt_resolver)
-                            .addComponent(bt_deshacer)
-                            .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lb_movsAlDeshacer)
-                            .addComponent(lb_txtPort)
-                            .addComponent(lb_port))
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_realizarMovs)
+                    .addComponent(bt_resolver)
+                    .addComponent(bt_deshacer)
+                    .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_movsAlDeshacer)
+                    .addComponent(lb_txtPort)
+                    .addComponent(lb_port))
+                .addContainerGap())
         );
 
         pack();
@@ -773,7 +817,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lb_RD;
     private javax.swing.JLabel lb_U;
     private javax.swing.JLabel lb_UD;
-    private javax.swing.JLabel lb_estado;
     private javax.swing.JLabel lb_movimientos;
     private javax.swing.JLabel lb_movs;
     private javax.swing.JLabel lb_movsAlDeshacer;
@@ -789,165 +832,48 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea ta_movimientos;
     // End of variables declaration//GEN-END:variables
 
+    //<editor-fold defaultstate="collapsed" desc="Get y set">
+   
     public ArrayList<String> getMovimientos() {
         return movimientos;
     }
-
+    
     public int getNumMovimientos() {
         return numMovimientos;
     }
-
-    public Date getDate() {
-        return date;
-    }
-
+    
     public GregorianCalendar getTiempo() {
         return tiempo;
     }
-
-    public SimpleDateFormat getSdf() {
-        return sdf;
-    }
-
-    public String[] getPosiblesMovs() {
-        return posiblesMovs;
-    }
-
-    public Random getRand() {
-        return rand;
-    }
-
-    public JButton getBl_borrarUltimoMove() {
-        return bl_borrarUltimoMove;
-    }
-
-    public JButton getBt_deshacer() {
-        return bt_deshacer;
-    }
-
-    public JButton getBt_limpiarMovs() {
-        return bt_limpiarMovs;
-    }
-
-    public JButton getBt_realizarMovs() {
-        return bt_realizarMovs;
-    }
-
-    public JButton getBt_resolver() {
-        return bt_resolver;
-    }
-
-    public JButton getBt_soltar() {
-        return bt_soltar;
-    }
-
-    public JCheckBox getCb_hacerSegunPulsas() {
-        return cb_hacerSegunPulsas;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    public JLabel getLb_B() {
-        return lb_B;
-    }
-
-    public JLabel getLb_BD() {
-        return lb_BD;
-    }
-
-    public JLabel getLb_D() {
-        return lb_D;
-    }
-
-    public JLabel getLb_DD() {
-        return lb_DD;
-    }
-
-    public JLabel getLb_F() {
-        return lb_F;
-    }
-
-    public JLabel getLb_FD() {
-        return lb_FD;
-    }
-
-    public JLabel getLb_L() {
-        return lb_L;
-    }
-
-    public JLabel getLb_LD() {
-        return lb_LD;
-    }
-
-    public JLabel getLb_R() {
-        return lb_R;
-    }
-
-    public JLabel getLb_RD() {
-        return lb_RD;
-    }
-
-    public JLabel getLb_U() {
-        return lb_U;
-    }
-
-    public JLabel getLb_UD() {
-        return lb_UD;
-    }
-
-    public JLabel getLb_estado() {
-        return lb_estado;
-    }
-
+    
     public JLabel getLb_movimientos() {
         return lb_movimientos;
     }
-
+    
     public JLabel getLb_movs() {
         return lb_movs;
     }
-
-    public JLabel getLb_movsAlDeshacer() {
-        return lb_movsAlDeshacer;
-    }
-
+    
     public JLabel getLb_numMovs() {
         return lb_numMovs;
     }
-
+    
     public JLabel getLb_tiempo() {
         return lb_tiempo;
     }
-
-    public JLabel getLb_txt_tiempo() {
-        return lb_txt_tiempo;
-    }
-
+    
     public JProgressBar getPb_progreso() {
         return pb_progreso;
     }
-
-    public JSeparator getSep_arriba() {
-        return sep_arriba;
-    }
-
-    public JSeparator getSep_bajo() {
-        return sep_bajo;
-    }
-
-    public JSpinner getSp_deshacer() {
-        return sp_deshacer;
-    }
-
+    
     public JTextArea getTa_movimientos() {
         return ta_movimientos;
     }
     
-       public JLabel getLb_port() {
+    public JLabel getLb_port() {
         return lb_port;
     }
+//</editor-fold>
     
 //</editor-fold>
 
