@@ -3,6 +3,7 @@ package rovick;
 
 import rovick.Utils.Utiles;
 import com.panamahitek.ArduinoException;
+import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -282,7 +283,8 @@ public class MainFrame extends javax.swing.JFrame {
         tiempo.setTime(date);
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
         cuboController = new CubeController(this);
-        //this.setIconImage(new Image);
+        this.setIconImage(Toolkit.getDefaultToolkit().
+         getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
     }
 
     /**
@@ -663,7 +665,7 @@ public class MainFrame extends javax.swing.JFrame {
 //       | |___   \ V /  |  __/ | | | | | |_  | (_) | \__ \
 //       |_____|   \_/    \___| |_| |_|  \__|  \___/  |___/
     
-    //<editor-fold defaultstate="collapsed" desc="BOTONES">
+    //<editor-fold defaultstate="collapsed" desc="BOTONES DE MOVIMIENTO">
     private void lb_RMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_RMouseClicked
         botonMovimiento("R");
     }//GEN-LAST:event_lb_RMouseClicked
@@ -759,8 +761,9 @@ public class MainFrame extends javax.swing.JFrame {
         resetMoves();
     }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
 
-    
     //*********************************** FIN EVENTOS ********************************************
+    
+    
     
     
     public static void main(String args[]) {

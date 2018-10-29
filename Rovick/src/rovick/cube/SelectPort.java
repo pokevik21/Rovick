@@ -1,6 +1,7 @@
 package rovick.cube;
 
 import com.panamahitek.PanamaHitek_Arduino;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -25,6 +26,8 @@ public class SelectPort extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setTitle("Seleccion de puerto del arduino");
+        this.setIconImage(Toolkit.getDefaultToolkit().
+         getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
         rellenarPorts();
         setLocationRelativeTo(null);
 
