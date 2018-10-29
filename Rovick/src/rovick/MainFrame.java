@@ -737,7 +737,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void bt_resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_resolverActionPerformed
         resetMoves();
-        desableButtons(false);
+        //desableButtons(false);
     }//GEN-LAST:event_bt_resolverActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
