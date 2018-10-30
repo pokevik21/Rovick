@@ -1,2 +1,2 @@
 # Rovick
-Robot para un robot que resuelve el cubo de rubick
+Robot que resuelve el cubo de rubick
