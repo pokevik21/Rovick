@@ -1,6 +1,5 @@
 package rovick;
 
-
 import rovick.Utils.Utiles;
 import com.panamahitek.ArduinoException;
 import java.awt.Toolkit;
@@ -37,10 +36,11 @@ public class MainFrame extends javax.swing.JFrame {
     private String[] posiblesMovs = {"R","RD","L","LD","U","UD","D","DD","F","FD","B","BD"};
     private Random rand = null;
     private CubeController cuboController = null;
+    private WebCamController wc = null;
     private boolean flagFinish = false;
     
     
-    //*********************************** FIN VARIABLES *********************************************
+//*********************************** FIN VARIABLES *********************************************
     
     
 //        __  __          _                 _               
@@ -283,6 +283,7 @@ public class MainFrame extends javax.swing.JFrame {
         tiempo.setTime(date);
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
         cuboController = new CubeController(this);
+        this.wc = new WebCamController();
         this.setIconImage(Toolkit.getDefaultToolkit().
          getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
     }
@@ -310,7 +311,7 @@ public class MainFrame extends javax.swing.JFrame {
     
 //</editor-fold>
 
-    //*********************************** FIN METODOS ********************************************
+//*********************************** FIN METODOS ********************************************
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -737,12 +738,16 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void bt_resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_resolverActionPerformed
         resetMoves();
-        //desableButtons(false);
+        wc.cleeanPhotos(true);
+        wc.takePhoto("prueba");
+//desableButtons(false);
     }//GEN-LAST:event_bt_resolverActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try {
             cuboController.getArduino().killArduinoConnection();
+            this.wc.cleeanPhotos(false);
+            this.wc.close();
         } catch (ArduinoException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
