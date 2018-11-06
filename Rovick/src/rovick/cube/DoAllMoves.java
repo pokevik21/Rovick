@@ -24,7 +24,7 @@ public class DoAllMoves extends Thread{
     }
 
     public void doMove(String move,boolean borrar){
-        DoMove hacerMovimiento = new DoMove(move,arduino);
+        DoMove hacerMovimiento = new DoMove(move,arduino,vistaPrincipal);
         hacerMovimiento.start();
         try {
             hacerMovimiento.join();
