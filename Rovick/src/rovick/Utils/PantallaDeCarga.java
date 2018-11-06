@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 public class PantallaDeCarga extends javax.swing.JFrame {
     
-    private PuntosCarga pc = null;
+    //private PuntosCarga pc = null;
     
     public PantallaDeCarga() {
         initComponents();
@@ -18,9 +18,6 @@ public class PantallaDeCarga extends javax.swing.JFrame {
         AWTUtilities.setWindowOpaque(this, false);
         this.setIconImage(Toolkit.getDefaultToolkit().
         getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
-        pc = new PuntosCarga(this);
-        
-        pc.execute();
     }
 
     public void cambiarTexto(String texto){
@@ -29,7 +26,6 @@ public class PantallaDeCarga extends javax.swing.JFrame {
     
     public void close(){
         this.setVisible(false);
-        pc.close();
     }
     
     @SuppressWarnings("unchecked")
@@ -45,8 +41,11 @@ public class PantallaDeCarga extends javax.swing.JFrame {
 
         lb_texto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lb_texto.setForeground(new java.awt.Color(0, 0, 0));
-        lb_texto.setText("Conf. vista");
-        getContentPane().add(lb_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, -1));
+        lb_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_texto.setText("Cargando");
+        lb_texto.setToolTipText("");
+        lb_texto.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lb_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         image_fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         image_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Img_pantallaCarga.png"))); // NOI18N

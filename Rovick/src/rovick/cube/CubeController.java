@@ -68,15 +68,10 @@ public class CubeController{
      */
     public void doMove(String move,boolean borrar){
         agarrado = true;
-        DoMove hacerMovimiento = new DoMove(move,arduino);
+        vistaPrincipal.desableButtons(false);
+        DoMove hacerMovimiento = new DoMove(move,arduino,vistaPrincipal);
         hacerMovimiento.start();
-        try {
-            hacerMovimiento.join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
         if(borrar)vistaPrincipal.finisMove(move);
-        System.out.println("Terminado: "+move);
         if(move.equals("E"))agarrado = false;
     }
     

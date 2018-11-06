@@ -16,10 +16,12 @@ public class DoMove extends Thread{
     
     private String move;
     private PanamaHitek_Arduino arduino;
+    private MainFrame vistaPrincipal;
 
-    public DoMove(String move,PanamaHitek_Arduino arduino) {
+    public DoMove(String move,PanamaHitek_Arduino arduino,MainFrame vistaPrincipal) {
         this.move = move;
         this.arduino = arduino;
+        this.vistaPrincipal = vistaPrincipal;
     }
 
     @Override
@@ -64,6 +66,8 @@ public class DoMove extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+    System.out.println("Terminado: "+move);
+    vistaPrincipal.desableButtons(true);
     }
     
     

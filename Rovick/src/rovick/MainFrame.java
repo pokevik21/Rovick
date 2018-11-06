@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
-import rovick.Utils.PantallaDeCarga;
+import rovick.Utils.ProcesoCarga;
 import rovick.cube.CubeController;
 
 /**
@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
     private CubeController cuboController = null;
     private WebCamController wc = null;
     private boolean flagFinish = false;
-    
+    private ProcesoCarga pc = null;
     
 //*********************************** FIN VARIABLES *********************************************
     
@@ -273,11 +273,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void confInicial(){
-        PantallaDeCarga pdc = new PantallaDeCarga();
-        pdc.setVisible(true);
+        ProcesoCarga pc = new ProcesoCarga();
+        pc.start();
         
         //VARIABLES
-        pdc.cambiarTexto("Conf. Variables");
+        pc.cambiarTexto("Conf. Variables");
         movimientos = new ArrayList();
         rand = new Random();
         this.ta_movimientos.setEditable(false);
@@ -286,7 +286,7 @@ public class MainFrame extends javax.swing.JFrame {
         tiempo.setTime(date);
         
         //VISTA:
-        pdc.cambiarTexto("Conf. Vista");
+        pc.cambiarTexto("Conf. Vista");
         setLocationRelativeTo(null);
         this.setTitle("Rovick");
         setResizable(false);
@@ -295,12 +295,13 @@ public class MainFrame extends javax.swing.JFrame {
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
         
         //ARDUINO
-        pdc.cambiarTexto("Conf. Arduino");
+        pc.cambiarTexto("Conf. Arduino");
         cuboController = new CubeController(this);
         //CAMARA WEB
-        pdc.cambiarTexto("Conf. Camara");
+        pc.cambiarTexto("Conf. Camara");
         this.wc = new WebCamController();
-        pdc.close();
+        pc.close();
+
     }
 
     /**
@@ -313,6 +314,7 @@ public class MainFrame extends javax.swing.JFrame {
         if(!this.cb_hacerSegunPulsas.isSelected()){
             addMove(mov);
         }else{
+            desableButtons(false);
             cuboController.doMove(mov,false);
         }
     }
@@ -321,7 +323,9 @@ public class MainFrame extends javax.swing.JFrame {
      * Metodo que genera los movimientos necesarios para resolver el cubo.
      */
     private void resolverCubo(){
-        
+        //desableButtons(false);
+        wc.cleeanPhotos(true);
+        wc.takePhoto("prueba");
     }
     
 //</editor-fold>
@@ -753,8 +757,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void bt_resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_resolverActionPerformed
         resetMoves();
-        wc.cleeanPhotos(true);
-        wc.takePhoto("prueba");
+        resolverCubo();
 //desableButtons(false);
     }//GEN-LAST:event_bt_resolverActionPerformed
 
@@ -810,12 +813,11 @@ public class MainFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {*/
                 new MainFrame().setVisible(true);
-            }
-        });
+           /* }
+        });*/
     }
     
     //<editor-fold defaultstate="collapsed" desc="Componentes">
