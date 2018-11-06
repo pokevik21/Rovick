@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
+import rovick.Utils.PantallaDeCarga;
 import rovick.cube.CubeController;
 
 /**
@@ -272,20 +273,34 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void confInicial(){
-        setLocationRelativeTo(null);
-        this.setTitle("Rovick - resolvedor de cubos de rubick hecho por Victor Pastor Urueña");
-        setResizable(false);
+        PantallaDeCarga pdc = new PantallaDeCarga();
+        pdc.setVisible(true);
+        
+        //VARIABLES
+        pdc.cambiarTexto("Conf. Variables");
         movimientos = new ArrayList();
         rand = new Random();
         this.ta_movimientos.setEditable(false);
         this.date = new Date(0);
         this.tiempo = new GregorianCalendar();
         tiempo.setTime(date);
-        this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
-        cuboController = new CubeController(this);
-        this.wc = new WebCamController();
+        
+        //VISTA:
+        pdc.cambiarTexto("Conf. Vista");
+        setLocationRelativeTo(null);
+        this.setTitle("Rovick");
+        setResizable(false);
         this.setIconImage(Toolkit.getDefaultToolkit().
-         getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
+        getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
+        this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
+        
+        //ARDUINO
+        pdc.cambiarTexto("Conf. Arduino");
+        cuboController = new CubeController(this);
+        //CAMARA WEB
+        pdc.cambiarTexto("Conf. Camara");
+        this.wc = new WebCamController();
+        pdc.close();
     }
 
     /**
