@@ -35,6 +35,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="bt_resolver" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lb_txtPort" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lb_port" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="bt_realizarMovs" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -66,15 +70,11 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="bt_deshacer" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lb_movsAlDeshacer" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="sp_deshacer" min="-2" pref="46" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lb_movsAlDeshacer" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Component id="lb_txtPort" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="lb_port" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bt_deshacer" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jScrollPane1" min="-2" pref="515" max="-2" attributes="0"/>
@@ -193,13 +193,13 @@
                       <Component id="bt_realizarMovs" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bt_resolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lb_movsAlDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lb_movsAlDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lb_port" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -406,7 +406,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lb_movsAlDeshacer">
       <Properties>
-        <Property name="text" type="java.lang.String" value=":Numero de aletorios"/>
+        <Property name="text" type="java.lang.String" value="Num. de aletorios:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb_numMovs">

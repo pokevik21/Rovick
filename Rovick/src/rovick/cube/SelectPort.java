@@ -49,7 +49,6 @@ public class SelectPort extends javax.swing.JDialog {
     private void rellenarPorts(){
         PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
         List<String> ports = ino.getSerialPorts();
-        boolean conectado = true;
         for (String port : ports) {
             this.cb_portsAbles.addItem(port);
         }
