@@ -369,6 +369,7 @@ public class MainFrame extends javax.swing.JFrame {
         ta_movimientos = new javax.swing.JTextArea();
         lb_txtPort = new javax.swing.JLabel();
         lb_port = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -495,7 +496,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        bt_deshacer.setText("Movimientos aleatorios");
+        bt_deshacer.setText("Gen. Random");
         bt_deshacer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_deshacerActionPerformed(evt);
@@ -534,6 +535,8 @@ public class MainFrame extends javax.swing.JFrame {
         lb_port.setForeground(new java.awt.Color(0, 102, 255));
         lb_port.setText("port");
 
+        jCheckBox1.setText("solo algoritmo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -546,16 +549,6 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(sep_bajo)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(bt_resolver)
-                                .addGap(12, 12, 12)
-                                .addComponent(bt_deshacer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_movsAlDeshacer)
-                                .addGap(55, 55, 55)
-                                .addComponent(lb_txtPort)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lb_port)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bt_realizarMovs)))
                         .addGap(6, 6, 6))
@@ -577,11 +570,25 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_soltar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bl_borrarUltimoMove)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_limpiarMovs))))
+                                .addComponent(jCheckBox1)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bt_deshacer)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lb_movsAlDeshacer)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(lb_txtPort)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lb_port))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bl_borrarUltimoMove)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bt_limpiarMovs))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -664,14 +671,17 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_realizarMovs)
-                    .addComponent(bt_resolver)
-                    .addComponent(bt_deshacer)
-                    .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_movsAlDeshacer)
-                    .addComponent(lb_txtPort)
-                    .addComponent(lb_port))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bt_realizarMovs)
+                        .addComponent(bt_resolver)
+                        .addComponent(jCheckBox1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bt_deshacer)
+                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lb_movsAlDeshacer)
+                        .addComponent(lb_txtPort)
+                        .addComponent(lb_port)))
                 .addContainerGap())
         );
 
@@ -779,7 +789,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (this.cuboController.isAgarrado()){
             cuboController.doMove("E", false);
         }else{
-            
+            cuboController.doMove("S", false);
         }
         resetMoves();
     }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
@@ -829,6 +839,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bt_resolver;
     private javax.swing.JButton bt_soltar;
     private javax.swing.JCheckBox cb_hacerSegunPulsas;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_B;
     private javax.swing.JLabel lb_BD;

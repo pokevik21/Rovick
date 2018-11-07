@@ -86,6 +86,7 @@ void setup()
   toDo.reserve(100);
   pwm.setPWMFreq(FREQUENCY);
   fin();
+  Serial.print("listo!");
 }
 /******************************************** FIN INICIO ***************************************************/
 
@@ -292,9 +293,47 @@ void BDIda(){
 //      |____/   \__|  \___| | .__/  |___/
 //                           |_|          
 
-void steps(){
-  
+void s1(){ //timpo 1s
+  sameTime(pinDerBr,pinIzqBr,derDesAgarrado,izqDesAgarrado);
+  sameTime(pinUpAg,pinBajoAg,upR,bajoR);
 }
+
+void s2(){//timpo 1s
+  sameTime(pinUpAg,pinBajoAg,upMid,bajoMid);
+  sameTime(pinUpAg,pinBajoAg,upL,bajoL);
+}
+
+void s3(){//timpo 2s
+  sameTime(pinUpAg,pinBajoAg,upMid,bajoMid);
+  sameTime(pinDerBr,pinIzqBr,derAgarrado,izqAgarrado);
+  sameTime(pinUpBr,pinBajoBr,upDesAgarrado,bajoDesAgarrado);
+  sameTime(pinDerAg,pinIzqAg,derUp,izqUp);
+}
+
+void s4(){//timpo 1
+  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
+  sameTime(pinDerAg,pinIzqAg,derDown,izqDown);
+}
+
+void s5(){//timpo 3
+  sameTime(pinUpBr,pinBajoBr,upAgarrado,bajoAgarrado);
+  sameTime(pinDerBr,pinIzqBr,derDesAgarrado,izqDesAgarrado);
+  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
+  sameTime(pinDerBr,pinIzqBr,derAgarrado,izqAgarrado);
+  sameTime(pinUpBr,pinBajoBr,upDesAgarrado,bajoDesAgarrado);
+  sameTime(pinDerAg,pinIzqAg,derDown,izqDown);
+}
+
+void s6(){//timpo 3s
+  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
+  sameTime(pinDerAg,pinIzqAg,derUp,izqUp);
+  sameTime(pinUpBr,pinBajoBr,upAgarrado,bajoAgarrado);
+  sameTime(pinDerBr,pinIzqBr,derDesAgarrado,izqDesAgarrado);
+  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
+  sameTime(pinDerBr,pinIzqBr,derAgarrado,izqAgarrado);
+}
+
+
 
 
 /******************************************** FIN METODOS ***************************************************/
@@ -362,8 +401,23 @@ void loop() {
        case 'E':
             fin();
           break; 
-       case 'I':
-            ida();
+       case '1':
+            s1();
+          break; 
+       case '2':
+            s2();
+          break; 
+       case '3':
+            s3();
+          break; 
+       case '4':
+            s4();
+          break; 
+       case '5':
+            s5();
+          break; 
+       case '6':
+            s6();
           break; 
       }
       
@@ -412,10 +466,8 @@ void loop() {
       }
     }
 
-    
     toDo = "";  //Limpiar el String
     TransmisionCompleta = false;  //Limpiar la bandera
-    Serial.print("1");
 }
 
 }
