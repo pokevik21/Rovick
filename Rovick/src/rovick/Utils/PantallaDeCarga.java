@@ -4,9 +4,13 @@ import com.sun.awt.AWTUtilities;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 
+/**
+ * Pantalla de carga que aparece durante la configuración de la ventana principal.
+ * @author Victor Pastor Urueña
+ */
 public class PantallaDeCarga extends javax.swing.JFrame {
     
-    //private PuntosCarga pc = null;
+    private String texto_carga = "";
     
     public PantallaDeCarga() {
         initComponents();
@@ -20,10 +24,17 @@ public class PantallaDeCarga extends javax.swing.JFrame {
         getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
     }
 
+    /**
+     * Metodo que se utiliza para cambiar el texto informativo
+     * @param texto El texto informativo
+     */
     public void cambiarTexto(String texto){
         this.lb_texto.setText(texto);
     }
     
+    /**
+     * Cierra esta pantalla
+     */
     public void close(){
         this.setVisible(false);
     }
@@ -42,9 +53,9 @@ public class PantallaDeCarga extends javax.swing.JFrame {
         lb_texto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lb_texto.setForeground(new java.awt.Color(0, 0, 0));
         lb_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_texto.setText("Cargando");
+        lb_texto.setText("Conf. vista");
         lb_texto.setToolTipText("");
-        lb_texto.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        lb_texto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(lb_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         image_fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,10 +103,18 @@ public class PantallaDeCarga extends javax.swing.JFrame {
     private javax.swing.JLabel lb_texto;
     // End of variables declaration//GEN-END:variables
 
-    public JLabel getLb_cargando() {
+    public String getTexto_carga() {
+        return texto_carga;
+    }
+
+    public void setTexto_carga(String texto_carga) {
+        this.texto_carga = texto_carga;
+    }  
+
+    public JLabel getLb_texto() {
         return lb_texto;
     }
-    
+  
     
     
 }

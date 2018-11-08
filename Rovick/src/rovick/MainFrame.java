@@ -29,6 +29,7 @@ public class MainFrame extends javax.swing.JFrame {
 //          \ V /   | (_| | | |    | | | (_| | | |_) | | | |  __/ \__ \
 //           \_/     \__,_| |_|    |_|  \__,_| |_.__/  |_|  \___| |___/
 
+    //<editor-fold defaultstate="collapsed" desc="VARIABLES">
     private ArrayList<String> movimientos = null;
     private int numMovimientos = 0;
     private Date date = null;
@@ -40,6 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
     private WebCamController wc = null;
     private boolean flagFinish = false;
     private ProcesoCarga pc = null;
+//</editor-fold>
     
 //*********************************** FIN VARIABLES *********************************************
     
@@ -749,7 +751,8 @@ public class MainFrame extends javax.swing.JFrame {
         cuboController.setAgarrado(false);
     }//GEN-LAST:event_bt_soltarActionPerformed
 //</editor-fold>
-    
+  
+    //<editor-fold defaultstate="collapsed" desc="OTROS EVENTOS">
     private void bt_limpiarMovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpiarMovsActionPerformed
         resetMoves();
     }//GEN-LAST:event_bt_limpiarMovsActionPerformed
@@ -793,18 +796,20 @@ public class MainFrame extends javax.swing.JFrame {
         }
         resetMoves();
     }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
-
-    //*********************************** FIN EVENTOS ********************************************
+    //</editor-fold>
+    
+//*********************************** FIN EVENTOS ********************************************
     
     
     
+    //<editor-fold defaultstate="collapsed" desc="MAIN">
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -822,13 +827,11 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        new MainFrame().setVisible(true);
 
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {*/
-                new MainFrame().setVisible(true);
-           /* }
-        });*/
     }
+//</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Componentes">
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -911,7 +914,5 @@ public class MainFrame extends javax.swing.JFrame {
     }
 //</editor-fold>
     
-//</editor-fold>
-
-       
+//</editor-fold>  
 }

@@ -69,8 +69,8 @@ public class CubeController{
         }
         
        if (!encontrado){
-           JOptionPane.showMessageDialog(selPort, "No se ha encontrado puetos automaticamente", "Error", JOptionPane.WARNING_MESSAGE);
-           
+           //JOptionPane.showMessageDialog(selPort, "No se ha encontrado puetos automaticamente", "Error", JOptionPane.WARNING_MESSAGE);
+           System.out.println("No se ha encontrado puetos automaticamente");
            try {
                arduino.killArduinoConnection();
            } catch (ArduinoException ex) {
@@ -130,6 +130,10 @@ public class CubeController{
         
     }
 
+    /**
+     * Devuelve el arduino del controlador
+     * @return Devuelve el arduino del controlador
+     */
     public PanamaHitek_Arduino getArduino() {
         return arduino;
     }
@@ -141,10 +145,5 @@ public class CubeController{
     public void setAgarrado(boolean agarrado) {
         this.agarrado = agarrado;
     }
-    
-    
-    
-    
-    
     
 }

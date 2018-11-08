@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *Proceso que se encarga de hacer la animación de poner puntos suspensivos.
  * @author Victor Pastor Urueña
  */
 public class ProcesoCarga extends Thread{
@@ -28,7 +28,7 @@ public class ProcesoCarga extends Thread{
         try {
         sleep(sleep);
         while (!cerrar && !isInterrupted()) {
-            String texto = this.pdc.getLb_cargando().getText();
+            String texto = this.pdc.getTexto_carga();
             String texto_limpio = texto;
             for (int i = 0; i < 3; i++) {
                 texto += ".";
@@ -47,7 +47,7 @@ public class ProcesoCarga extends Thread{
     
     public void cambiarTexto(String text){
         //pdc.cambiarTexto(text);
-        this.pdc.getLb_cargando().setText(text);
+        this.pdc.setTexto_carga(text);
     }
     
     public void close(){
