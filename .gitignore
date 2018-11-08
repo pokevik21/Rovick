@@ -1,3 +1,4 @@
 /Rovick/nbproject/private/
-Rovick/Rovick/build/classes
+Rovick/Rovick/build/*
 /Rovick/dist/
+*.class
