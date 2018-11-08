@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['imprimirmovimientos',['imprimirMovimientos',['../classrovick_1_1_main_frame.html#ab1aea5aaaa8b8b695b3c30c08a2fb705',1,'rovick::MainFrame']]],
-  ['isnumeric',['isNumeric',['../classrovick_1_1_utils_1_1_utiles.html#af34c18d8e5344dc7bbc7be79a1bff7f1',1,'rovick::Utils::Utiles']]]
+  ['equals',['equals',['../classrovick_1_1_cubo_1_1_table_generator.html#ade34f76bc014484540bf3b4792c74930',1,'rovick::Cubo::TableGenerator']]],
+  ['extraernumero',['extraerNumero',['../classrovick_1_1_utils_1_1_utiles.html#a7bc6aa7244f58b59cb5d6ae1d87b1cf5',1,'rovick::Utils::Utiles']]]
 ];

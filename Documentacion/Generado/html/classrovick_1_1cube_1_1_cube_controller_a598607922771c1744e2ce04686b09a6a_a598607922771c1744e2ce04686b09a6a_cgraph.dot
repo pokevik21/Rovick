@@ -1,0 +1,13 @@
+digraph "rovick.cube.CubeController.confArduinoConnection"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="rovick.cube.CubeController.conf\lArduinoConnection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="rovick.cube.SelectPort.get\lReturnStatus",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_select_port_a6bc9f69fb18fa82145b7087fc3d51e0a.html#a6bc9f69fb18fa82145b7087fc3d51e0a"];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="rovick.cube.SelectPort.getPort",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_select_port_ae5fcb6108e1e76f35d5f0361a0b881b7.html#ae5fcb6108e1e76f35d5f0361a0b881b7"];
+  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="rovick.MainFrame.getLb_port",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___getters___y___setters_ga65408892df27e1f5c362a7ab837ef08e.html#ga65408892df27e1f5c362a7ab837ef08e"];
+}

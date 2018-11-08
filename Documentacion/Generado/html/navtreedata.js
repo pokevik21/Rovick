@@ -24,12 +24,17 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Rovick", "index.html", [
+    [ "Módulos", "modules.html", "modules" ],
+    [ "Paquetes", "namespaces.html", [
+      [ "Paquetes", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],
       [ "Jerarquía de la clase", "hierarchy.html", "hierarchy" ],
       [ "Miembros de las clases", "functions.html", [
-        [ "Todo", "functions.html", null ],
-        [ "Funciones", "functions_func.html", null ]
+        [ "Todo", "functions.html", "functions_dup" ],
+        [ "Funciones", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Archivos", "files.html", [
@@ -40,7 +45,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-".html"
+"_arduino_rovick_8ino.html",
+"group___auxiliares.html#ga5c0bd377260e617abd7b98081ccd538d"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

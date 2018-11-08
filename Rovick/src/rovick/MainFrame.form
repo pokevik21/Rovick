@@ -66,22 +66,23 @@
                               <Component id="bt_soltar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cb_soloAlg" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <Component id="sp_movimientos" min="-2" pref="515" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="bl_borrarUltimoMove" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="bt_limpiarMovs" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                       <Component id="lb_movsAlDeshacer" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="sp_deshacer" min="-2" pref="46" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="bt_deshacer" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jScrollPane1" min="-2" pref="515" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bl_borrarUltimoMove" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bt_limpiarMovs" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -184,7 +185,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="sp_movimientos" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -192,14 +193,16 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bt_realizarMovs" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bt_resolver" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lb_movsAlDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_soloAlg" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="lb_port" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="lb_movsAlDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -427,7 +430,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bl_borrarUltimoMoveActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="sp_movimientos">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -458,7 +461,7 @@
         <Property name="text" type="java.lang.String" value="port"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="cb_soloAlg">
       <Properties>
         <Property name="text" type="java.lang.String" value="solo algoritmo"/>
       </Properties>

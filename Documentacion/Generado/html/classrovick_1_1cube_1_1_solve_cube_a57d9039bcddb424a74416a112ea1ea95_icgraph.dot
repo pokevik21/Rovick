@@ -1,0 +1,11 @@
+digraph "rovick.cube.SolveCube.combineTurns"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node13 [label="rovick.cube.SolveCube.combine\lTurns",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="rovick.cube.SolveCube.read\lSingleTurn",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_solve_cube.html#acc425e7a5f1d08ba57a49462d87afc49"];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="rovick.cube.SolveCube.solve",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_solve_cube.html#a064c66b25d046344b959c9a02caaa6bb"];
+}

@@ -1,5 +1,13 @@
 package rovick;
 
+/**
+ * \defgroup VistaPrincipal
+ * @{
+ */
+
+/**@} */
+
+import rovick.Utils.WebCamController;
 import rovick.Utils.Utiles;
 import com.panamahitek.ArduinoException;
 import java.awt.Toolkit;
@@ -10,11 +18,12 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import rovick.Utils.ProcesoCarga;
-import rovick.cube.CubeController;
+import rovick.Cubo.CubeController;
 
 /**
  * Vista pincipal del resolvedor de cubos de rubick
@@ -22,6 +31,7 @@ import rovick.cube.CubeController;
  */
 public class MainFrame extends javax.swing.JFrame {
     
+   
     
 //        __     __                 _           _       _              
 //        \ \   / /   __ _   _ __  (_)   __ _  | |__   | |   ___   ___ 
@@ -30,17 +40,32 @@ public class MainFrame extends javax.swing.JFrame {
 //           \_/     \__,_| |_|    |_|  \__,_| |_.__/  |_|  \___| |___/
 
     //<editor-fold defaultstate="collapsed" desc="VARIABLES">
+    /** \defgroup Variable
+     *  \ingroup VistaPrincipal
+     * @{
+     */
+    /**ArrayList de movimientos acumulados */
     private ArrayList<String> movimientos = null;
+    /**Numero de movimientos */
     private int numMovimientos = 0;
-    private Date date = null;
+    /** Calendario que contiene el tiempo estimado en realizar los movimientos o resolver*/
     private GregorianCalendar tiempo = null;
+    /** Encargado de fromatear la fecha a "mm min ss seg"*/
     private SimpleDateFormat sdf = null;
+    /** Array con todos los movimientos posibles, utilizado para generar los movimientos aleatorios*/
     private String[] posiblesMovs = {"R","RD","L","LD","U","UD","D","DD","F","FD","B","BD"};
+    /** Objeto que se encarga de generar randoms */
     private Random rand = null;
+    /** Objeto que se comunica con el cubo, realizando los movimientos y demás */
     private CubeController cuboController = null;
+    /** Objeto que controla la camara, haciendo fotos y demás*/
     private WebCamController wc = null;
+    /** Bandera para saber si hay que añadir el tiempo de agarre y soltar o no*/
     private boolean flagFinish = false;
-    private ProcesoCarga pc = null;
+    
+    /**
+     * @}
+     */
 //</editor-fold>
     
 //*********************************** FIN VARIABLES *********************************************
@@ -51,9 +76,20 @@ public class MainFrame extends javax.swing.JFrame {
 //       | |\/| |  / _ \ | __|  / _ \   / _` |  / _ \  / __|
 //       | |  | | |  __/ | |_  | (_) | | (_| | | (_) | \__ \
 //       |_|  |_|  \___|  \__|  \___/   \__,_|  \___/  |___/
-
+/**
+* \defgroup Metodos
+* \ingroup VistaPrincipal
+* @{
+*/
     //<editor-fold defaultstate="collapsed" desc="AUXILIARES">
 
+    /**
+     * \defgroup Auxiliares
+     * \ingroup Metodos
+     * @{
+     * Grupo de Metodos utilizados por los metodos principales
+     */
+    
     /**
      *Limpia la interface y duvuelve las variables a su estado por defecto.
      */
@@ -265,15 +301,31 @@ public class MainFrame extends javax.swing.JFrame {
         this.sp_deshacer.setEnabled(estado);
     }
     
+    /**
+     * @}
+     */
+    
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="IMPORTANTES">
     
+    /**
+     * \defgroup Principales
+     * \ingroup Metodos
+     * @{
+     */
+    
+    /**
+     * Contrucotr de la victa principal
+     */
     public MainFrame() {
         initComponents();
         confInicial();
     }
     
+    /**
+     * Metodo que se encarga de configurar la vista y las conexiones utilizadas (arduino, camara...)
+     */
     private void confInicial(){
         ProcesoCarga pc = new ProcesoCarga();
         pc.start();
@@ -283,7 +335,7 @@ public class MainFrame extends javax.swing.JFrame {
         movimientos = new ArrayList();
         rand = new Random();
         this.ta_movimientos.setEditable(false);
-        this.date = new Date(0);
+        Date date = new Date(0);
         this.tiempo = new GregorianCalendar();
         tiempo.setTime(date);
         
@@ -329,9 +381,10 @@ public class MainFrame extends javax.swing.JFrame {
         wc.cleeanPhotos(true);
         wc.takePhoto("prueba");
     }
-    
+    /**@} */
 //</editor-fold>
 
+ /** @} */
 //*********************************** FIN METODOS ********************************************
     
     @SuppressWarnings("unchecked")
@@ -367,11 +420,11 @@ public class MainFrame extends javax.swing.JFrame {
         lb_numMovs = new javax.swing.JLabel();
         lb_movs = new javax.swing.JLabel();
         bl_borrarUltimoMove = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        sp_movimientos = new javax.swing.JScrollPane();
         ta_movimientos = new javax.swing.JTextArea();
         lb_txtPort = new javax.swing.JLabel();
         lb_port = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cb_soloAlg = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -529,7 +582,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         ta_movimientos.setColumns(20);
         ta_movimientos.setRows(5);
-        jScrollPane1.setViewportView(ta_movimientos);
+        sp_movimientos.setViewportView(ta_movimientos);
 
         lb_txtPort.setText("Puerto:");
 
@@ -537,7 +590,7 @@ public class MainFrame extends javax.swing.JFrame {
         lb_port.setForeground(new java.awt.Color(0, 102, 255));
         lb_port.setText("port");
 
-        jCheckBox1.setText("solo algoritmo");
+        cb_soloAlg.setText("solo algoritmo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -576,21 +629,22 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_soltar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
+                                .addComponent(cb_soloAlg)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(sp_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bl_borrarUltimoMove)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bt_limpiarMovs))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
                                         .addComponent(lb_movsAlDeshacer)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bt_deshacer))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bl_borrarUltimoMove)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bt_limpiarMovs))))))
+                                        .addComponent(bt_deshacer))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -671,19 +725,20 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(bl_borrarUltimoMove)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sp_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bt_realizarMovs)
                         .addComponent(bt_resolver)
-                        .addComponent(jCheckBox1)
-                        .addComponent(lb_movsAlDeshacer)
-                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bt_deshacer))
+                        .addComponent(cb_soloAlg))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lb_port)
-                        .addComponent(lb_txtPort)))
+                        .addComponent(lb_txtPort))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lb_movsAlDeshacer)
+                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_deshacer)))
                 .addContainerGap())
         );
 
@@ -698,6 +753,18 @@ public class MainFrame extends javax.swing.JFrame {
 //       |_____|   \_/    \___| |_| |_|  \__|  \___/  |___/
     
     //<editor-fold defaultstate="collapsed" desc="BOTONES DE MOVIMIENTO">
+    /**
+     * \defgroup Eventos
+     * \ingroup VistaPrincipal
+     *  @{
+     */
+    
+    /**
+     * \defgroup Botones
+     * \ingroup Eventos
+     *@{
+     */
+    
     private void lb_RMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_RMouseClicked
         botonMovimiento("R");
     }//GEN-LAST:event_lb_RMouseClicked
@@ -750,9 +817,15 @@ public class MainFrame extends javax.swing.JFrame {
         if(cuboController.isAgarrado())cuboController.doMove("E",false);
         cuboController.setAgarrado(false);
     }//GEN-LAST:event_bt_soltarActionPerformed
+    /**@} */
 //</editor-fold>
   
     //<editor-fold defaultstate="collapsed" desc="OTROS EVENTOS">
+    /**
+     * \defgroup Otros
+     * \ingroup Eventos
+     * @{
+     */
     private void bt_limpiarMovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpiarMovsActionPerformed
         resetMoves();
     }//GEN-LAST:event_bt_limpiarMovsActionPerformed
@@ -796,6 +869,8 @@ public class MainFrame extends javax.swing.JFrame {
         }
         resetMoves();
     }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
+    /**@} */
+    /**@} */
     //</editor-fold>
     
 //*********************************** FIN EVENTOS ********************************************
@@ -833,7 +908,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Componentes">
+    //<editor-fold defaultstate="collapsed" desc="COMPONENTES">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bl_borrarUltimoMove;
     private javax.swing.JButton bt_deshacer;
@@ -842,8 +917,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bt_resolver;
     private javax.swing.JButton bt_soltar;
     private javax.swing.JCheckBox cb_hacerSegunPulsas;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBox cb_soloAlg;
     private javax.swing.JLabel lb_B;
     private javax.swing.JLabel lb_BD;
     private javax.swing.JLabel lb_D;
@@ -868,11 +942,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator sep_arriba;
     private javax.swing.JSeparator sep_bajo;
     private javax.swing.JSpinner sp_deshacer;
+    private javax.swing.JScrollPane sp_movimientos;
     private javax.swing.JTextArea ta_movimientos;
     // End of variables declaration//GEN-END:variables
-
-    //<editor-fold defaultstate="collapsed" desc="Get y set">
-   
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="GETTERS Y SETTERS">
+   /**
+    * \defgroup Getters_Y_Setters
+    * \ingroup Metodos
+    * @{
+    */
+    
     public ArrayList<String> getMovimientos() {
         return movimientos;
     }
@@ -912,7 +993,15 @@ public class MainFrame extends javax.swing.JFrame {
     public JLabel getLb_port() {
         return lb_port;
     }
-//</editor-fold>
-    
-//</editor-fold>  
+
+    public JCheckBox getCb_soloAlg() {
+        return cb_soloAlg;
+    }
+    /**
+     * @}
+     */
+    //</editor-fold>
+ 
+
 }
+

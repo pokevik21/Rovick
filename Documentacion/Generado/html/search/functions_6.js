@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['removelastmove',['removeLastMove',['../classrovick_1_1_main_frame.html#a27c198265fb7a3f149b95aaac12bf9f0',1,'rovick::MainFrame']]],
-  ['removetime',['removeTime',['../classrovick_1_1_main_frame.html#af06cc67bd587af7c4b5749cb74c55854',1,'rovick::MainFrame']]],
-  ['resetmoves',['resetMoves',['../classrovick_1_1_main_frame.html#a5c0bd377260e617abd7b98081ccd538d',1,'rovick::MainFrame']]]
+  ['getarduino',['getArduino',['../classrovick_1_1_cubo_1_1_cube_controller.html#a3c4f70646566529157449f95991e95a4',1,'rovick::Cubo::CubeController']]],
+  ['getcb_5fsoloalg',['getCb_soloAlg',['../group___getters___y___setters.html#ga2e2ea6a96e5adda38ccfe5f17d662e71',1,'rovick::MainFrame']]],
+  ['getlb_5fmovimientos',['getLb_movimientos',['../group___getters___y___setters.html#ga043f84db1c56feb50d810b003dd9abf2',1,'rovick::MainFrame']]],
+  ['getlb_5fmovs',['getLb_movs',['../group___getters___y___setters.html#gac0d0411fc113e04da1b07904615995ce',1,'rovick::MainFrame']]],
+  ['getlb_5fnummovs',['getLb_numMovs',['../group___getters___y___setters.html#gaa3695a22422b9b2a814009da724df33c',1,'rovick::MainFrame']]],
+  ['getlb_5fport',['getLb_port',['../group___getters___y___setters.html#ga65408892df27e1f5c362a7ab837ef08e',1,'rovick::MainFrame']]],
+  ['getlb_5ftexto',['getLb_texto',['../classrovick_1_1_utils_1_1_pantalla_de_carga.html#a542af8ea1abc670fd8c6fd7dac67d1b6',1,'rovick::Utils::PantallaDeCarga']]],
+  ['getlb_5ftiempo',['getLb_tiempo',['../group___getters___y___setters.html#ga923ab87c437a94a07373a87042fac515',1,'rovick::MainFrame']]],
+  ['getmovimientos',['getMovimientos',['../group___getters___y___setters.html#ga09437d98edd774ceee6379b3cf22b5be',1,'rovick::MainFrame']]],
+  ['getnummovimientos',['getNumMovimientos',['../group___getters___y___setters.html#ga114b45494d0f982e26d093fcb861aa8a',1,'rovick::MainFrame']]],
+  ['getpb_5fprogreso',['getPb_progreso',['../group___getters___y___setters.html#gafdcc70f9ed65b7512ddaf1605a665fa2',1,'rovick::MainFrame']]],
+  ['getport',['getPort',['../classrovick_1_1_cubo_1_1_select_port.html#ae75cc72ec7eed6692205d3467bdf4c10',1,'rovick::Cubo::SelectPort']]],
+  ['getreturnstatus',['getReturnStatus',['../classrovick_1_1_cubo_1_1_select_port.html#a7c35a8121fc5decb485b207fcaaa485f',1,'rovick::Cubo::SelectPort']]],
+  ['getta_5fmovimientos',['getTa_movimientos',['../group___getters___y___setters.html#gaf767941fce072617d24abcec29a8b10d',1,'rovick::MainFrame']]],
+  ['gettexto_5fcarga',['getTexto_carga',['../classrovick_1_1_utils_1_1_pantalla_de_carga.html#ac34a8fba9efd176d01a2efcc8665bc68',1,'rovick::Utils::PantallaDeCarga']]],
+  ['gettiempo',['getTiempo',['../group___getters___y___setters.html#gafccc7fa2d71b1e75c0c1af1e85ddd30d',1,'rovick::MainFrame']]]
 ];

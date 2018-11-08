@@ -1,0 +1,13 @@
+digraph "VistaPrincipal"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir=LR;
+  Node3 [label="Eventos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___eventos.html"];
+  Node0 [label="VistaPrincipal",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 [label="Variable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___variable.html"];
+  Node2 [label="Metodos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___metodos.html",tooltip="  "];
+  Node0->Node1 [shape=plaintext, dir="back", style="solid"];
+  Node0->Node2 [shape=plaintext, dir="back", style="solid"];
+  Node0->Node3 [shape=plaintext, dir="back", style="solid"];
+}

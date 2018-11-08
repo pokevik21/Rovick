@@ -1,0 +1,14 @@
+digraph "rovick.Utils.ProcesoCarga"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="rovick.Utils.ProcesoCarga",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Thread",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pdc" ,fontname="Helvetica"];
+  Node4 [label="rovick.Utils.PantallaDeCarga",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_pantalla_de_carga.html",tooltip="Pantalla de carga que aparece durante la configuración de la ventana principal. "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="javax::swing::JFrame",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" image_fondo\nlb_texto" ,fontname="Helvetica"];
+  Node6 [label="JLabel",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

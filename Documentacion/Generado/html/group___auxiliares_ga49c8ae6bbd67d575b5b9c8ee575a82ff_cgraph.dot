@@ -1,0 +1,29 @@
+digraph "rovick.MainFrame.addMove"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="rovick.MainFrame.addMove",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="rovick.Utils.Utiles.tiene\lNumero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#a3727c5ee9df98a910159a619889f7bda",tooltip="Metodo que te devuelve true si la cadena pasada contiene algún numero. "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="rovick.Utils.Utiles.isNumeric",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#af34c18d8e5344dc7bbc7be79a1bff7f1",tooltip="Metodo que te devuelve true si la cadena pasada es numérica. "];
+  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="rovick.Utils.Utiles.primerNum",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#a6844ffe69749214354abe47b5a4d19ba",tooltip="Metdo que devuelve la posicion del pimier numero numérico de la cadena. "];
+  Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="rovick.MainFrame.sumarNumeroMove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#ga724eeaf4315d25cbeae55131e775b2cb",tooltip="Suma al string move un movimiento. "];
+  Node4 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="rovick.Utils.Utiles.extraer\lNumero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#a7bc6aa7244f58b59cb5d6ae1d87b1cf5",tooltip="Metodo que te devuelve el entero que contine la cadena. "];
+  Node5 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="rovick.MainFrame.addTime",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#ga6427827ba7ae6ec2db0c2fedaa60b196",tooltip="Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo. "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="rovick.MainFrame.ultimoContiene",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#ga115fa1a1d9c876f4e7cc647563af0c4a",tooltip="Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move..."];
+  Node7 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="rovick.MainFrame.imprimir\lMovimientos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#gab1aea5aaaa8b8b695b3c30c08a2fb705",tooltip="Encorgado de rellenar el TextArea de los movimientos a partir del ArrayList movimientos. "];
+}
