@@ -17,6 +17,7 @@ public class DoMove extends Thread{
     private String move;
     private PanamaHitek_Arduino arduino;
     private MainFrame vistaPrincipal;
+    private boolean desdeAllMovs =  false;
 
     public DoMove(String move,PanamaHitek_Arduino arduino,MainFrame vistaPrincipal) {
         this.move = move;
@@ -24,6 +25,13 @@ public class DoMove extends Thread{
         this.vistaPrincipal = vistaPrincipal;
     }
 
+    public DoMove(String move,PanamaHitek_Arduino arduino,MainFrame vistaPrincipal,boolean desdeAllMovs) {
+        this.move = move;
+        this.arduino = arduino;
+        this.vistaPrincipal = vistaPrincipal;
+        this.desdeAllMovs = desdeAllMovs;
+    }
+    
     @Override
     public void run() {
         int espera = 0;
@@ -67,7 +75,6 @@ public class DoMove extends Thread{
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     System.out.println("Terminado: "+move);
-    vistaPrincipal.desableButtons(true);
     }
     
     

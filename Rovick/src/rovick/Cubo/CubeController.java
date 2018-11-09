@@ -22,6 +22,7 @@ public class CubeController{
     private PanamaHitek_Arduino arduino;
     private SelectPort selPort = null;
     private boolean agarrado = false;
+    private DoAllMoves doAllMoves = null;
     
     public CubeController(MainFrame vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -65,7 +66,7 @@ public class CubeController{
            } catch (SerialPortException ex) {
                Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
            } catch (ArduinoException ex) {
-               Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
+               JOptionPane.showMessageDialog(vistaPrincipal, "Nos se ha podido conectar al puerto", "Error", JOptionPane.ERROR_MESSAGE);
            }
         }
         
@@ -126,9 +127,8 @@ public class CubeController{
      * @see DoAllMoves
      */
     public void doAllMovs(){
-        DoAllMoves doAllMoves = new DoAllMoves(vistaPrincipal, arduino);
+        this.doAllMoves = new DoAllMoves(vistaPrincipal, arduino);
         doAllMoves.start();
-        
     }
 
     public String resolverCubo(WebCamController camara){
@@ -151,6 +151,10 @@ public class CubeController{
 
     public void setAgarrado(boolean agarrado) {
         this.agarrado = agarrado;
+    }
+    
+    public void endAllMovs(){
+        if (doAllMoves.isAlive())this.doAllMoves.interrupt();
     }
     
 }

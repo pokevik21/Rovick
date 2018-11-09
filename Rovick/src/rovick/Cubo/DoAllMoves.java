@@ -23,16 +23,11 @@ public class DoAllMoves extends Thread{
         this.vistaPrincipal = vista;   
     }
 
-    public void doMove(String move,boolean borrar){
-        DoMove hacerMovimiento = new DoMove(move,arduino,vistaPrincipal);
+    public void doMove(String move,boolean borrar) throws InterruptedException{
+        DoMove hacerMovimiento = new DoMove(move,arduino,vistaPrincipal,true);
         hacerMovimiento.start();
-        try {
             hacerMovimiento.join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
         if(borrar)vistaPrincipal.finisMove(move);
-        System.out.println("Terminado: "+move);
     }
     
     @Override
@@ -42,53 +37,71 @@ public class DoAllMoves extends Thread{
             cuentsAtas = new CuentaAtras(vistaPrincipal);
             cuentsAtas.start();
             int movs =vistaPrincipal.getMovimientos().size();
-            for (int k=0; k < movs; k++) {
-                int repetir = 1;
-                String movARealizar = vistaPrincipal.getMovimientos().get(0);
-                if(Utiles.tieneNumero(vistaPrincipal.getMovimientos().get(0))){
-                    repetir = Utiles.extraerNumero(vistaPrincipal.getMovimientos().get(0));
-                    movARealizar = vistaPrincipal.getMovimientos().get(0).substring(0,Utiles.primerNum(vistaPrincipal.getMovimientos().get(0)));
-                    boolean conVuelta = false;
-                    
-                    switch (String.valueOf(movARealizar.charAt(0))) {
-                        case "F":
-                        case "B":
-                            conVuelta = true;
-                            break;
-                    }
-                    if(conVuelta)doMove("I", false);
-                    for (int i = 0; i < repetir; i++) {
-                        switch (movARealizar) {
+            try {
+                for (int k = 0; k < movs; k++) {
+                    String movARealizar = vistaPrincipal.getMovimientos().get(0);
+                    if (Utiles.tieneNumero(vistaPrincipal.getMovimientos().get(0))) {
+                        int repetir = Utiles.extraerNumero(vistaPrincipal.getMovimientos().get(0));
+                        movARealizar = vistaPrincipal.getMovimientos().get(0).substring(0, Utiles.primerNum(vistaPrincipal.getMovimientos().get(0)));
+                        boolean conVuelta = false;
+                        
+                        switch (String.valueOf(movARealizar.charAt(0))) {
                             case "F":
-                                doMove("R", true);
-                                break;
-                            case "FD":
-                                doMove("RD", true);
-                                break;
                             case "B":
-                                doMove("L", true);
+                                conVuelta = true;
                                 break;
-                            case "BD":
-                                doMove("LD", true);
-                                break;
-                            default:
-                                doMove(movARealizar, true);
                         }
+                        
+                        if (conVuelta) {
+                            doMove("I", false);
+                        }
+                        for (int i = 0; i < repetir; i++) {
+                            switch (movARealizar) {
+                                case "F":
+                                    doMove("R", true);
+                                    break;
+                                case "FD":
+                                    doMove("RD", true);
+                                    break;
+                                case "B":
+                                    doMove("L", true);
+                                    break;
+                                case "BD":
+                                    doMove("LD", true);
+                                    break;
+                                default:
+                                    doMove(movARealizar, true);
+                            }
+                        }
+                        if (conVuelta) {
+                            doMove("V", false);
+                        }
+                    } else {
+                        doMove(movARealizar, true);
                     }
-                    if (conVuelta)doMove("V", false);
-                }else{
-                    doMove(movARealizar, true);
+                    vistaPrincipal.getMovimientos().remove(0);
+                    vistaPrincipal.imprimirMovimientos();
                 }
-                vistaPrincipal.getMovimientos().remove(0);
-                vistaPrincipal.imprimirMovimientos();
+            } catch (InterruptedException interruptedException) {
+                System.out.println("interrupt");
+                if(cuentsAtas.isAlive()){
+                    System.out.println("cuneta atras viva");
+                    cuentsAtas.interrupt();
+                }
             }
         }else{
             JOptionPane.showMessageDialog(vistaPrincipal,"No hay movimiento que hacer","Sin movimientos",JOptionPane.INFORMATION_MESSAGE);
         }
-        doMove("E", true);
+        
+        try {
+            doMove("E", true);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(DoAllMoves.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        vistaPrincipal.getBt_parar().setEnabled(false);
+        vistaPrincipal.desableButtons(true);
     }
-    
-    
+   
 }
     
     
