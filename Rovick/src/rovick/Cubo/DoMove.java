@@ -10,13 +10,13 @@ import rovick.MainFrame;
 /**
  * Proceso que se encoraga de realizar un movimiento,
  * el que se le pasa en el contructor.
- * @author Victor Pastor Urueña
  */
 public class DoMove extends Thread{
     
     private String move;
     private PanamaHitek_Arduino arduino;
     private MainFrame vistaPrincipal;
+    private boolean desdeAllMovs =  false;
 
     public DoMove(String move,PanamaHitek_Arduino arduino,MainFrame vistaPrincipal) {
         this.move = move;
@@ -24,6 +24,13 @@ public class DoMove extends Thread{
         this.vistaPrincipal = vistaPrincipal;
     }
 
+    public DoMove(String move,PanamaHitek_Arduino arduino,MainFrame vistaPrincipal,boolean desdeAllMovs) {
+        this.move = move;
+        this.arduino = arduino;
+        this.vistaPrincipal = vistaPrincipal;
+        this.desdeAllMovs = desdeAllMovs;
+    }
+    
     @Override
     public void run() {
         int espera = 0;
@@ -66,8 +73,8 @@ public class DoMove extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+    if(!desdeAllMovs) vistaPrincipal.desableButtons(true);
     System.out.println("Terminado: "+move);
-    vistaPrincipal.desableButtons(true);
     }
     
     

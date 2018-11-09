@@ -1,8 +1,6 @@
 
 package rovick.Utils;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JProgressBar;
 
 /**
@@ -31,8 +29,9 @@ public class ProgressBar extends Thread{
             try {
                 this.sleep(1000/equiv);
             } catch (InterruptedException ex) {
-                Logger.getLogger(ProgressBar.class.getName()).log(Level.SEVERE, null, ex);
+                break;
             }
+            
         }
     }
     

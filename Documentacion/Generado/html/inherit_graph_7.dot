@@ -1,7 +1,0 @@
-digraph "Representación gráfica de la clase"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="rovick.WebCamController",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_web_cam_controller.html",tooltip="Clase encargada de el control de la Camara Web. "];
-}

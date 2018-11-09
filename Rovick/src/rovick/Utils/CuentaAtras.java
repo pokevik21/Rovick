@@ -2,8 +2,6 @@ package rovick.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import rovick.MainFrame;
 
@@ -11,7 +9,9 @@ import rovick.MainFrame;
  * Proceso que se encarga de llevar la cuenta atrás del tiempo,
  * este llama al proceso de PrograssBar a su vez.
  * Cuando termina muesta un mensaje de Terminado.
- * @author Victor Pastor Urueña
+ * \degroup CuentaAtras
+ * \ingroup Procesos
+ * @{
  */
 public class CuentaAtras extends Thread{
     
@@ -34,17 +34,18 @@ public class CuentaAtras extends Thread{
                 vistaPrincipal.getLb_tiempo().setText(sdf.format(vistaPrincipal.getTiempo().getTime()));
                 this.sleep(1000);
             } catch (InterruptedException ex) {
-                Logger.getLogger(CuentaAtras.class.getName()).log(Level.SEVERE, null, ex);
+                p_pb.interrupt();
+                break;
             }
         }
         try {
             p_pb.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(CuentaAtras.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
         vistaPrincipal.resetMoves();
         vistaPrincipal.desableButtons(true);
     }
-    
+     
 }
+/** @}*/

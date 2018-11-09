@@ -3,9 +3,8 @@ package rovick;
 /**
  * \defgroup VistaPrincipal
  * @{
+ * @}
  */
-
-/**@} */
 
 import rovick.Utils.WebCamController;
 import rovick.Utils.Utiles;
@@ -18,6 +17,7 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -299,6 +299,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.lb_UD.setEnabled(estado);
         this.cb_hacerSegunPulsas.setEnabled(estado);
         this.sp_deshacer.setEnabled(estado);
+        this.cb_soloAlg.setEnabled(estado);
     }
     
     /**
@@ -409,14 +410,12 @@ public class MainFrame extends javax.swing.JFrame {
         lb_tiempo = new javax.swing.JLabel();
         pb_progreso = new javax.swing.JProgressBar();
         cb_hacerSegunPulsas = new javax.swing.JCheckBox();
-        lb_movimientos = new javax.swing.JLabel();
         bt_resolver = new javax.swing.JButton();
         bt_limpiarMovs = new javax.swing.JButton();
         bt_realizarMovs = new javax.swing.JButton();
         bt_deshacer = new javax.swing.JButton();
         bt_soltar = new javax.swing.JButton();
         sp_deshacer = new javax.swing.JSpinner();
-        lb_movsAlDeshacer = new javax.swing.JLabel();
         lb_numMovs = new javax.swing.JLabel();
         lb_movs = new javax.swing.JLabel();
         bl_borrarUltimoMove = new javax.swing.JButton();
@@ -425,6 +424,7 @@ public class MainFrame extends javax.swing.JFrame {
         lb_txtPort = new javax.swing.JLabel();
         lb_port = new javax.swing.JLabel();
         cb_soloAlg = new javax.swing.JCheckBox();
+        bt_parar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -521,14 +521,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         lb_tiempo.setText("00 min 00 seg");
 
-        cb_hacerSegunPulsas.setText("Hacer según pulsas");
+        cb_hacerSegunPulsas.setText("Según pulsas");
         cb_hacerSegunPulsas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_hacerSegunPulsasActionPerformed(evt);
             }
         });
-
-        lb_movimientos.setText("Movimientos:");
 
         bt_resolver.setText("Resolver cubo");
         bt_resolver.addActionListener(new java.awt.event.ActionListener() {
@@ -558,7 +556,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        bt_soltar.setText("Soltar cubo");
+        bt_soltar.setText("Soltar ");
         bt_soltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_soltarActionPerformed(evt);
@@ -566,8 +564,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         sp_deshacer.setValue(25);
-
-        lb_movsAlDeshacer.setText("Num. de aletorios:");
 
         lb_numMovs.setText("Num.movimientos:");
 
@@ -590,31 +586,28 @@ public class MainFrame extends javax.swing.JFrame {
         lb_port.setForeground(new java.awt.Color(0, 102, 255));
         lb_port.setText("port");
 
-        cb_soloAlg.setText("solo algoritmo");
+        cb_soloAlg.setText("Solo algoritmo");
+
+        bt_parar.setText("Parar");
+        bt_parar.setEnabled(false);
+        bt_parar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_pararActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(sep_arriba)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sep_bajo)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sep_bajo)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bt_resolver)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lb_txtPort)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_port)
-                                .addGap(18, 18, 18)
-                                .addComponent(bt_realizarMovs)))
-                        .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lb_txt_tiempo)
@@ -623,61 +616,66 @@ public class MainFrame extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lb_numMovs)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_movs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(pb_progreso, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lb_movs, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pb_progreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bt_soltar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cb_soloAlg)
-                                .addGap(18, 18, 18)
+                                .addComponent(bt_soltar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_parar))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(sp_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bl_borrarUltimoMove)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bt_limpiarMovs))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addComponent(lb_movsAlDeshacer)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bt_deshacer))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cb_hacerSegunPulsas)
-                                .addGap(18, 18, 18)
-                                .addComponent(lb_movimientos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lb_R, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_L, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_U, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(lb_D, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lb_F, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_B, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lb_RD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_LD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lb_UD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(lb_DD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_FD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(lb_BD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(sep_arriba)
+                                    .addComponent(bt_resolver)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lb_R, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lb_L, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lb_U, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(12, 12, 12)
+                                            .addComponent(lb_D, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(lb_F, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lb_B, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lb_RD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lb_LD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(lb_UD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(12, 12, 12)
+                                            .addComponent(lb_DD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lb_FD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(12, 12, 12)
+                                            .addComponent(lb_BD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(cb_hacerSegunPulsas)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(sp_movimientos)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(bl_borrarUltimoMove)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(bt_limpiarMovs))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addGap(6, 6, 6)
+                                                    .addComponent(cb_soloAlg)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(bt_deshacer)
+                                                    .addGap(84, 84, 84)
+                                                    .addComponent(lb_txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lb_port)
+                                                    .addGap(83, 83, 83)
+                                                    .addComponent(bt_realizarMovs))))))
+                                .addGap(0, 3, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -685,7 +683,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(bt_soltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_soltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_parar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(pb_progreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -720,7 +720,6 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cb_hacerSegunPulsas)
-                            .addComponent(lb_movimientos)
                             .addComponent(bt_limpiarMovs)
                             .addComponent(bl_borrarUltimoMove)))
                     .addGroup(layout.createSequentialGroup()
@@ -729,16 +728,15 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bt_realizarMovs)
                         .addComponent(bt_resolver)
                         .addComponent(cb_soloAlg))
+                    .addComponent(bt_realizarMovs)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lb_port)
-                        .addComponent(lb_txtPort))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lb_movsAlDeshacer)
                         .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bt_deshacer)))
+                        .addComponent(bt_deshacer)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lb_port)
+                            .addComponent(lb_txtPort))))
                 .addContainerGap())
         );
 
@@ -762,55 +760,56 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * \defgroup Botones
      * \ingroup Eventos
+     * Botones de los movimientos.
+     * ![Ejemplo boton de movimiento](DoxyRecursos/images/R.png)
      *@{
      */
-    
     private void lb_RMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_RMouseClicked
-        botonMovimiento("R");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("R");
     }//GEN-LAST:event_lb_RMouseClicked
 
     private void lb_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_LMouseClicked
-        botonMovimiento("L");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("L");
     }//GEN-LAST:event_lb_LMouseClicked
 
     private void lb_UMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_UMouseClicked
-        botonMovimiento("U");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("U");
     }//GEN-LAST:event_lb_UMouseClicked
 
     private void lb_DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_DMouseClicked
-        botonMovimiento("D");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("D");
     }//GEN-LAST:event_lb_DMouseClicked
 
     private void lb_FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_FMouseClicked
-        botonMovimiento("F");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("F");
     }//GEN-LAST:event_lb_FMouseClicked
 
     private void lb_BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_BMouseClicked
-        botonMovimiento("B");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("B");
     }//GEN-LAST:event_lb_BMouseClicked
 
     private void lb_RDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_RDMouseClicked
-        botonMovimiento("RD");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("RD");
     }//GEN-LAST:event_lb_RDMouseClicked
 
     private void lb_LDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_LDMouseClicked
-        botonMovimiento("LD");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("LD");
     }//GEN-LAST:event_lb_LDMouseClicked
 
     private void lb_UDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_UDMouseClicked
-        botonMovimiento("UD");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("UD");
     }//GEN-LAST:event_lb_UDMouseClicked
 
     private void lb_DDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_DDMouseClicked
-        botonMovimiento("DD");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("DD");
     }//GEN-LAST:event_lb_DDMouseClicked
 
     private void lb_FDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_FDMouseClicked
-        botonMovimiento("FD");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("FD");
     }//GEN-LAST:event_lb_FDMouseClicked
 
     private void lb_BDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_BDMouseClicked
-        botonMovimiento("BD");
+        if(((JLabel)evt.getSource()).isEnabled())botonMovimiento("BD");
     }//GEN-LAST:event_lb_BDMouseClicked
 
     private void bt_soltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_soltarActionPerformed
@@ -858,6 +857,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void bt_realizarMovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_realizarMovsActionPerformed
+        bt_parar.setEnabled(true);
         cuboController.doAllMovs();
     }//GEN-LAST:event_bt_realizarMovsActionPerformed
 
@@ -869,6 +869,11 @@ public class MainFrame extends javax.swing.JFrame {
         }
         resetMoves();
     }//GEN-LAST:event_cb_hacerSegunPulsasActionPerformed
+
+    private void bt_pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pararActionPerformed
+        bt_parar.setEnabled(false);
+        cuboController.endAllMovs();
+    }//GEN-LAST:event_bt_pararActionPerformed
     /**@} */
     /**@} */
     //</editor-fold>
@@ -913,6 +918,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bl_borrarUltimoMove;
     private javax.swing.JButton bt_deshacer;
     private javax.swing.JButton bt_limpiarMovs;
+    private javax.swing.JButton bt_parar;
     private javax.swing.JButton bt_realizarMovs;
     private javax.swing.JButton bt_resolver;
     private javax.swing.JButton bt_soltar;
@@ -930,9 +936,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lb_RD;
     private javax.swing.JLabel lb_U;
     private javax.swing.JLabel lb_UD;
-    private javax.swing.JLabel lb_movimientos;
     private javax.swing.JLabel lb_movs;
-    private javax.swing.JLabel lb_movsAlDeshacer;
     private javax.swing.JLabel lb_numMovs;
     private javax.swing.JLabel lb_port;
     private javax.swing.JLabel lb_tiempo;
@@ -966,10 +970,6 @@ public class MainFrame extends javax.swing.JFrame {
         return tiempo;
     }
     
-    public JLabel getLb_movimientos() {
-        return lb_movimientos;
-    }
-    
     public JLabel getLb_movs() {
         return lb_movs;
     }
@@ -997,6 +997,11 @@ public class MainFrame extends javax.swing.JFrame {
     public JCheckBox getCb_soloAlg() {
         return cb_soloAlg;
     }
+
+    public JButton getBt_parar() {
+        return bt_parar;
+}
+    
     /**
      * @}
      */
@@ -1004,4 +1009,9 @@ public class MainFrame extends javax.swing.JFrame {
  
 
 }
+
+
+/**
+ * \defgroup 
+ */
 

@@ -1,12 +1,20 @@
 package rovick.Utils;
 
+/**
+ * \defgroup Procesos
+ * @{
+ * @}
+ */
+
 import com.sun.awt.AWTUtilities;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 
 /**
- * Pantalla de carga que aparece durante la configuración de la ventana principal.
- * @author Victor Pastor Urueña
+ * Pantalla de carga que aparece durante la configuración de la ventana principal. 
+ * ![Pantalla de carga](DoxyRecursos/images/Img_pantallaCarga.png)
+ * \ingroup Utiles
+ * @{
  */
 public class PantallaDeCarga extends javax.swing.JFrame {
     
@@ -114,7 +122,5 @@ public class PantallaDeCarga extends javax.swing.JFrame {
     public JLabel getLb_texto() {
         return lb_texto;
     }
-  
-    
     
 }
