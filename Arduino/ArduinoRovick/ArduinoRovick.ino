@@ -82,11 +82,12 @@ void fin(){
 void setup()
 {
   Serial.begin(9600);
+  Serial.print("Rovick");
   pwm.begin();
   toDo.reserve(100);
   pwm.setPWMFreq(FREQUENCY);
   fin();
-  Serial.print("listo!");
+  Serial.print(" - Listo!");
 }
 /******************************************** FIN INICIO ***************************************************/
 
@@ -123,6 +124,7 @@ void ida(){
 }
 
 void vuelta(){
+  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
   sameTime(pinBajoBr,pinUpBr,bajoR,upL);
   sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
   sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
@@ -294,43 +296,37 @@ void BDIda(){
 //                           |_|          
 
 void s1(){ //timpo 1s
-  sameTime(pinDerBr,pinIzqBr,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinUpAg,pinBajoAg,upR,bajoR);
+  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
+  sameTime(pinUpBr,pinBajoBr,upR,bajoL);
 }
 
 void s2(){//timpo 1s
-  sameTime(pinUpAg,pinBajoAg,upMid,bajoMid);
-  sameTime(pinUpAg,pinBajoAg,upL,bajoL);
+  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
+  sameTime(pinUpBr,pinBajoBr,upL,bajoR);
 }
 
-void s3(){//timpo 2s
-  sameTime(pinUpAg,pinBajoAg,upMid,bajoMid);
-  sameTime(pinDerBr,pinIzqBr,derAgarrado,izqAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinDerAg,pinIzqAg,derUp,izqUp);
-}
+void s3(){//timpo 2s         
+  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
+  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
+  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
+  sameTime(pinDerBr,pinIzqBr,derUp,izqDown);
+}                             
 
-void s4(){//timpo 1
-  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
-  sameTime(pinDerAg,pinIzqAg,derDown,izqDown);
-}
+void s4(){//timpo 1          
+  sameTime(pinDerBr,pinIzqBr,derMid,izqMid);
+  sameTime(pinDerBr,pinIzqBr,derDown,izqUp);
+}                            
 
-void s5(){//timpo 3
-  sameTime(pinUpBr,pinBajoBr,upAgarrado,bajoAgarrado);
-  sameTime(pinDerBr,pinIzqBr,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
-  sameTime(pinDerBr,pinIzqBr,derAgarrado,izqAgarrado);
-  sameTime(pinUpBr,pinBajoBr,upDesAgarrado,bajoDesAgarrado);
-  sameTime(pinDerAg,pinIzqAg,derDown,izqDown);
-}
+void s5(){//timpo 3          
+  sameTime(pinDerBr,pinIzqBr,derMid,izqMid);
+  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  ida();
+  ida();
+}                            
 
-void s6(){//timpo 3s
-  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
-  sameTime(pinDerAg,pinIzqAg,derUp,izqUp);
-  sameTime(pinUpBr,pinBajoBr,upAgarrado,bajoAgarrado);
-  sameTime(pinDerBr,pinIzqBr,derDesAgarrado,izqDesAgarrado);
-  sameTime(pinDerAg,pinIzqAg,derMid,izqMid);
-  sameTime(pinDerBr,pinIzqBr,derAgarrado,izqAgarrado);
+void s6(){//timpo 3s         
+  vuelta();
+  vuelta();
 }
 
 

@@ -189,12 +189,12 @@
                   </Group>
                   <Component id="bt_realizarMovs" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="lb_port" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="sp_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bt_deshacer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                          <Component id="lb_port" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb_txtPort" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>

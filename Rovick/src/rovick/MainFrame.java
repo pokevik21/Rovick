@@ -732,11 +732,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(cb_soloAlg))
                     .addComponent(bt_realizarMovs)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lb_port)
+                        .addComponent(lb_txtPort))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bt_deshacer)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lb_port)
-                            .addComponent(lb_txtPort))))
+                        .addComponent(bt_deshacer)))
                 .addContainerGap())
         );
 

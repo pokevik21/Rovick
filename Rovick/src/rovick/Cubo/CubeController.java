@@ -23,6 +23,7 @@ public class CubeController{
     private SelectPort selPort = null;
     private boolean agarrado = false;
     private DoAllMoves doAllMoves = null;
+    private boolean respuesta = false;
     
     public CubeController(MainFrame vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -44,28 +45,39 @@ public class CubeController{
         SerialPortEventListener lisener = new SerialPortEventListener() {
            @Override
            public void serialEvent(SerialPortEvent spe) {
-                
+               try {
+                   if(arduino.isMessageAvailable()){
+                       System.out.println("Desde Arduino: "+arduino.printMessage());
+                       respuesta=true;
+                   }
+               } catch (SerialPortException ex) {
+                   Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (ArduinoException ex) {
+                   Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
+               }
            }
        };
        
         List<String> ports = arduino.getSerialPorts();
         for (String port : ports) {
+            
+           System.out.println("puerto: "+port);
 
            try {
                arduino.arduinoRX(port, 9600, lisener);
-               Thread.sleep(2000);
-               if(arduino.isMessageAvailable()){
-                  String m = arduino.printMessage();
-                  if (m.equals("listo!")){
-                      encontrado = true;
-                      break;
-                  }
+               Thread.sleep(10000);
+               System.out.println("arduino "+respuesta);
+               if(respuesta){
+                  encontrado = true;
+                  break;
                }
+              arduino.killArduinoConnection();
            } catch (InterruptedException ex) {
                Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
            } catch (SerialPortException ex) {
                Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
            } catch (ArduinoException ex) {
+               Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
                JOptionPane.showMessageDialog(vistaPrincipal, "Nos se ha podido conectar al puerto", "Error", JOptionPane.ERROR_MESSAGE);
                System.exit(0);
            }
@@ -76,7 +88,7 @@ public class CubeController{
            try {
                arduino.killArduinoConnection();
            } catch (ArduinoException ex) {
-               Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
+               System.err.println("No hay conexion, por lo que no se le puede desconectar..."); 
            }
            
             if (arduino.getPortsAvailable()>1){ 
