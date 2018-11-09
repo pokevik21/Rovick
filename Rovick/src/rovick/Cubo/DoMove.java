@@ -10,7 +10,6 @@ import rovick.MainFrame;
 /**
  * Proceso que se encoraga de realizar un movimiento,
  * el que se le pasa en el contructor.
- * @author Victor Pastor Urueña
  */
 public class DoMove extends Thread{
     
@@ -74,6 +73,7 @@ public class DoMove extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+    if(!desdeAllMovs) vistaPrincipal.desableButtons(true);
     System.out.println("Terminado: "+move);
     }
     

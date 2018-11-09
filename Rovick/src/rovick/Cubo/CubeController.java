@@ -67,11 +67,11 @@ public class CubeController{
                Logger.getLogger(CubeController.class.getName()).log(Level.SEVERE, null, ex);
            } catch (ArduinoException ex) {
                JOptionPane.showMessageDialog(vistaPrincipal, "Nos se ha podido conectar al puerto", "Error", JOptionPane.ERROR_MESSAGE);
+               System.exit(0);
            }
         }
         
        if (!encontrado){
-           //JOptionPane.showMessageDialog(selPort, "No se ha encontrado puetos automaticamente", "Error", JOptionPane.WARNING_MESSAGE);
            System.out.println("No se ha encontrado puetos automaticamente");
            try {
                arduino.killArduinoConnection();
