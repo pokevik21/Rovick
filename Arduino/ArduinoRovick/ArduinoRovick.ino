@@ -13,9 +13,9 @@ boolean inPosIni = false;
 //DERECHO
 #define pinDerBr 0
 #define pinDerAg 8
-#define derUp 500
+#define derUp 503
 #define derMid 300
-#define derDown 100
+#define derDown 102
 #define derAgarrado 106
 #define derDesAgarrado 256
 
@@ -31,16 +31,16 @@ boolean inPosIni = false;
 //ARRIBA
 #define pinUpBr 6
 #define pinUpAg 14
-#define upR 95
-#define upMid 285
-#define upL 480
+#define upR 90
+#define upMid 290
+#define upL 487
 #define upAgarrado 270
 #define upDesAgarrado 440
 
 //ABAJO
 #define pinBajoBr 2
 #define pinBajoAg 10
-#define bajoR 85
+#define bajoR 78
 #define bajoMid 276
 #define bajoL 468
 #define bajoAgarrado 290
@@ -82,12 +82,12 @@ void fin(){
 void setup()
 {
   Serial.begin(9600);
-  Serial.print("Rovick");
+  Serial.println("Rovick");
   pwm.begin();
   toDo.reserve(100);
   pwm.setPWMFreq(FREQUENCY);
   fin();
-  Serial.print(" - Listo!");
+  Serial.println("¡Listo!");
 }
 /******************************************** FIN INICIO ***************************************************/
 
@@ -390,6 +390,9 @@ void loop() {
           break;
        case 'V':
             vuelta();
+          break;
+       case 'I':
+            ida();
           break;
        case 'S':
             posIni();

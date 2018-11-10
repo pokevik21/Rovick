@@ -89,19 +89,18 @@ public class DoAllMoves extends Thread{
                     cuentsAtas.interrupt();
                 }
             }
-        }else{
-            JOptionPane.showMessageDialog(vistaPrincipal,"No hay movimiento que hacer","Sin movimientos",JOptionPane.INFORMATION_MESSAGE);
-        }
-        
+            
         try {
             doMove("E", true);
         } catch (InterruptedException ex) {
             Logger.getLogger(DoAllMoves.class.getName()).log(Level.SEVERE, null, ex);
         }
         vistaPrincipal.getBt_parar().setEnabled(false);
-        vistaPrincipal.desableButtons(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(vistaPrincipal,"No hay movimiento que hacer","Sin movimientos",JOptionPane.INFORMATION_MESSAGE);
+        }
     }
-   
 }
     
     

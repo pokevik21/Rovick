@@ -47,7 +47,7 @@ public class CubeController{
            public void serialEvent(SerialPortEvent spe) {
                try {
                    if(arduino.isMessageAvailable()){
-                       System.out.println("Desde Arduino: "+arduino.printMessage());
+                       //System.out.println("Desde Arduino: "+arduino.printMessage());
                        respuesta=true;
                    }
                } catch (SerialPortException ex) {
@@ -60,14 +60,12 @@ public class CubeController{
        
         List<String> ports = arduino.getSerialPorts();
         for (String port : ports) {
-            
-           System.out.println("puerto: "+port);
-
            try {
                arduino.arduinoRX(port, 9600, lisener);
-               Thread.sleep(10000);
+               Thread.sleep(2000);
                System.out.println("arduino "+respuesta);
                if(respuesta){
+                  connection = port;
                   encontrado = true;
                   break;
                }
@@ -106,15 +104,17 @@ public class CubeController{
                 JOptionPane.showMessageDialog(null, "Nose ha podido conectar a nungun puerto", "Error", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             }
-
-            try {
-                arduino.arduinoTX(connection, 9600);
-                vistaPrincipal.getLb_port().setText(connection);
-                System.out.println("Conexion realizada en el puerto "+connection);
-            } catch (ArduinoException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
        }
+
+           try {
+               arduino.killArduinoConnection();
+               arduino.arduinoTX(connection, 9600);
+           } catch (ArduinoException ex) {
+               System.err.println("No hay conexion, por lo que no se le puede desconectar..."); 
+           }
+
+        vistaPrincipal.getLb_port().setText(connection);
+        System.out.println("Conexion realizada en el puerto "+connection);
     }
     
     /**
