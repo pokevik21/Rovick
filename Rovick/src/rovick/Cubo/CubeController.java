@@ -133,6 +133,15 @@ public class CubeController{
         if(move.equals("E"))agarrado = false;
     }
     
+    public void doMove(String move,boolean borrar, boolean desdeResolver){
+        agarrado = true;
+        vistaPrincipal.desableButtons(false);
+        DoMove hacerMovimiento = new DoMove(move,arduino,vistaPrincipal,desdeResolver);
+        hacerMovimiento.start();
+        if(borrar)vistaPrincipal.finisMove(move);
+        if(move.equals("E"))agarrado = false;
+    }
+    
     /**
      * Metodo que se encarga de realizar todas los movimientos.
      * Llama al proceso DoAllMoves para ello.
@@ -144,8 +153,8 @@ public class CubeController{
     }
 
     public String resolverCubo(WebCamController camara){
-        
-        
+        ProcesoResolverCubo prc = new ProcesoResolverCubo(vistaPrincipal,camara,this);
+        prc.start();
         return "";
     }
     

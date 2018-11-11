@@ -47,10 +47,10 @@ public class WebCamController {
     /**
      *Borra todas los archivos en la carpeta webCam_images
      */
-    public void cleeanPhotos(boolean crear){
+    public void cleeanPhotos(){
         try {
             FileUtils.deleteDirectory(imagesPath);
-            if (crear)imagesPath.mkdir();
+            //if (crear)imagesPath.mkdir();
         } catch (IOException ex) {
             Logger.getLogger(WebCamController.class.getName()).log(Level.SEVERE, null, ex);
         }
