@@ -9,6 +9,7 @@ boolean inPosIni = false;
 //      \ \ / /   / _` | | '__| | |  / _` | | '_ \  | |  / _ \ / __|
 //       \ V /   | (_| | | |    | | | (_| | | |_) | | | |  __/ \__ \
 //        \_/     \__,_| |_|    |_|  \__,_| |_.__/  |_|  \___| |___/
+int pinLED = 6;
 #define FREQUENCY 50
 //DERECHO
 #define pinDerBr 0
@@ -16,7 +17,7 @@ boolean inPosIni = false;
 #define derUp 503
 #define derMid 300
 #define derDown 102
-#define derAgarrado 106
+#define derAgarrado 91
 #define derDesAgarrado 256
 
 //IZQUIERDA
@@ -25,7 +26,7 @@ boolean inPosIni = false;
 #define izqUp 482
 #define izqMid 278
 #define izqDown 95
-#define izqAgarrado 280
+#define izqAgarrado 255
 #define izqDesAgarrado 440
 
 //ARRIBA
@@ -34,7 +35,7 @@ boolean inPosIni = false;
 #define upR 90
 #define upMid 290
 #define upL 487
-#define upAgarrado 270
+#define upAgarrado 245
 #define upDesAgarrado 440
 
 //ABAJO
@@ -43,13 +44,14 @@ boolean inPosIni = false;
 #define bajoR 78
 #define bajoMid 276
 #define bajoL 468
-#define bajoAgarrado 290
+#define bajoAgarrado 270
 #define bajoDesAgarrado 460
 
 //otras
 char inChar;
 String toDo="";
 boolean TransmisionCompleta=false;
+boolean noMove=false;
 
 /******************************************** FIN VARIABLES ***************************************************/
 
@@ -81,6 +83,7 @@ void fin(){
 
 void setup()
 {
+  pinMode(pinLED,OUTPUT);
   Serial.begin(9600);
   Serial.println("Rovick");
   pwm.begin();
@@ -226,19 +229,13 @@ void D(){
 
 void Fo(){
   ida();
-  doMove(pinDerBr,derUp);
-  doMove(pinDerAg,derDesAgarrado);
-  doMove(pinDerBr,derMid);
-  doMove(pinIzqAg,izqDesAgarrado);
+  R();
   vuelta();
 }
 
 void FD(){
   ida();
-  doMove(pinDerBr,derDown);
-  doMove(pinDerAg,derDesAgarrado);
-  doMove(pinDerBr,derMid);
-  doMove(pinIzqAg,izqDesAgarrado);
+  RD();
   vuelta();
 }
 
@@ -295,42 +292,67 @@ void BDIda(){
 //      |____/   \__|  \___| | .__/  |___/
 //                           |_|          
 
-void s1(){ //timpo 1s
+// Start BACK
+void s1(){ //timpo 0.5s
+  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
+}
+
+void s2(){ //timpo 1s
+  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
   sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
+}
+
+void s3(){ //timpo 0.5s
   sameTime(pinUpBr,pinBajoBr,upR,bajoL);
 }
 
-void s2(){//timpo 1s
+void s4(){//timpo 1s
   sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
   sameTime(pinUpBr,pinBajoBr,upL,bajoR);
 }
 
-void s3(){//timpo 2s         
+void s5(){//timpo 2s         
   sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
   sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
   sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
   sameTime(pinDerBr,pinIzqBr,derUp,izqDown);
 }                             
 
-void s4(){//timpo 1          
+void s6(){//timpo 1          
   sameTime(pinDerBr,pinIzqBr,derMid,izqMid);
   sameTime(pinDerBr,pinIzqBr,derDown,izqUp);
 }                            
 
-void s5(){//timpo 3          
+void s7(){//timpo 6.5          
   sameTime(pinDerBr,pinIzqBr,derMid,izqMid);
   sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
   ida();
-  ida();
+  //ida menos el ultimo movimiento
+  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
+  sameTime(pinBajoBr,pinUpBr,bajoL,upR);
+  sameTime(pinDerAg,pinIzqAg,derAgarrado,izqAgarrado);
+  sameTime(pinUpAg,pinBajoAg,upDesAgarrado,bajoDesAgarrado);
+  sameTime(pinUpBr,pinBajoBr,upMid,bajoMid);
 }                            
 
-void s6(){//timpo 3s         
+void s8(){//timpo 1s         
+  sameTime(pinUpAg,pinBajoAg,upAgarrado,bajoAgarrado);
+  sameTime(pinDerAg,pinIzqAg,derDesAgarrado,izqDesAgarrado);
+}
+
+void s9(){//timpo 6s     
   vuelta();
   vuelta();
 }
 
 
+void encenderLED(){
+  digitalWrite(pinLED,HIGH);
+}
 
+void apargarLED(){
+  digitalWrite(pinLED,LOW);
+  }
 
 /******************************************** FIN METODOS ***************************************************/
 
@@ -358,115 +380,138 @@ void serialEvent() {
 //                            |_|    
 
 void loop() {
-
-   if (TransmisionCompleta) {
     
-     if(!inPosIni){
-      posIni();
-      inPosIni = true; 
-     }
+   if (TransmisionCompleta) {
+     char first = toDo.charAt(0);
      
-    char first = toDo.charAt(0);
-    if(toDo.length() == 1){
-        //solo acciones con un caracter
-      switch(first){
-        case 'R':
-            R();
+    switch(first){
+         case 'Z':
+            encenderLED();
+            noMove=true;
+          break;   
+       case 'X':
+            apargarLED();
+            noMove=true;
           break;
-        case 'L':
-            L();
-          break;
-        case 'U':
-            U();
-          break;
-        case 'D':
-            D();
-          break;
-       case 'F':
-            Fo();
-          break;
-       case 'B':
-            B();
-          break;
-       case 'V':
-            vuelta();
-          break;
-       case 'I':
-            ida();
-          break;
-       case 'S':
-            posIni();
-          break;
-       case 'E':
-            fin();
-          break; 
-       case '1':
-            s1();
-          break; 
-       case '2':
-            s2();
-          break; 
-       case '3':
-            s3();
-          break; 
-       case '4':
-            s4();
-          break; 
-       case '5':
-            s5();
-          break; 
-       case '6':
-            s6();
-          break; 
-      }
-      
-    }else if(toDo.length() > 1){
-      char sec = toDo.charAt(1);
-      switch(first){
-        case 'R':
-            RD();
-          break;
-        case 'L':
-            LD();
-          break;
-        case 'U':
-            UD();
-          break;
-        case 'D':
-            DD();
-          break;
-       case 'F':
-            switch(sec){
-              case 'D':
-                if(toDo.length() > 2){
-                  FIda();
-                }else{
-                  FD();
-                }
-                break;
-              case 'I':
-                  FIda();
-                break;
-            }
-          break;
-       case 'B':
-            switch(sec){
-              case 'D':
-                if(toDo.length() > 2){
-                  BDIda();
-                }else{
-                  BD();
-                }
-                break;
-              case 'I':
-                  BIda();
-                break;
-            }
-      }
     }
 
+   if(!noMove){
+       if(!inPosIni){
+        posIni();
+        inPosIni = true; 
+       }
+      
+      if(toDo.length() == 1){
+          //solo acciones con un caracter
+        switch(first){
+          case 'R':
+              R();
+            break;
+          case 'L':
+              L();
+            break;
+          case 'U':
+              U();
+            break;
+          case 'D':
+              D();
+            break;
+         case 'F':
+              Fo();
+            break;
+         case 'B':
+              B();
+            break;
+         case 'V':
+              vuelta();
+            break;
+         case 'I':
+              ida();
+            break;
+         case 'S':
+              posIni();
+            break;
+         case 'E':
+              fin();
+            break; 
+         case '1':
+              s1();
+            break; 
+         case '2':
+              s2();
+            break; 
+         case '3':
+              s3();
+            break; 
+         case '4':
+              s4();
+            break; 
+         case '5':
+              s5();
+            break; 
+         case '6':
+              s6();
+            break;
+         case '7':
+              s7();
+            break;
+         case '8':
+              s8();
+            break;
+         case '9':
+              s9();
+            break;
+                
+        }
+        
+      }else if(toDo.length() > 1){
+        char sec = toDo.charAt(1);
+        switch(first){
+          case 'R':
+              RD();
+            break;
+          case 'L':
+              LD();
+            break;
+          case 'U':
+              UD();
+            break;
+          case 'D':
+              DD();
+            break;
+         case 'F':
+              switch(sec){
+                case 'D':
+                  if(toDo.length() > 2){
+                    FIda();
+                  }else{
+                    FD();
+                  }
+                  break;
+                case 'I':
+                    FIda();
+                  break;
+              }
+            break;
+         case 'B':
+              switch(sec){
+                case 'D':
+                  if(toDo.length() > 2){
+                    BDIda();
+                  }else{
+                    BD();
+                  }
+                  break;
+                case 'I':
+                    BIda();
+                  break;
+              }
+        }
+      }
+   }
     toDo = "";  //Limpiar el String
     TransmisionCompleta = false;  //Limpiar la bandera
+    noMove=false;
 }
 
 }

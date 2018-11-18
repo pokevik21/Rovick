@@ -24,6 +24,7 @@ public class CubeController{
     private boolean agarrado = false;
     private DoAllMoves doAllMoves = null;
     private boolean respuesta = false;
+    private ProcesoResolverCubo prc = null;
     
     public CubeController(MainFrame vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
@@ -153,7 +154,7 @@ public class CubeController{
     }
 
     public String resolverCubo(WebCamController camara){
-        ProcesoResolverCubo prc = new ProcesoResolverCubo(vistaPrincipal,camara,this);
+        this.prc = new ProcesoResolverCubo(vistaPrincipal,camara,this);
         prc.start();
         return "";
     }
@@ -175,7 +176,8 @@ public class CubeController{
     }
     
     public void endAllMovs(){
-        if (doAllMoves.isAlive())this.doAllMoves.interrupt();
+        if (doAllMoves != null && doAllMoves.isAlive())this.doAllMoves.interrupt();
+        if (prc != null && prc.isAlive())this.prc.interrupt();
     }
     
 }
