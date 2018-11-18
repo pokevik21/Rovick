@@ -157,7 +157,7 @@ public class ProcesoResolverCubo extends Thread{
             c5 = new Color(image_6.getRGB(POS_X_CENTER, POS_Y_MID));
             
             
-            int[] top = analizarCara(image_3_1,image_3_2);
+            int[] top = analizarCara(image_2);
             
             System.out.println(Arrays.toString(top));
             
