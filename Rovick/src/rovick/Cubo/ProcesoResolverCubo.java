@@ -175,6 +175,28 @@ public class ProcesoResolverCubo extends Thread{
         return colores;
     }
     
+        /**
+     * Metodo encargado de analizar todas las caras de una imagen,
+     * con determinadas posiciones.
+     * @param image Imagen a analizar
+     * @return Array que contiene el codigo de color en orden
+     */
+    private int[] analizarCara(BufferedImage image,int[] orientacion){
+        int[] colores = new int[9]; 
+        colores[orientacion[0]] = sacarColor(image,POS_X_LEFT,POS_Y_UP);
+        colores[orientacion[1]] = sacarColor(image,POS_X_CENTER,POS_Y_UP );
+        colores[orientacion[2]] = sacarColor(image,POS_X_RIGHT,POS_Y_UP );
+        
+        colores[orientacion[3]] = sacarColor(image,POS_X_LEFT,POS_Y_MID  );
+        colores[orientacion[4]] = sacarColor(image,POS_X_CENTER,POS_Y_MID );
+        colores[orientacion[5]] = sacarColor(image,POS_X_RIGHT,POS_Y_MID);
+        
+        colores[orientacion[6]] = sacarColor(image,POS_X_LEFT,POS_Y_BOT  );
+        colores[orientacion[7]] = sacarColor(image,POS_X_CENTER,POS_Y_BOT);
+        colores[orientacion[8]] = sacarColor(image,POS_X_RIGHT,POS_Y_BOT );
+        return colores;
+    }
+    
     /**
      * Metodo encargado de analizar todas las caras de una imagen,
      * con determinadas posiciones, y la segunda imagen muestra las
@@ -240,15 +262,30 @@ public class ProcesoResolverCubo extends Thread{
         boolean old_luzEstado = vistaPrincipal.isLuz_encendida();
         vistaPrincipal.encenderLuz();
 
+        //Hacer movimientos y fotos
         try {
-            image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/1.png")));
-            image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/2.png")));
-            image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/3_1.png")));
-            image_3_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/3_2.png")));
-            image_4 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/4.png")));
-            image_5_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/5_1.png")));
-            image_5_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/5_2.png")));
-            image_6 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/6.png")));
+            hacerPaso("1", "5_1", 2500);
+            hacerPaso("2", "5_2", 1000);
+            hacerPaso("3", "4", 1000);
+            hacerPaso("4", "2", 1000);
+            hacerPaso("5", "1", 2500);
+            hacerPaso("6", "6", 1000);
+            hacerPaso("7", "3_1", 6500);
+            hacerPaso("8", "3_2", 1000);
+            hacerPaso("9", "", 6000);
+        } catch (Exception e) {
+            System.err.println("Interrumpido");
+        }
+        
+        try {
+            image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/1.png")));
+            image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/2.png")));
+            image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/3_1.png")));
+            image_3_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/3_2.png")));
+            image_4 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/4.png")));
+            image_5_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/5_1.png")));
+            image_5_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/5_2.png")));
+            image_6 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/6.png")));
             
             centros = new ArrayList<>();
             
@@ -261,15 +298,16 @@ public class ProcesoResolverCubo extends Thread{
             centros.add(avg(image_6,237 ,250,rango_avg));
 
             cube = new int[6][9];
-            cube[0]=analizarCara(image_1);
+            int[] orInversa = {8,7,6,5,4,3,2,1,0};
+            cube[0]=analizarCara(image_1,orInversa);
             cube[1]=analizarCara(image_2);
             cube[2]=analizarCara(image_3_1,image_3_2);
             cube[3]=analizarCara(image_4);
             cube[4]=analizarCara(image_5_1,image_5_2);
-            cube[5]=analizarCara(image_6);
+            cube[5]=analizarCara(image_6,orInversa);
             
             //imprimir cubo:
-            imprimirCubo("Am", "Ve", "Na", "Az", "Ro", "Bl");
+            //imprimirCubo("Bl", "Na", "Ve", "Ro", "Az", "Am");
             
             //sacar numero de colores repetidos:
             int[] colores = new int[6];
@@ -294,7 +332,7 @@ public class ProcesoResolverCubo extends Thread{
             }else{
                 
                 
-                
+             colores = null;
             }
         } catch (IOException ex) {
             Logger.getLogger(ProcesoResolverCubo.class.getName()).log(Level.SEVERE, null, ex);
@@ -303,6 +341,18 @@ public class ProcesoResolverCubo extends Thread{
         cubo.doMove("E", false);
         vistaPrincipal.desableButtons(true);
         if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
+        
+        image_1.flush();
+        image_2.flush();
+        image_3_1.flush();
+        image_3_2.flush();
+        image_4.flush();
+        image_5_1.flush();
+        image_5_2.flush();
+        image_6.flush();
+        centros.clear();
+        this.cube=null;
+        vistaPrincipal.clearPhotos();
     }
 
 }

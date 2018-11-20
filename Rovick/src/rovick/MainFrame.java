@@ -305,7 +305,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.cb_soloAlg.setEnabled(estado);
     }
     
-    
+    /**
+     * Envia orden al arduino para encender los LEDs del robot
+     */
     public void encenderLuz(){
         if(luz_encendida){
             try {
@@ -319,6 +321,9 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Envia orden al arduino para apagar los LEDs del robot
+     */
     public void apagarLuz(){
         if(luz_encendida){
             try {
@@ -330,6 +335,13 @@ public class MainFrame extends javax.swing.JFrame {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    /**
+     * Comunica a la camara que borre las fotos temporales.
+     */
+    public void clearPhotos(){
+        this.wc.cleeanPhotos();
     }
     
     /**
@@ -899,7 +911,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try {
             cuboController.getArduino().killArduinoConnection();
-            this.wc.cleeanPhotos();
+            clearPhotos();
             this.wc.close();
         } catch (ArduinoException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);

@@ -393,6 +393,10 @@ void loop() {
             apargarLED();
             noMove=true;
           break;
+       case 'E':
+              fin();
+              noMove=true;
+            break; 
     }
 
    if(!noMove){
@@ -431,9 +435,6 @@ void loop() {
          case 'S':
               posIni();
             break;
-         case 'E':
-              fin();
-            break; 
          case '1':
               s1();
             break; 
