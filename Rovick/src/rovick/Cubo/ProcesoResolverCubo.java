@@ -5,11 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
 import javax.swing.JOptionPane;
 import rovick.MainFrame;
 import rovick.Utils.WebCamController;
@@ -241,8 +239,6 @@ public class ProcesoResolverCubo extends Thread{
         camara.cleeanPhotos();
         boolean old_luzEstado = vistaPrincipal.isLuz_encendida();
         vistaPrincipal.encenderLuz();
-        
-        ImageInputStream iis = null;
 
         try {
             image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./test_images/1.png")));
@@ -304,7 +300,7 @@ public class ProcesoResolverCubo extends Thread{
             Logger.getLogger(ProcesoResolverCubo.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-        //cubo.doMove("E", false);
+        cubo.doMove("E", false);
         vistaPrincipal.desableButtons(true);
         if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
     }

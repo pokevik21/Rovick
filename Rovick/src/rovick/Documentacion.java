@@ -13,9 +13,11 @@
  * 
  * This is the introduction.
  *
- * \section install_sec Instrucciones iniciales
+ * \section Requisitos Requisitos
+ * 
+ * \section Instrucciones  Instrucciones
  *
- * \subsection step1 Tener el arduino conectado
+ *  ###1-Tener el arduino conectado###
  *  
  */
 
@@ -32,6 +34,46 @@
 
 /**
  * \page Diagramas Diagramas
+ * \section De_Uso De uso
+ * 
+ * \subsection Hacer_movimiento Hacer movimiento
+ * 
+ * \subsection Acumular_movimientos Acumular movimientos
+ * 
+ * \subsection Hacer_todos_los_movimientos Hacer todos los movimientos
+ * 
+ * \subsection Resolver_cubo Resolver cubo
+ * 
+ */
+
+/********************************************************************************************************/
+
+
+//        __  __           _                   _           _              
+//       |  \/  |   __ _  | |_    ___   _ __  (_)   __ _  | |   ___   ___ 
+//       | |\/| |  / _` | | __|  / _ \ | '__| | |  / _` | | |  / _ \ / __|
+//       | |  | | | (_| | | |_  |  __/ | |    | | | (_| | | | |  __/ \__ \
+//       |_|  |_|  \__,_|  \__|  \___| |_|    |_|  \__,_| |_|  \___| |___/
+
+
+/**
+ * \page Materiales Materiales
+ * \section Impresora_3D Impresora 3D
+ * 
+ * El modelo de la impresora con que se hizo este proyecto ha sido una Anet-8,
+ * pero se puede hacer con cualquir impresora 3d.
+ * 
+ * \section material-precio material-precio
+ * 
+ * \subsection Tabla Tabla materiales
+ * 
+ * |Matrial|Cantidad|Precio(euros)|
+ * |:-----:|:-----:|:-------:|
+ * |PLA-negro |1Kg|16,00|
+ * |PLA-blanco|1Kg|16,00|
+ * | | | |
+ * 
+ * \subsection total Total
  * 
  */
 
