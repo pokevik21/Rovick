@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
+import javax.swing.JOptionPane;
 import rovick.MainFrame;
 import rovick.Utils.WebCamController;
 
@@ -22,19 +23,13 @@ public class ProcesoResolverCubo extends Thread{
     static int POS_X_LEFT = 85;
     static int POS_X_CENTER = 269;
     static int POS_X_RIGHT = 514;
-    
     static int POS_Y_UP = 45;
     static int POS_Y_MID = 240;
     static int POS_Y_BOT = 450;
     
-    /*private int[] c1 = null;
-    private int[] c2 = null;
-    private int[] c3 = null;
-    private int[] c4 = null;
-    private int[] c5 = null;*/
-    
     private ArrayList<float[]> centros;
-
+    private int[][] cube = null;
+            
     private BufferedImage image_1 = null;
     private BufferedImage image_2 = null;
     private BufferedImage image_3_1 = null;
@@ -48,7 +43,12 @@ public class ProcesoResolverCubo extends Thread{
     private WebCamController camara = null;
     private CubeController cubo = null;
 
-    
+    /**
+     * Contructor del proceso, el cual se encarga de resolver el cubo.
+     * @param vistaPrincipal Clase de la vista para modificar la acrivacion de botones
+     * @param camara Controlador de la camara
+     * @param cubo Controlador del cubo
+     */
     public ProcesoResolverCubo(MainFrame vistaPrincipal, WebCamController camara, CubeController cubo) {
         this.vistaPrincipal = vistaPrincipal;
         this.camara = camara;
@@ -56,50 +56,45 @@ public class ProcesoResolverCubo extends Thread{
 
     }
 
-
+/**
+ * 
+ * @param move Movimiento ha realizar
+ * @param foto Nombre de la foto que se pone.
+ * @param seg Segundos a esperar, se añaden 300 milis
+ * @throws InterruptedException Excepcion de esperar
+ */
     public void hacerPaso(String move,String foto,long seg) throws InterruptedException{
             cubo.doMove(move, false, true);
             sleep(seg + 300);
             if(!foto.isEmpty())camara.takePhoto(foto);
     }
     
-    /*private boolean inColor(float h, Color c){
-        int R = c.getRed();
-        int G = c.getGreen();
-        int B = c.getRed();
-        float[] hsv = new float[3];
-        Color.RGBtoHSB(R, G, B, hsv);
-        System.out.println("**************************************");
-        System.out.println("R:"+R+" ;G:"+G + "  ;B:"+B);
-        System.out.println("**************************************");*/
-        
-       /* if(   (R >= (r[0]) && R<=(r[3]))
-           && (G >= (r[1]) && G<=(r[4]))  
-           && (B >= (r[2]) && B<=(r[5]))){
-            return true;
-        } */
-        /*return false;
-    }*/
     
-    /*private boolean intensidadParecidas(float h1, float h2 ,int rango){
-        return (h1>=h2-rango) && (h1<=h2+rango);
-    }*/
-    
+    /**
+     * Metodo que calcula la distanci de colores entre el centro y el color pasado
+     * @param c1 color del centro a comprar
+     * @param c2 color que estamos clasificando
+     * @return La diferencia entre los dos.
+     */
     private float distancia(float[] c1, float[] c2) {
-        float dR = (float) (c1[0]-c2[0]);
-        //System.out.println("red:"+dR);
-        float dG = (float) (c1[1]-c2[1]);
-        //System.out.println("green:"+dG);
-        float dB = (float) (c1[2]-c2[2]);
-        //System.out.println("blue:"+dB);
+        float dR = (float) Math.abs(c1[0]-c2[0]);
+        float dG = (float) Math.abs(c1[1]-c2[1]);
+        float dB = (float) Math.abs(c1[2]-c2[2]);
         float resultado = (float) Math.sqrt(2*Math.pow(dR, 2) + 4*Math.pow(dG, 2) + 3*Math.pow(dB, 2)); 
-        //System.out.println("resultado:"+ resultado);
         return resultado;
     }
     
-    //2*dR*dR + 4*dG*dG + 3*dB*
+    /**
+     * Clasifica el color comprarndolo con los centros.
+     * @param image Imagen a analizar.
+     * @param pos_x Posición en X de donde queremos buscar el color.
+     * @param pos_y Posición en X de donde queremos buscar el color.
+     * @return 
+     */
     private int sacarColor(BufferedImage image, int pos_x, int pos_y){
         float[] color = avg(image, pos_x, pos_y, 10);
+        
+        //System.out.println("\t"+color[0] +"\t"+color[1]+"\t"+color[2]);
         
         int mejor_color = 0;
         float mejor_distancia = 99999;
@@ -111,12 +106,61 @@ public class ProcesoResolverCubo extends Thread{
                 mejor_color = i;
             }
         }
-        
-       // System.out.println("intesidad:"+Arrays.toString(color) +"  ; mejor_distancia:"+mejor_distancia  +"  mejor:"+mejor_color);
-        
+       //System.out.println("intesidad:"+Arrays.toString(color) +"  ; mejor_distancia:"+mejor_distancia  +"  mejor:"+mejor_color);
     return mejor_color;    
     }   
     
+    /**
+     * Metodo para imprimir todo el cubo, esto se es un metodo de Debug,
+     * hay que pasrle los nombres de los colores en el orden de las imágenes.
+     * @param c1 centro 1
+     * @param c2 centro 2
+     * @param c3 centro 3
+     * @param c4 centro 4
+     * @param c5 centro 5
+     * @param c6 centro 6
+     */
+    private void imprimirCubo(String c1,String c2,String c3,String c4,String c5,String c6){
+        for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 9; j++) {
+                       String color = "";
+                    switch (cube[i][j]) {
+                        case 0:
+                            color = c1;
+                            break;
+                        case 1:
+                            color = c2;
+                            break;
+                        case 2:
+                            color = c3;
+                            break;
+                        case 3:
+                            color = c4;
+                            break;
+                        case 4:
+                            color = c5;
+                            break;
+                        case 5:
+                            color = c6;
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                    System.out.print(" ["+color+"] "); 
+                    int lin = j+1;
+                    if(lin!=0 && lin!=1 && lin%3 == 0)System.out.println("");
+
+                }
+                System.out.println("*********************************************");
+            }
+    }
+    
+    /**
+     * Metodo encargado de analizar todas las caras de una imagen,
+     * con determinadas posiciones.
+     * @param image Imagen a analizar
+     * @return Array que contiene el codigo de color en orden
+     */
     private int[] analizarCara(BufferedImage image){
         int[] colores = new int[9]; 
         colores[0] = sacarColor(image,POS_X_LEFT,POS_Y_UP);
@@ -133,6 +177,13 @@ public class ProcesoResolverCubo extends Thread{
         return colores;
     }
     
+    /**
+     * Metodo encargado de analizar todas las caras de una imagen,
+     * con determinadas posiciones, y la segunda imagen muestra las
+     * posiciones tapadas por el gancho.
+     * @param image Imagen a analizar
+     * @return Array que contiene el codigo de color en orden
+     */
     private int[] analizarCara(BufferedImage image1, BufferedImage image2){
         int[] colores = new int[9]; 
         colores[0] = sacarColor(image1,POS_X_LEFT,POS_Y_UP);
@@ -149,52 +200,15 @@ public class ProcesoResolverCubo extends Thread{
         return colores;
     }
     
-    /*private int[] getRangos(BufferedImage image, int coord_x , int coord_y){
-        int[] rangos = new int[6];
-
-        int maxR=0;
-        int maxG=0;
-        int maxB=0;
-
-        int minR=0;
-        int minG=0;
-        int minB=0;
-
-        boolean primero = false;
-        int tam=50;
-        
-        for (int i = 0; i < tam; i++) {
-            for (int j = 0; j < tam; j++) {
-                Color c_pos = new Color(image.getRGB(coord_x + j, coord_y +i));
-                if (maxR < c_pos.getRed()) maxR = c_pos.getRed();
-                if (maxG < c_pos.getGreen()) maxG = c_pos.getGreen();
-                if (maxB < c_pos.getBlue()) maxB = c_pos.getBlue();
-
-                if (!primero){
-                    minR = c_pos.getRed();
-                    minG = c_pos.getGreen();
-                    minB = c_pos.getBlue();
-                    primero = true;
-                }else{
-                    if (minR > c_pos.getRed()) minR = c_pos.getRed();
-                    if (minG > c_pos.getGreen()) minG = c_pos.getGreen();
-                    if (minB > c_pos.getBlue()) minB = c_pos.getBlue();    
-                }
-
-            }
-        }
-        //System.out.println("maximos--> R:"+maxR+" ; G:"+maxG+" ; B:"+maxB);
-        //System.out.println("mínimos--> R:"+minR+" ; G:"+minG+" ; B:"+minB);
-        rangos[0] = maxR;
-        rangos[1] = maxG;
-        rangos[2] = maxB;
-        rangos[3] = minR;
-        rangos[4] = minG;
-        rangos[5] = minB;
-     return rangos;   
-    }*/
-    
-    
+    /**
+     * Calcula el promedio de RGB de la imagen en las coordenadas especificadas 
+     * y en un cubo de tamaño especificado en el parametro tam.
+     * @param image Imagen a analizar.
+     * @param coord_x Coordendas en X.
+     * @param coord_y Coordendas en Y.
+     * @param tam Tamaño del cubo del cual sacará el promedio.
+     * @return Array con los promedios de RGB en las posiciones 0,1,2 en orden.
+     */
     private float[] avg(BufferedImage image, int coord_x , int coord_y, int tam){
         
         float[] RGB = new float[3];
@@ -225,7 +239,8 @@ public class ProcesoResolverCubo extends Thread{
         vistaPrincipal.desableButtons(false);
         vistaPrincipal.getBt_parar().setEnabled(true);
         camara.cleeanPhotos();
-        
+        boolean old_luzEstado = vistaPrincipal.isLuz_encendida();
+        vistaPrincipal.encenderLuz();
         
         ImageInputStream iis = null;
 
@@ -241,14 +256,15 @@ public class ProcesoResolverCubo extends Thread{
             
             centros = new ArrayList<>();
             
-            centros.add(avg(image_1,237 ,250,10));
-            centros.add(avg(image_2,237 ,250,10));
-            centros.add(avg(image_3_1,237 ,250,10));
-            centros.add(avg(image_4,237 ,250,10));
-            centros.add(avg(image_5_1,237 ,250,10));
-            centros.add(avg(image_6,237 ,250,10));
+            int rango_avg = 10;
+            centros.add(avg(image_1,237 ,250,rango_avg));
+            centros.add(avg(image_2,237 ,250,rango_avg));
+            centros.add(avg(image_3_1,237 ,250,rango_avg));
+            centros.add(avg(image_4,237 ,250,rango_avg));
+            centros.add(avg(image_5_1,237 ,250,rango_avg));
+            centros.add(avg(image_6,237 ,250,rango_avg));
 
-            int[][] cube = new int[6][9];
+            cube = new int[6][9];
             cube[0]=analizarCara(image_1);
             cube[1]=analizarCara(image_2);
             cube[2]=analizarCara(image_3_1,image_3_2);
@@ -256,20 +272,41 @@ public class ProcesoResolverCubo extends Thread{
             cube[4]=analizarCara(image_5_1,image_5_2);
             cube[5]=analizarCara(image_6);
             
+            //imprimir cubo:
+            imprimirCubo("Am", "Ve", "Na", "Az", "Ro", "Bl");
+            
+            //sacar numero de colores repetidos:
+            int[] colores = new int[6];
             for (int[] is : cube) {
-                System.out.println(Arrays.toString(is));
+                for (int i = 0; i < is.length; i++) {
+                    colores[is[i]]++;
+                }
             }
             
+            //imprimir repetidos:
+            boolean fallo = false;
+            String txt_repetidos = "";
+            for (int i = 0; i < colores.length; i++) {
+                int color = colores[i];
+                if(color != 9) fallo = true;
+                System.out.println("Color num "+i+", está repetido: "+color);
+                txt_repetidos += "Color num "+i+", está repetido: "+color +"\n";
+            }
+            
+            if (fallo){
+                JOptionPane.showMessageDialog(vistaPrincipal, "La lectura de colores ha fallado.\n Asegurate de tener una buena iluminacion y vuelve a intentarlo.\nResultados:\n"+txt_repetidos, "Fallo lectura de colores", JOptionPane.ERROR_MESSAGE);
+            }else{
+                
+                
+                
+            }
         } catch (IOException ex) {
             Logger.getLogger(ProcesoResolverCubo.class.getName()).log(Level.SEVERE, null, ex);
         }
     
         //cubo.doMove("E", false);
         vistaPrincipal.desableButtons(true);
+        if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
     }
 
-    
-    
-    
-    
 }

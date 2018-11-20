@@ -107,16 +107,11 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="pb_progreso" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="bt_soltar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="bt_soltar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="bt_parar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      <Component id="cb_luz" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="cb_luz" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bt_parar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="sep_arriba" alignment="1" max="32767" attributes="0"/>
@@ -481,6 +476,9 @@
     <Component class="javax.swing.JCheckBox" name="cb_luz">
       <Properties>
         <Property name="text" type="java.lang.String" value="Luz"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_luzActionPerformed"/>

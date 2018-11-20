@@ -63,6 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
     private WebCamController wc = null;
     /** Bandera para saber si hay que añadir el tiempo de agarre y soltar o no*/
     private boolean flagFinish = false;
+    /** Controla si la luz esta encendida o apagada*/
+    private boolean luz_encendida = false;
     
     /**
      * @}
@@ -301,6 +303,33 @@ public class MainFrame extends javax.swing.JFrame {
         this.cb_hacerSegunPulsas.setEnabled(estado);
         this.sp_deshacer.setEnabled(estado);
         this.cb_soloAlg.setEnabled(estado);
+    }
+    
+    
+    public void encenderLuz(){
+        if(luz_encendida){
+            try {
+                cuboController.getArduino().sendData("Z;");
+                luz_encendida=true;
+            } catch (ArduinoException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SerialPortException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void apagarLuz(){
+        if(luz_encendida){
+            try {
+                cuboController.getArduino().sendData("X;");
+                luz_encendida=false;
+            } catch (ArduinoException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SerialPortException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     /**
@@ -597,6 +626,9 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         cb_luz.setText("Luz");
+        cb_luz.setToolTipText("");
+        cb_luz.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        cb_luz.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         cb_luz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_luzActionPerformed(evt);
@@ -677,14 +709,11 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pb_progreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_soltar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(bt_soltar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bt_parar))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addComponent(cb_luz))))
+                                    .addComponent(cb_luz)
+                                    .addComponent(bt_parar)))
                             .addComponent(sep_arriba, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())))
         );
@@ -897,17 +926,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_pararActionPerformed
 
     private void cb_luzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_luzActionPerformed
-        try {
-            if(this.cb_luz.isSelected()){
-                    cuboController.getArduino().sendData("Z;");
-            }else{
-                cuboController.getArduino().sendData("X;");
-            }
-        } catch (ArduinoException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SerialPortException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(this.cb_luz.isSelected()){
+            encenderLuz();
+        }else{
+            apagarLuz();
+        }
     }//GEN-LAST:event_cb_luzActionPerformed
     /**@} */
     /**@} */
@@ -1037,6 +1060,11 @@ public class MainFrame extends javax.swing.JFrame {
     public JButton getBt_parar() {
         return bt_parar;
 }
+
+    public boolean isLuz_encendida() {
+        return luz_encendida;
+    }
+    
     
     /**
      * @}

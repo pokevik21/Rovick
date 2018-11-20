@@ -29,29 +29,10 @@
 //      |____/  |_|  \__,_|  \__, | |_|     \__,_| |_| |_| |_|  \__,_| |___/
 //                           |___/                                          
 
-/**
- * \addgroup Diagramas
- * @{
- * 
- * 
- * a
- * sdfasdfasdfasdf
- * asdfasdf
- * asdfadsf
-*/
-
-
-
- /** 
- * @}
- */
 
 /**
  * \page Diagramas Diagramas
  * 
- * asdfasdfasdfadsfadsfasdfasdfasdfasdfa
- * adsfasdf
- * asdfasdfaf
  */
 
 /********************************************************************************************************/
