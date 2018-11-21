@@ -119,7 +119,7 @@ public class SolveCube {
 					firstCube[i][j] = 5;
 					break;
 				default:
-					System.out.println("NOT A CHAR!");
+					//System.out.println("NOT A CHAR!");
 				}
 			}
 		}
@@ -273,7 +273,6 @@ public class SolveCube {
 	//Sequence Solve final. just call
 	public String solver(SolveCube c, TableGenerator g) throws IOException{
 
-		
 //		xg.print_cube();
 		TableGenerator savedCube = new TableGenerator();
 		savedCube.copyCube(g);

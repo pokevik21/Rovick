@@ -79,13 +79,15 @@ public class MainFrame extends javax.swing.JFrame {
 //       | |\/| |  / _ \ | __|  / _ \   / _` |  / _ \  / __|
 //       | |  | | |  __/ | |_  | (_) | | (_| | | (_) | \__ \
 //       |_|  |_|  \___|  \__|  \___/   \__,_|  \___/  |___/
-/**
+
+    //<editor-fold defaultstate="collapsed" desc="AUXILIARES">
+
+    /**
 * \defgroup Metodos
 * \ingroup VistaPrincipal
 * @{
 */
-    //<editor-fold defaultstate="collapsed" desc="AUXILIARES">
-
+    
     /**
      * \defgroup Auxiliares
      * \ingroup Metodos
@@ -407,7 +409,7 @@ public class MainFrame extends javax.swing.JFrame {
      * si no lo añade al ArrayList llamando al metodo addMove.
      * @param mov El botón que se ha pulsado.
      */
-    private void botonMovimiento(String mov){
+    public void botonMovimiento(String mov){
         if(!this.cb_hacerSegunPulsas.isSelected()){
             addMove(mov);
         }else{
@@ -423,9 +425,17 @@ public class MainFrame extends javax.swing.JFrame {
        this.cuboController.resolverCubo(wc);
     }
     /**@} */
+    
+    public void doAllMovs(){
+        bt_parar.setEnabled(true);
+        cuboController.doAllMovs();
+    }
+    
+    
+     /** @} */
 //</editor-fold>
 
- /** @} */
+
 //*********************************** FIN METODOS ********************************************
     
     @SuppressWarnings("unchecked")
@@ -911,16 +921,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try {
             cuboController.getArduino().killArduinoConnection();
-            clearPhotos();
-            this.wc.close();
         } catch (ArduinoException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Error al cerrar la conexion del arduino.");
         }
+        clearPhotos();
+        this.wc.close();
     }//GEN-LAST:event_formWindowClosing
 
     private void bt_realizarMovsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_realizarMovsActionPerformed
-        bt_parar.setEnabled(true);
-        cuboController.doAllMovs();
+        doAllMovs();
     }//GEN-LAST:event_bt_realizarMovsActionPerformed
 
     private void cb_hacerSegunPulsasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hacerSegunPulsasActionPerformed
@@ -949,8 +958,6 @@ public class MainFrame extends javax.swing.JFrame {
     //</editor-fold>
     
 //*********************************** FIN EVENTOS ********************************************
-    
-    
     
     //<editor-fold defaultstate="collapsed" desc="MAIN">
     
@@ -1083,11 +1090,4 @@ public class MainFrame extends javax.swing.JFrame {
      */
     //</editor-fold>
  
-
 }
-
-
-/**
- * \defgroup 
- */
-

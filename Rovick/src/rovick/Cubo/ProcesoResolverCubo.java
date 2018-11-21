@@ -5,11 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import rovick.MainFrame;
+import rovick.Utils.Utiles;
 import rovick.Utils.WebCamController;
 
 /**
@@ -26,7 +28,7 @@ public class ProcesoResolverCubo extends Thread{
     static int POS_Y_BOT = 450;
     
     private ArrayList<float[]> centros;
-    private int[][] cube = null;
+    private byte[][] cube = null;
             
     private BufferedImage image_1 = null;
     private BufferedImage image_2 = null;
@@ -89,7 +91,7 @@ public class ProcesoResolverCubo extends Thread{
      * @param pos_y Posición en X de donde queremos buscar el color.
      * @return 
      */
-    private int sacarColor(BufferedImage image, int pos_x, int pos_y){
+    private byte sacarColor(BufferedImage image, int pos_x, int pos_y){
         float[] color = avg(image, pos_x, pos_y, 10);
         
         //System.out.println("\t"+color[0] +"\t"+color[1]+"\t"+color[2]);
@@ -97,7 +99,6 @@ public class ProcesoResolverCubo extends Thread{
         int mejor_color = 0;
         float mejor_distancia = 99999;
         for (int i = 0; i < 6; i++) {
-            
             float d = distancia(centros.get(i), color);
             if (d < mejor_distancia) {
                 mejor_distancia = d;
@@ -105,7 +106,7 @@ public class ProcesoResolverCubo extends Thread{
             }
         }
        //System.out.println("intesidad:"+Arrays.toString(color) +"  ; mejor_distancia:"+mejor_distancia  +"  mejor:"+mejor_color);
-    return mejor_color;    
+        return (byte)mejor_color;  
     }   
     
     /**
@@ -159,8 +160,8 @@ public class ProcesoResolverCubo extends Thread{
      * @param image Imagen a analizar
      * @return Array que contiene el codigo de color en orden
      */
-    private int[] analizarCara(BufferedImage image){
-        int[] colores = new int[9]; 
+    private byte[] analizarCara(BufferedImage image){
+        byte[] colores = new byte[9]; 
         colores[0] = sacarColor(image,POS_X_LEFT,POS_Y_UP);
         colores[1] = sacarColor(image,POS_X_CENTER,POS_Y_UP );
         colores[2] = sacarColor(image,POS_X_RIGHT,POS_Y_UP );
@@ -181,8 +182,8 @@ public class ProcesoResolverCubo extends Thread{
      * @param image Imagen a analizar
      * @return Array que contiene el codigo de color en orden
      */
-    private int[] analizarCara(BufferedImage image,int[] orientacion){
-        int[] colores = new int[9]; 
+    private byte[] analizarCara(BufferedImage image,int[] orientacion){
+        byte[] colores = new byte[9]; 
         colores[orientacion[0]] = sacarColor(image,POS_X_LEFT,POS_Y_UP);
         colores[orientacion[1]] = sacarColor(image,POS_X_CENTER,POS_Y_UP );
         colores[orientacion[2]] = sacarColor(image,POS_X_RIGHT,POS_Y_UP );
@@ -204,8 +205,8 @@ public class ProcesoResolverCubo extends Thread{
      * @param image Imagen a analizar
      * @return Array que contiene el codigo de color en orden
      */
-    private int[] analizarCara(BufferedImage image1, BufferedImage image2){
-        int[] colores = new int[9]; 
+    private byte[] analizarCara(BufferedImage image1, BufferedImage image2){
+        byte[] colores = new byte[9]; 
         colores[0] = sacarColor(image1,POS_X_LEFT,POS_Y_UP);
         colores[1] = sacarColor(image1,POS_X_CENTER,POS_Y_UP );
         colores[2] = sacarColor(image1,POS_X_RIGHT,POS_Y_UP );
@@ -254,6 +255,20 @@ public class ProcesoResolverCubo extends Thread{
      return RGB;
     }
     
+    private String getSolution(){
+        String solucion = "";
+        try {
+                SolveCube s = new SolveCube();
+                s.cube = this.cube;
+                solucion = s.mapOrientation(s.cube,s);
+                solucion = solucion.replaceAll("i", "D");
+        } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        }
+        return solucion;
+    }
+    
     @Override
     public void run() {
         vistaPrincipal.desableButtons(false);
@@ -263,29 +278,30 @@ public class ProcesoResolverCubo extends Thread{
         vistaPrincipal.encenderLuz();
 
         //Hacer movimientos y fotos
-        try {
+        /*try {
             hacerPaso("1", "5_1", 2500);
             hacerPaso("2", "5_2", 1000);
-            hacerPaso("3", "4", 1000);
-            hacerPaso("4", "2", 1000);
-            hacerPaso("5", "1", 2500);
-            hacerPaso("6", "6", 1000);
+            hacerPaso("3", "4",   1000);
+            hacerPaso("4", "2",   1000);
+            hacerPaso("5", "1",   2500);
+            hacerPaso("6", "6",   1000);
             hacerPaso("7", "3_1", 6500);
             hacerPaso("8", "3_2", 1000);
-            hacerPaso("9", "", 6000);
+            hacerPaso("9", "",    6000);
         } catch (Exception e) {
             System.err.println("Interrumpido");
-        }
+        }*/
         
         try {
-            image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/1.png")));
-            image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/2.png")));
-            image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/3_1.png")));
-            image_3_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/3_2.png")));
-            image_4 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/4.png")));
-            image_5_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/5_1.png")));
-            image_5_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/5_2.png")));
-            image_6 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./tmp_images/6.png")));
+            String dir = "test_images";
+            image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/1.png")));
+            image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/2.png")));
+            image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_1.png")));
+            image_3_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_2.png")));
+            image_4 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/4.png")));
+            image_5_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/5_1.png")));
+            image_5_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/5_2.png")));
+            image_6 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/6.png")));
             
             centros = new ArrayList<>();
             
@@ -297,7 +313,7 @@ public class ProcesoResolverCubo extends Thread{
             centros.add(avg(image_5_1,237 ,250,rango_avg));
             centros.add(avg(image_6,237 ,250,rango_avg));
 
-            cube = new int[6][9];
+            cube = new byte[6][9];
             int[] orInversa = {8,7,6,5,4,3,2,1,0};
             cube[0]=analizarCara(image_1,orInversa);
             cube[1]=analizarCara(image_2);
@@ -307,13 +323,14 @@ public class ProcesoResolverCubo extends Thread{
             cube[5]=analizarCara(image_6,orInversa);
             
             //imprimir cubo:
-            //imprimirCubo("Bl", "Na", "Ve", "Ro", "Az", "Am");
+            imprimirCubo("Bl", "Na", "Ve", "Ro", "Az", "Am");
             
             //sacar numero de colores repetidos:
             int[] colores = new int[6];
-            for (int[] is : cube) {
+            for (byte[] is : cube) {
                 for (int i = 0; i < is.length; i++) {
-                    colores[is[i]]++;
+                    int color = Integer.parseInt(String.valueOf(is[i]));
+                    colores[color]++;
                 }
             }
             
@@ -330,15 +347,29 @@ public class ProcesoResolverCubo extends Thread{
             if (fallo){
                 JOptionPane.showMessageDialog(vistaPrincipal, "La lectura de colores ha fallado.\n Asegurate de tener una buena iluminacion y vuelve a intentarlo.\nResultados:\n"+txt_repetidos, "Fallo lectura de colores", JOptionPane.ERROR_MESSAGE);
             }else{
+                StringTokenizer solucion = new StringTokenizer(getSolution()," ");
+                while (solucion.hasMoreTokens()) {
+                    String token = solucion.nextToken();
+                    if(Utiles.tieneNumero(token)){
+                        int num = Utiles.extraerNumero(token);
+                        String tSinNum = token.substring(0,Utiles.primerNum(token));
+                        for (int i = 0; i < num; i++) {
+                            vistaPrincipal.addMove(tSinNum);
+                        }
+                    }else{
+                        vistaPrincipal.botonMovimiento(token);
+                    }
+                }
                 
-                
-             colores = null;
+                if(!vistaPrincipal.getCb_soloAlg().isSelected()){
+                    vistaPrincipal.doAllMovs();
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(ProcesoResolverCubo.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-        cubo.doMove("E", false);
+        //cubo.doMove("E", false);
         vistaPrincipal.desableButtons(true);
         if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
         
