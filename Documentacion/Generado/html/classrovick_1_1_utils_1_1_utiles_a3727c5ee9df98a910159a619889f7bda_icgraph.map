@@ -1,0 +1,8 @@
+<map id="rovick.Utils.Utiles.tieneNumero" name="rovick.Utils.Utiles.tieneNumero">
+<area shape="rect" id="node2" href="$group___auxiliares.html#ga724eeaf4315d25cbeae55131e775b2cb" title="Suma al string move un movimiento. " alt="" coords="471,5,709,32"/>
+<area shape="rect" id="node3" href="$group___auxiliares.html#ga49c8ae6bbd67d575b5b9c8ee575a82ff" title="Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea. " alt="" coords="757,56,936,83"/>
+<area shape="rect" id="node4" href="$group___auxiliares.html#ga115fa1a1d9c876f4e7cc647563af0c4a" title="Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move..." alt="" coords="208,107,423,133"/>
+<area shape="rect" id="node6" href="$group___auxiliares.html#gaf06cc67bd587af7c4b5749cb74c55854" title="Resta tiempo al GregorianCalendar tiempo dependiendo de que movimiento sea. " alt="" coords="217,157,414,184"/>
+<area shape="rect" id="node7" href="$group___auxiliares.html#ga27c198265fb7a3f149b95aaac12bf9f0" title="Borra el ultimo movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos. " alt="" coords="478,183,702,209"/>
+<area shape="rect" id="node5" href="$group___auxiliares.html#ga6427827ba7ae6ec2db0c2fedaa60b196" title="Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo. " alt="" coords="501,107,679,133"/>
+</map>

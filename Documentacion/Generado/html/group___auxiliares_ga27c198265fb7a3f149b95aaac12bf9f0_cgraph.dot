@@ -1,0 +1,26 @@
+digraph "rovick.MainFrame.removeLastMove"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node126 [label="rovick.MainFrame.removeLastMove",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node126 -> Node127 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node127 [label="rovick.MainFrame.removeTime",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#gaf06cc67bd587af7c4b5749cb74c55854",tooltip="Resta tiempo al GregorianCalendar tiempo dependiendo de que movimiento sea. "];
+  Node127 -> Node128 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node128 [label="rovick.Utils.Utiles.tiene\lNumero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#a3727c5ee9df98a910159a619889f7bda",tooltip="Metodo que te devuelve true si la cadena pasada contiene algún numero. "];
+  Node128 -> Node129 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node129 [label="rovick.Utils.Utiles.isNumeric",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#af34c18d8e5344dc7bbc7be79a1bff7f1",tooltip="Metodo que te devuelve true si la cadena pasada es numérica. "];
+  Node127 -> Node130 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node130 [label="rovick.Utils.Utiles.primerNum",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#a6844ffe69749214354abe47b5a4d19ba",tooltip="Metdo que devuelve la posicion del pimier numero numérico de la cadena. "];
+  Node130 -> Node129 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node127 -> Node131 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node131 [label="rovick.Utils.Utiles.extraer\lNumero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_utils_1_1_utiles.html#a7bc6aa7244f58b59cb5d6ae1d87b1cf5",tooltip="Metodo que te devuelve el entero que contine la cadena. "];
+  Node131 -> Node129 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node126 -> Node128 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node126 -> Node131 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node126 -> Node132 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node132 [label="rovick.MainFrame.imprimir\lMovimientos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#gab1aea5aaaa8b8b695b3c30c08a2fb705",tooltip="Encorgado de rellenar el TextArea de los movimientos a partir del ArrayList movimientos. "];
+  Node126 -> Node133 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node133 [label="rovick.MainFrame.resetMoves",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___auxiliares.html#ga5c0bd377260e617abd7b98081ccd538d",tooltip="Limpia la interface y duvuelve las variables a su estado por defecto. "];
+  Node133 -> Node132 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

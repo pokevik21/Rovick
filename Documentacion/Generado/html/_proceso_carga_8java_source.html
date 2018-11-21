@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rovick: Fichero Fuente C:/Users/A692371/Desktop/MisProyectos/FinDeGrado/Rovick/Rovick/src/rovick/Utils/ProcesoCarga.java</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logoRovick.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Rovick
+   &#160;<span id="projectnumber">v0.5.5</span>
+   </div>
+   <div id="projectbrief">Robot resolvedor de cubos de rubick</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_proceso_carga_8java_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProcesoCarga.java</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">package </span>rovick.Utils;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <span class="keyword">static</span> java.lang.Thread.sleep;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> java.util.logging.Level;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> java.util.logging.Logger;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classrovick_1_1_utils_1_1_proceso_carga.html">   11</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classrovick_1_1_utils_1_1_proceso_carga.html">ProcesoCarga</a> <span class="keyword">extends</span> Thread{</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span> <a class="code" href="classrovick_1_1_utils_1_1_pantalla_de_carga.html">PantallaDeCarga</a> pdc = null;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">boolean</span> cerrar = <span class="keyword">false</span>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> sleep = 500;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span> <a class="code" href="classrovick_1_1_utils_1_1_proceso_carga.html">ProcesoCarga</a>() {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        pdc = <span class="keyword">new</span> <a class="code" href="classrovick_1_1_utils_1_1_pantalla_de_carga.html">PantallaDeCarga</a>();</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    @Override</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> run() {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        pdc.setVisible(<span class="keyword">true</span>);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        puntos();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> puntos(){</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">try</span> {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        sleep(sleep);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">while</span> (!cerrar &amp;&amp; !isInterrupted()) {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            String texto = this.pdc.getTexto_carga();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            String texto_limpio = texto;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                texto += <span class="stringliteral">&quot;.&quot;</span>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                pdc.<a class="code" href="classrovick_1_1_utils_1_1_pantalla_de_carga.html#ac503d5000ec33ac3caecf3a7fd4ff512">cambiarTexto</a>(texto);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                sleep(sleep);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            pdc.<a class="code" href="classrovick_1_1_utils_1_1_pantalla_de_carga.html#ac503d5000ec33ac3caecf3a7fd4ff512">cambiarTexto</a>(texto_limpio);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            sleep(sleep);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;       } <span class="keywordflow">catch</span> (InterruptedException ex) {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                Logger.getLogger(<a class="code" href="classrovick_1_1_utils_1_1_proceso_carga.html">ProcesoCarga</a>.class.getName()).log(Level.SEVERE, null, ex);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        } <span class="keywordflow">catch</span> (Exception ex){</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            </div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> cambiarTexto(String text){</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//pdc.cambiarTexto(text);</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this.pdc.setTexto_carga(text);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> close(){</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        pdc.<a class="code" href="classrovick_1_1_utils_1_1_pantalla_de_carga.html#a7e88b824b01d806e3544db0a1d5e6a4f">close</a>();</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        cerrar = <span class="keyword">true</span>;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div><div class="ttc" id="classrovick_1_1_utils_1_1_proceso_carga_html"><div class="ttname"><a href="classrovick_1_1_utils_1_1_proceso_carga.html">rovick.Utils.ProcesoCarga</a></div><div class="ttdoc">Proceso que se encarga de hacer la animación de poner puntos suspensivos. </div><div class="ttdef"><b>Definition:</b> <a href="_proceso_carga_8java_source.html#l00011">ProcesoCarga.java:11</a></div></div>
+<div class="ttc" id="classrovick_1_1_utils_1_1_pantalla_de_carga_html"><div class="ttname"><a href="classrovick_1_1_utils_1_1_pantalla_de_carga.html">rovick.Utils.PantallaDeCarga</a></div><div class="ttdoc">Pantalla de carga que aparece durante la configuración de la ventana principal. </div><div class="ttdef"><b>Definition:</b> <a href="_pantalla_de_carga_8java_source.html#l00019">PantallaDeCarga.java:19</a></div></div>
+<div class="ttc" id="classrovick_1_1_utils_1_1_pantalla_de_carga_html_ac503d5000ec33ac3caecf3a7fd4ff512"><div class="ttname"><a href="classrovick_1_1_utils_1_1_pantalla_de_carga.html#ac503d5000ec33ac3caecf3a7fd4ff512">rovick.Utils.PantallaDeCarga.cambiarTexto</a></div><div class="ttdeci">void cambiarTexto(String texto)</div><div class="ttdoc">Metodo que se utiliza para cambiar el texto informativo. </div><div class="ttdef"><b>Definition:</b> <a href="_pantalla_de_carga_8java_source.html#l00039">PantallaDeCarga.java:39</a></div></div>
+<div class="ttc" id="classrovick_1_1_utils_1_1_pantalla_de_carga_html_a7e88b824b01d806e3544db0a1d5e6a4f"><div class="ttname"><a href="classrovick_1_1_utils_1_1_pantalla_de_carga.html#a7e88b824b01d806e3544db0a1d5e6a4f">rovick.Utils.PantallaDeCarga.close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Cierra esta pantalla. </div><div class="ttdef"><b>Definition:</b> <a href="_pantalla_de_carga_8java_source.html#l00046">PantallaDeCarga.java:46</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_a68686e0e70b30bc7a6497c5777c4cf3.html">Rovick</a></li><li class="navelem"><a class="el" href="dir_671a1751793827bf590094deeffd6c52.html">src</a></li><li class="navelem"><a class="el" href="dir_a0fe395df812f0ca1c81e764a6cd96c5.html">rovick</a></li><li class="navelem"><a class="el" href="dir_342679f627f45827bb1b73b6d3f661cf.html">Utils</a></li><li class="navelem"><b>ProcesoCarga.java</b></li>
+    <li class="footer">Generado el Martes, 20 de Noviembre de 2018 17:54:51 para Rovick por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
+</body>
+</html>

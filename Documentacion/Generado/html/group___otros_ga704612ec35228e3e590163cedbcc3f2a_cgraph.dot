@@ -1,0 +1,9 @@
+digraph "rovick.MainFrame.bt_realizarMovsActionPerformed"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node34 [label="rovick.MainFrame.bt\l_realizarMovsActionPerformed",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node34 -> Node35 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 [label="rovick.cube.CubeController.do\lAllMovs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_cube_controller.html#a4e65189dab94a0a03e56cb12c2d1e4fb",tooltip="Metodo que se encarga de realizar todas los movimientos. "];
+}

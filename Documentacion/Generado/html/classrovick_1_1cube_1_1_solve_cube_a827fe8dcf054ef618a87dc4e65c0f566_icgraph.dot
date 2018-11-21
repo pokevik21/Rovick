@@ -1,0 +1,11 @@
+digraph "rovick.cube.SolveCube.arrangeString"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3 [label="rovick.cube.SolveCube.arrange\lString",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="rovick.cube.SolveCube.stage\lSolution",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_solve_cube.html#a18c72479452477ca00f4b58f7a67077a"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="rovick.cube.SolveCube.solve",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_solve_cube.html#a064c66b25d046344b959c9a02caaa6bb"];
+}

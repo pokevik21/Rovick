@@ -1,0 +1,13 @@
+digraph "rovick.MainFrame.formWindowClosing"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="rovick.MainFrame.formWindow\lClosing",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="rovick.cube.CubeController.get\lArduino",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_cube_controller_abf182aadfa46c99ea9edc79b2fc12b9e.html#abf182aadfa46c99ea9edc79b2fc12b9e",tooltip="Devuelve el arduino del controlador. "];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="rovick.WebCamController.cleean\lPhotos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_web_cam_controller_aa6f72166f84d421193161bb03d0241f6.html#aa6f72166f84d421193161bb03d0241f6",tooltip="Borra todas los archivos en la carpeta webCam_images. "];
+  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="rovick.WebCamController.close",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_web_cam_controller_ae8b2d7a0ffa4b04cff02565620225aef.html#ae8b2d7a0ffa4b04cff02565620225aef",tooltip="Cierra la WebCam. "];
+}

@@ -9,7 +9,14 @@ package rovick;
 import rovick.Utils.WebCamController;
 import rovick.Utils.Utiles;
 import com.panamahitek.ArduinoException;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Toolkit;
+import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,6 +72,31 @@ public class MainFrame extends javax.swing.JFrame {
     private boolean flagFinish = false;
     /** Controla si la luz esta encendida o apagada*/
     private boolean luz_encendida = false;
+    /** Para cuando se pulse F1 */
+    private KeyListener lisenerF1 = new KeyListener() {
+
+        @Override
+        public void keyPressed(java.awt.event.KeyEvent e) {
+            if(java.awt.Desktop.isDesktopSupported()){
+                  Desktop dk = Desktop.getDesktop();
+                try {
+                    dk.browse(new URI("http://rovick.victorpastor.com"));
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }  
+        }
+
+        @Override
+        public void keyReleased(java.awt.event.KeyEvent e) {
+        }
+
+        @Override
+        public void keyTyped(java.awt.event.KeyEvent e) {
+        }
+    };
     
     /**
      * @}
@@ -366,6 +398,20 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         confInicial();
+        confHelp(this);
+    }
+    
+    
+    /**
+     * Asigna el Lisener para cuando damos F1, se abra la documentacion.
+     * @param c 
+     */
+    private void confHelp(Container c){
+        Component[] lista = c.getComponents();
+        for (Component component : lista) {
+            component.addKeyListener(lisenerF1);
+            if(component instanceof Container) confHelp((Container)component);
+        }
     }
     
     /**
@@ -481,6 +527,11 @@ public class MainFrame extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
 
@@ -953,6 +1004,10 @@ public class MainFrame extends javax.swing.JFrame {
             apagarLuz();
         }
     }//GEN-LAST:event_cb_luzActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+            System.out.println("DESDE LISENER");
+    }//GEN-LAST:event_formKeyPressed
     /**@} */
     /**@} */
     //</editor-fold>

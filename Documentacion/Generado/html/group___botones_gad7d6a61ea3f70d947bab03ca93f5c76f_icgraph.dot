@@ -1,0 +1,13 @@
+digraph "rovick.MainFrame.lb_UMouseClicked"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node222 [label="rovick.MainFrame.lb\l_UMouseClicked",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node222 -> Node223 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node223 [label="rovick.MainFrame.initComponents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_main_frame.html#a6bfda0f949106916323960d384a309e0"];
+  Node223 -> Node224 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node224 [label="rovick.MainFrame.MainFrame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___principales.html#ga511f1ff25cbcc94bf9a36611674b5fec",tooltip="Contrucotr de la victa principal. "];
+  Node224 -> Node225 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node225 [label="rovick.MainFrame.main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1_main_frame.html#ac31f17c5894a105267e32842324663ac"];
+}

@@ -1,0 +1,9 @@
+digraph "rovick.cube.TableGenerator.formatTable"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="rovick.cube.TableGenerator.format\lTable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="rovick.cube.TableGenerator.format\lString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1cube_1_1_table_generator_af1f4a2f75b4d5a0ed04378ff822b8201.html#af1f4a2f75b4d5a0ed04378ff822b8201"];
+}
