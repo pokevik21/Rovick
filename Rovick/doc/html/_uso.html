@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Rovick: Páginas relacionadas</title>
+<title>Rovick: Guia de uso</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,7 +68,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('pages.html','');});
+$(document).ready(function(){initNavTree('_uso.html','');});
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -88,17 +88,61 @@ $(document).ready(function(){initNavTree('pages.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Páginas relacionadas</div>  </div>
+<div class="title">Guia de uso </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Lista de toda la documentación relacionada:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="_uso.html" target="_self">Guia de uso</a></td><td class="desc"></td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="_diagramas.html" target="_self">Diagramas</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="_materiales.html" target="_self">Materiales</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="Botones"></a>
+Botones de movimiento</h1>
+<p>Los botones de movimiento son como este: </p><div class="image">
+<img src="R.png" alt="R.png"/>
+<div class="caption">
+boton de movimiento</div></div>
+<p>Cuando lo pulsamos y no esta activado el CheckBox de "Según pulsas", se acumulará visualizándose en el el área de texto: </p><div class="image">
+<img src="BotonesMov_ej.png" alt="BotonesMov_ej.png"/>
+<div class="caption">
+Ejemplo boton movimiento</div></div>
+<p>Hay unos botones a la derecha de área de texto que sirven para borrar los movimientos, El primer movimiento, El ultimo o todos.</p>
+<p>Cada vez que añadimos un movimiento acumulado o lo eliminamos se ajusta el tiempo y el número de movimientos en el contador del tiempo de arriba a la izquierda. </p><div class="image">
+<img src="contadoTiempoMovs.png" alt="contadoTiempoMovs.png"/>
+<div class="caption">
+Contador de tiempo</div></div>
+ <h1><a class="anchor" id="Otros_controles"></a>
+Otros controles</h1>
+<h3>Botón "Soltar"</h3>
+<p>Este botón sirve para cuando el robot tiene el cubo agarrado y por lo que sea queremos que lo suelte, para que lo vuelva a agarrar solo tienes que dar a un movimiento y antes de hacer dicho movimiento lo volverá a agarrar. </p><div class="image">
+<img src="BotonSoltar.png" alt="BotonSoltar.png"/>
+<div class="caption">
+Botón soltar</div></div>
+ <h3>Botón "Parar"</h3>
+<p>Cuando está realizando todos los movimientos y analizando el cubo, este botón se activa y sirve para parar dichos procesos. </p><div class="image">
+<img src="BotonParar.png" alt="BotonParar.png"/>
+<div class="caption">
+Botón Parar</div></div>
+ <h3>CheckBox "Luz"</h3>
+<p>Cuando está activada las luces del robot se encienden y cuando lo desactivamos se apagan. </p><div class="image">
+<img src="BLuz.png" alt="BLuz.png"/>
+<div class="caption">
+CheckBox Luz</div></div>
+ <h3>Botón "Gen. Random"</h3>
+<p>Genera el número de movimientos aleatorios que tenga el Spinner de al lado, por defecto 25. </p><div class="image">
+<img src="GenRandom.png" alt="GenRandom.png"/>
+<div class="caption">
+Botón Gen. Random</div></div>
+ <h3>Botón "Realizar movimientos"</h3>
+<p>Realiza todos los movimientos acumulados en el área de texto, empezará un proceso que hará la cuenta atrás de tiempo he ira avanzando la barra de progreso cuando esta y el tiempo acaben, significara que se han realizado todos los movimientos. </p><div class="image">
+<img src="RMovs.png" alt="RMovs.png"/>
+<div class="caption">
+Bóton Realizar movimientos</div></div>
+ <h3>Botón "Resolver cubo"</h3>
+<p>Analiza el cubo usando la cámara del robot, si detecta todos los colores bien genera el algoritmo para resolverlo y lo pone en el área de texto, a continuación, si no está activado el CheckBox "Solo algoritom" realizará dichos movimientos ,resolviendo el cubo, de lo contrario, no hará ningún movimiento. </p><div class="image">
+<img src="DoxyRecursos/images/Rcubo.png" alt="Botón Resolver cubo"/>
+</div>
+<h3>Puerto</h3>
+<p>Informa de en que puesto se ha conectado, si todo salió bien en la configuración, será el puerto en el que esté el Arduino. </p><div class="image">
+<img src="puerto.png" alt="puerto.png"/>
+<div class="caption">
+Botón Puerto</div></div>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

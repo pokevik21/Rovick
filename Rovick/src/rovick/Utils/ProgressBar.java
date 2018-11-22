@@ -24,6 +24,9 @@ public class ProgressBar extends Thread{
         this.estado = estado;
     }
 
+    /**
+     * Metodo para iniciar el proceso de la ProgressBar
+     */
     @Override
     public void run() {
         this.lb_estado.setText(estado);
