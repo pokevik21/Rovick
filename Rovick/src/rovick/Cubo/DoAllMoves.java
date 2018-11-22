@@ -34,7 +34,7 @@ public class DoAllMoves extends Thread{
     public void run() {
         if(!vistaPrincipal.getMovimientos().isEmpty()){
             vistaPrincipal.desableButtons(false);
-            cuentsAtas = new CuentaAtras(vistaPrincipal);
+            cuentsAtas = new CuentaAtras(vistaPrincipal,"Realizando todos los movimientos");
             cuentsAtas.start();
             int movs =vistaPrincipal.getMovimientos().size();
             try {

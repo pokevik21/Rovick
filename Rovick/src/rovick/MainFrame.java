@@ -141,6 +141,15 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     /**
+     * Añade tiempo al calendiario y lo visualiza
+     * @param segs Tiempo a añadir.
+     */
+    public void addTimeCalendar(int segs){
+        this.tiempo.add(GregorianCalendar.SECOND,segs);
+        this.lb_tiempo.setText(this.sdf.format(this.tiempo.getTime()));
+    }
+    
+    /**
      *Suma al string move un movimiento. Ej:"F"->"F2"
      * @param move String(move) al que le sumar un movimiento. 
      * @return Devuelve el numero con numero ya sumado.
@@ -311,6 +320,24 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     /**
+     *Borra el primer movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos.
+     */
+     public void removeFirstMove(){
+        if(!movimientos.isEmpty()){
+            removeTime(movimientos.get(0));
+            if(Utiles.tieneNumero(movimientos.get(0))){
+                int movs = Utiles.extraerNumero(movimientos.get(0));
+                this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-movs));
+            }else{
+               this.lb_movs.setText(String.valueOf(Integer.parseInt(this.lb_movs.getText())-1));
+            }
+            movimientos.remove(0);
+            imprimirMovimientos();
+            if(movimientos.isEmpty())resetMoves();
+      }
+    }
+    
+    /**
      *Activa o desactiva los botones para que no se pueda hacer nada 
      * mientas que se haga el proceso de hacer todos los movimientos.
      * @param estado Al estado al que los cambias.
@@ -337,6 +364,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.cb_hacerSegunPulsas.setEnabled(estado);
         this.sp_deshacer.setEnabled(estado);
         this.cb_soloAlg.setEnabled(estado);
+        this.bl_borrarPrimero.setEnabled(estado);
     }
     
     /**
@@ -438,6 +466,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setIconImage(Toolkit.getDefaultToolkit().
         getImage(ClassLoader.getSystemResource("images/cuboIco.png")));
         this.sdf = new SimpleDateFormat("mm' min' ss' seg'");
+        this.lb_estadoPrograssBar.setText("");
         
         //ARDUINO
         pc.cambiarTexto("Conf. Arduino");
@@ -522,6 +551,9 @@ public class MainFrame extends javax.swing.JFrame {
         cb_soloAlg = new javax.swing.JCheckBox();
         bt_parar = new javax.swing.JButton();
         cb_luz = new javax.swing.JCheckBox();
+        bl_borrarPrimero = new javax.swing.JButton();
+        lb_Txt_borrarMovs = new javax.swing.JLabel();
+        lb_estadoPrograssBar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -637,7 +669,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        bt_limpiarMovs.setText("Borrar todo");
+        bt_limpiarMovs.setText("Todo");
         bt_limpiarMovs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_limpiarMovsActionPerformed(evt);
@@ -671,7 +703,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         lb_movs.setText("0");
 
-        bl_borrarUltimoMove.setText("-1");
+        bl_borrarUltimoMove.setText("Ult.");
         bl_borrarUltimoMove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bl_borrarUltimoMoveActionPerformed(evt);
@@ -708,6 +740,18 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        bl_borrarPrimero.setText("Prim.");
+        bl_borrarPrimero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bl_borrarPrimeroActionPerformed(evt);
+            }
+        });
+
+        lb_Txt_borrarMovs.setText("Borrar movimientos:");
+
+        lb_estadoPrograssBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_estadoPrograssBar.setText("estado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -717,77 +761,91 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sep_bajo)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_txt_tiempo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_tiempo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_numMovs)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_movs, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bt_resolver)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lb_R, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_L, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_U, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(lb_D, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lb_F, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_B, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lb_RD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_LD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_UD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(lb_DD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lb_FD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_BD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cb_hacerSegunPulsas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(sp_movimientos)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bl_borrarUltimoMove)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bt_limpiarMovs))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(cb_soloAlg)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                                                .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bt_deshacer)
-                                                .addGap(84, 84, 84)
-                                                .addComponent(lb_txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lb_port)
-                                                .addGap(83, 83, 83)
-                                                .addComponent(bt_realizarMovs)))))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lb_txt_tiempo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lb_tiempo))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lb_numMovs)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_movs, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pb_progreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bt_soltar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(266, 266, 266)
+                                .addComponent(lb_estadoPrograssBar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_parar)
+                            .addComponent(cb_luz)))
+                    .addComponent(sep_arriba, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_R, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_L, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_U, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(lb_D, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_F, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_B, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_RD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_LD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_UD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(lb_DD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_FD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_BD, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cb_luz)
-                                    .addComponent(bt_parar)))
-                            .addComponent(sep_arriba, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(117, 117, 117)
+                                        .addComponent(cb_soloAlg)
+                                        .addGap(106, 106, 106)
+                                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bt_deshacer)
+                                        .addGap(84, 84, 84)
+                                        .addComponent(lb_txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lb_port))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cb_hacerSegunPulsas)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(sp_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_resolver))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(bt_realizarMovs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(bl_borrarPrimero)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(bl_borrarUltimoMove)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(bt_limpiarMovs))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lb_Txt_borrarMovs)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -805,7 +863,10 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pb_progreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_luz, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_luz, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_estadoPrograssBar))
+                        .addGap(7, 7, 7))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -815,8 +876,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lb_numMovs)
                             .addComponent(lb_movs))
-                        .addGap(12, 12, 12)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)))
                 .addComponent(sep_arriba, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -840,26 +900,31 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sep_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(1, 1, 1)
+                        .addComponent(lb_Txt_borrarMovs)
+                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_hacerSegunPulsas)
-                            .addComponent(bt_limpiarMovs)
-                            .addComponent(bl_borrarUltimoMove)))
+                            .addComponent(bl_borrarPrimero)
+                            .addComponent(bl_borrarUltimoMove)
+                            .addComponent(bt_limpiarMovs)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_hacerSegunPulsas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(sp_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bt_resolver)
                         .addComponent(cb_soloAlg))
-                    .addComponent(bt_realizarMovs)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lb_port)
                         .addComponent(lb_txtPort))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bt_deshacer)))
+                        .addComponent(bt_deshacer))
+                    .addComponent(bt_realizarMovs))
                 .addContainerGap())
         );
 
@@ -1008,6 +1073,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
             System.out.println("DESDE LISENER");
     }//GEN-LAST:event_formKeyPressed
+
+    private void bl_borrarPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bl_borrarPrimeroActionPerformed
+        removeFirstMove();
+    }//GEN-LAST:event_bl_borrarPrimeroActionPerformed
     /**@} */
     /**@} */
     //</editor-fold>
@@ -1047,6 +1116,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     //<editor-fold defaultstate="collapsed" desc="COMPONENTES">
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bl_borrarPrimero;
     private javax.swing.JButton bl_borrarUltimoMove;
     private javax.swing.JButton bt_deshacer;
     private javax.swing.JButton bt_limpiarMovs;
@@ -1067,8 +1137,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lb_LD;
     private javax.swing.JLabel lb_R;
     private javax.swing.JLabel lb_RD;
+    private javax.swing.JLabel lb_Txt_borrarMovs;
     private javax.swing.JLabel lb_U;
     private javax.swing.JLabel lb_UD;
+    private javax.swing.JLabel lb_estadoPrograssBar;
     private javax.swing.JLabel lb_movs;
     private javax.swing.JLabel lb_numMovs;
     private javax.swing.JLabel lb_port;
@@ -1138,6 +1210,11 @@ public class MainFrame extends javax.swing.JFrame {
     public boolean isLuz_encendida() {
         return luz_encendida;
     }
+
+    public JLabel getLb_estadoPrograssBar() {
+        return lb_estadoPrograssBar;
+    }
+    
     
     
     /**

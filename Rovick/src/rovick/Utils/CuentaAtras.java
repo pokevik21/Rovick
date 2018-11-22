@@ -17,16 +17,18 @@ public class CuentaAtras extends Thread{
     
     private MainFrame vistaPrincipal = null;
     private SimpleDateFormat sdf = new SimpleDateFormat("mm' min' ss' seg'");
+    private String estado = "";
     
-    public CuentaAtras(MainFrame vista) {
+    public CuentaAtras(MainFrame vista,String estado) {
         this.vistaPrincipal = vista;
+        this.estado = estado;
     }
 
     @Override
     public void run() {
         vistaPrincipal.getPb_progreso().setValue(0);
         int segs = (int) (vistaPrincipal.getTiempo().getTimeInMillis()/1000);
-        ProgressBar p_pb = new ProgressBar(vistaPrincipal.getPb_progreso(), vistaPrincipal.getTiempo().getTimeInMillis()/1000 -1, 10);
+        ProgressBar p_pb = new ProgressBar(vistaPrincipal.getPb_progreso(), vistaPrincipal.getTiempo().getTimeInMillis()/1000 -1, 10,vistaPrincipal.getLb_estadoPrograssBar(),estado);
         p_pb.start();
         for (int i = 0; i < segs; i++) {
             try {

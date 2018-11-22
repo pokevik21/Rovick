@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import rovick.MainFrame;
+import rovick.Utils.CuentaAtras;
 import rovick.Utils.Utiles;
 import rovick.Utils.WebCamController;
 
@@ -271,6 +272,8 @@ public class ProcesoResolverCubo extends Thread{
     
     @Override
     public void run() {
+        vistaPrincipal.addTimeCalendar(55);
+        new CuentaAtras(vistaPrincipal, "Analizando cubo").start();
         vistaPrincipal.desableButtons(false);
         vistaPrincipal.getBt_parar().setEnabled(true);
         camara.cleeanPhotos();
