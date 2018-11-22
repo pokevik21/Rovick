@@ -1,9 +1,0 @@
-digraph "rovick.Utils.Utiles.primerNum"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node20 [label="rovick.Utils.Utiles.primerNum",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node20 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node21 [label="rovick.Utils.Utiles.isNumeric",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrovick_1_1Utils_1_1Utiles.html#af34c18d8e5344dc7bbc7be79a1bff7f1",tooltip="Metodo que te devuelve true si la cadena pasada es numérica. "];
-}

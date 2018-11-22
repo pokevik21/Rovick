@@ -1,4 +1,0 @@
-<map id="rovick.MainFrame.finisMove" name="rovick.MainFrame.finisMove">
-<area shape="rect" id="node2" href="$classrovick_1_1_cubo_1_1_cube_controller.html#a42cff2173fe19eeb5b1d848a91f9d4bd" title="Metodo que envia al arduino la orden de hacer un movimiento. " alt="" coords="235,13,461,39"/>
-<area shape="rect" id="node3" href="$classrovick_1_1_cubo_1_1_proceso_resolver_cubo.html#abb4a6520a33641cdb488b1835a57b412" title="rovick.Cubo.ProcesoResolver\lCubo.hacerPaso" alt="" coords="509,5,700,47"/>
-</map>

@@ -14,9 +14,12 @@ import java.awt.Container;
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,16 +80,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         @Override
         public void keyPressed(java.awt.event.KeyEvent e) {
-            if(java.awt.Desktop.isDesktopSupported()){
-                  Desktop dk = Desktop.getDesktop();
-                try {
-                    dk.browse(new URI("http://rovick.victorpastor.com"));
-                } catch (URISyntaxException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }  
+            try {
+                File htmlFile = new File("doc/html/index.html");
+                Desktop.getDesktop().browse(htmlFile.toURI());
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
 
         @Override
