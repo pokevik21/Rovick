@@ -1,5 +1,5 @@
-#Rovivick
-Resolvedor de cubos de rubik
+# Rovivick
+### Resolvedor de cubos de rubik
 
-#Documentacion:
+# Documentacion:
 https://pokevik21.github.io/Rovick

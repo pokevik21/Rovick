@@ -1,9 +1,10 @@
 <map id="rovick.Utils.Utiles.primerNum" name="rovick.Utils.Utiles.primerNum">
-<area shape="rect" id="node2" href="$group___auxiliares.html#ga724eeaf4315d25cbeae55131e775b2cb" title="Suma al string move un movimiento. " alt="" coords="505,5,744,32"/>
-<area shape="rect" id="node3" href="$group___auxiliares.html#ga49c8ae6bbd67d575b5b9c8ee575a82ff" title="Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea. " alt="" coords="792,56,971,83"/>
-<area shape="rect" id="node5" href="$group___auxiliares.html#ga115fa1a1d9c876f4e7cc647563af0c4a" title="Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move..." alt="" coords="243,107,457,133"/>
-<area shape="rect" id="node7" href="$group___auxiliares.html#gaf06cc67bd587af7c4b5749cb74c55854" title="Resta tiempo al GregorianCalendar tiempo dependiendo de que movimiento sea. " alt="" coords="251,157,449,184"/>
-<area shape="rect" id="node4" href="$group___principales.html#gae2c42cbf5cab358d9b60d6c7a50ab85f" title="Metodo al que llaman los Botones de los movimientos, Si el checkBox cb_hacerSegunPulsas esta activado..." alt="" coords="1019,56,1244,83"/>
-<area shape="rect" id="node6" href="$group___auxiliares.html#ga6427827ba7ae6ec2db0c2fedaa60b196" title="Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo. " alt="" coords="536,107,713,133"/>
-<area shape="rect" id="node8" href="$group___auxiliares.html#ga27c198265fb7a3f149b95aaac12bf9f0" title="Borra el ultimo movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos. " alt="" coords="513,157,737,184"/>
+<area shape="rect" id="node2" href="$group___auxiliares.html#ga724eeaf4315d25cbeae55131e775b2cb" title="Suma al string move un movimiento. " alt="" coords="243,5,481,32"/>
+<area shape="rect" id="node3" href="$group___auxiliares.html#ga49c8ae6bbd67d575b5b9c8ee575a82ff" title="Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea. " alt="" coords="803,56,981,83"/>
+<area shape="rect" id="node5" href="$group___auxiliares.html#ga115fa1a1d9c876f4e7cc647563af0c4a" title="Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move..." alt="" coords="255,107,469,133"/>
+<area shape="rect" id="node7" href="$group___auxiliares.html#gaf06cc67bd587af7c4b5749cb74c55854" title="Resta tiempo al GregorianCalendar tiempo dependiendo de que movimiento sea. " alt="" coords="263,157,461,184"/>
+<area shape="rect" id="node4" href="$group___principales.html#gae2c42cbf5cab358d9b60d6c7a50ab85f" title="Metodo al que llaman los Botones de los movimientos, Si el checkBox cb_hacerSegunPulsas esta activado..." alt="" coords="1029,56,1255,83"/>
+<area shape="rect" id="node6" href="$group___auxiliares.html#ga6427827ba7ae6ec2db0c2fedaa60b196" title="Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo. " alt="" coords="553,107,731,133"/>
+<area shape="rect" id="node8" href="$group___auxiliares.html#ga27c198265fb7a3f149b95aaac12bf9f0" title="Borra el ultimo movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos. " alt="" coords="530,157,754,184"/>
+<area shape="rect" id="node9" href="$group___auxiliares.html#gae86ba9303e2d718d8d06fb9a46a7836c" title="Borra el primer movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos. " alt="" coords="529,208,755,235"/>
 </map>
