@@ -1,4 +1,0 @@
-<map id="rovick.Cubo.CubeController.doMove" name="rovick.Cubo.CubeController.doMove">
-<area shape="rect" id="node2" href="$classrovick_1_1_cubo_1_1_proceso_resolver_cubo.html#abb4a6520a33641cdb488b1835a57b412" title="rovick.Cubo.ProcesoResolver\lCubo.hacerPaso" alt="" coords="297,5,488,47"/>
-<area shape="rect" id="node3" href="$group___principales.html#gae2c42cbf5cab358d9b60d6c7a50ab85f" title="Metodo al que llaman los Botones de los movimientos, Si el checkBox cb_hacerSegunPulsas esta activado..." alt="" coords="280,71,505,98"/>
-</map>

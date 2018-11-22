@@ -1,6 +1,0 @@
-<map id="rovick.MainFrame.addTime" name="rovick.MainFrame.addTime">
-<area shape="rect" id="node2" href="$group___auxiliares.html#ga115fa1a1d9c876f4e7cc647563af0c4a" title="Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move..." alt="" coords="231,42,445,69"/>
-<area shape="rect" id="node3" href="$classrovick_1_1_utils_1_1_utiles.html#a3727c5ee9df98a910159a619889f7bda" title="Metodo que te devuelve true si la cadena pasada contiene algún numero. " alt="" coords="511,5,665,47"/>
-<area shape="rect" id="node5" href="$classrovick_1_1_utils_1_1_utiles.html#a6844ffe69749214354abe47b5a4d19ba" title="Metdo que devuelve la posicion del pimier numero numérico de la cadena. " alt="" coords="493,71,683,98"/>
-<area shape="rect" id="node4" href="$classrovick_1_1_utils_1_1_utiles.html#af34c18d8e5344dc7bbc7be79a1bff7f1" title="Metodo que te devuelve true si la cadena pasada es numérica. " alt="" coords="731,42,915,69"/>
-</map>
