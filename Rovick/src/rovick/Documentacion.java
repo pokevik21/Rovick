@@ -11,17 +11,17 @@
  *
  *Este proyecto es un proyecto fin de modulo superior, para ser más exacto, 
  *DAM (Desarrollo de aplicaciones en multiplataforma), de un alumno del centro Gregorio Fernandez (Valladolid),
- *cuyo nombre es Víctor Pastor Urueña, el objetivo de este proyecto es que dicho alumno saque un 10.
+ *cuyo nombre es Víctor Pastor Urueña, el objetivo de este proyecto es que dicho alumno saque un 10.<br>
  *Cumpliendo con los requisitos del dicho proyecto, es decir, que resuelva cubos de Rubik.
  *
  * \section Requisitos Requisitos
- * -Cubo de rubik sin pegatina en la cara del blanco
+ * - Cubo de rubik sin pegatina en la cara del blanco
  * 
  * \section Instrucciones  Instrucciones
- * -Conectar el Arduino a uno de los USB del ordenador <b>antes</b> de cargar la aplicación.
- * -Ejecutar el .jar de la aplicacion Rovick.jar
- * -Colocar el cubo en el gancho inferior de froma centrada.
- * -Disfrutar de esta increible aplicacion.
+ * - Conectar el Arduino a uno de los USB del ordenador <b>antes</b> de cargar la aplicación.
+ * - Ejecutar el .jar de la aplicacion Rovick.jar
+ * - Colocar el cubo en el gancho inferior de froma centrada.
+ * - Disfrutar de esta increible aplicacion.
  *  
  */
 
