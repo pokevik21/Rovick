@@ -1,0 +1,5 @@
+<map id="rovick.MainFrame.ultimoContiene" name="rovick.MainFrame.ultimoContiene">
+<area shape="rect" id="node2" href="$group___auxiliares.html#ga6427827ba7ae6ec2db0c2fedaa60b196" title="Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo. " alt="" coords="268,5,445,32"/>
+<area shape="rect" id="node3" href="$group___auxiliares.html#ga49c8ae6bbd67d575b5b9c8ee575a82ff" title="Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea. " alt="" coords="493,5,672,32"/>
+<area shape="rect" id="node4" href="$group___principales.html#gae2c42cbf5cab358d9b60d6c7a50ab85f" title="Metodo al que llaman los Botones de los movimientos, Si el checkBox cb_hacerSegunPulsas esta activado..." alt="" coords="720,5,945,32"/>
+</map>

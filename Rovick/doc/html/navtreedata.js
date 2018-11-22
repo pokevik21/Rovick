@@ -29,12 +29,12 @@ var NAVTREE =
       [ "Requisitos", "index.html#Requisitos", null ],
       [ "Instrucciones", "index.html#Instrucciones", null ]
     ] ],
-    [ "Diagramas", "_diagramas.html", [
-      [ "De uso", "_diagramas.html#De_Uso", [
-        [ "Hacer movimiento", "_diagramas.html#Hacer_movimiento", null ],
-        [ "Acumular movimientos", "_diagramas.html#Acumular_movimientos", null ],
-        [ "Hacer todos los movimientos", "_diagramas.html#Hacer_todos_los_movimientos", null ],
-        [ "Resolver cubo", "_diagramas.html#Resolver_cubo", null ]
+    [ "Diagramas", "__diagramas.html", [
+      [ "De uso", "__diagramas.html#De_Uso", [
+        [ "Hacer movimiento", "__diagramas.html#Hacer_movimiento", null ],
+        [ "Acumular movimientos", "__diagramas.html#Acumular_movimientos", null ],
+        [ "Hacer todos los movimientos", "__diagramas.html#Hacer_todos_los_movimientos", null ],
+        [ "Resolver cubo", "__diagramas.html#Resolver_cubo", null ]
       ] ]
     ] ],
     [ "Materiales", "_materiales.html", [

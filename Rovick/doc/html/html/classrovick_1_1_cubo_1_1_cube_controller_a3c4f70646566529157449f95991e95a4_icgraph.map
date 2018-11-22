@@ -1,0 +1,4 @@
+<map id="rovick.Cubo.CubeController.getArduino" name="rovick.Cubo.CubeController.getArduino">
+<area shape="rect" id="node2" href="$group___auxiliares.html#ga03f1ba000b910843b736df2c012145fd" title="Envia orden al arduino para encender los LEDs del robot. " alt="" coords="253,5,456,32"/>
+<area shape="rect" id="node3" href="$group___auxiliares.html#ga11666f48b24b6e856e8af84feb88f926" title="Envia orden al arduino para apagar los LEDs del robot. " alt="" coords="261,56,449,83"/>
+</map>

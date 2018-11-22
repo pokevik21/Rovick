@@ -1,0 +1,10 @@
+<map id="rovick.MainFrame.addMove" name="rovick.MainFrame.addMove">
+<area shape="rect" id="node2" href="$classrovick_1_1_utils_1_1_utiles.html#a3727c5ee9df98a910159a619889f7bda" title="Metodo que te devuelve true si la cadena pasada contiene algún numero. " alt="" coords="761,17,916,58"/>
+<area shape="rect" id="node4" href="$classrovick_1_1_utils_1_1_utiles.html#a6844ffe69749214354abe47b5a4d19ba" title="Metdo que devuelve la posicion del pimier numero numérico de la cadena. " alt="" coords="744,148,933,175"/>
+<area shape="rect" id="node5" href="$group___auxiliares.html#ga724eeaf4315d25cbeae55131e775b2cb" title="Suma al string move un movimiento. " alt="" coords="457,98,696,124"/>
+<area shape="rect" id="node7" href="$group___auxiliares.html#ga6427827ba7ae6ec2db0c2fedaa60b196" title="Encargado de añadir el tiempo correspondiente el GregorianCalendar tiempo. " alt="" coords="232,47,409,74"/>
+<area shape="rect" id="node9" href="$group___auxiliares.html#gab1aea5aaaa8b8b695b3c30c08a2fb705" title="Encorgado de rellenar el TextArea de los movimientos a partir del ArrayList movimientos. " alt="" coords="233,200,408,241"/>
+<area shape="rect" id="node3" href="$classrovick_1_1_utils_1_1_utiles.html#af34c18d8e5344dc7bbc7be79a1bff7f1" title="Metodo que te devuelve true si la cadena pasada es numérica. " alt="" coords="981,90,1165,116"/>
+<area shape="rect" id="node6" href="$classrovick_1_1_utils_1_1_utiles.html#a7bc6aa7244f58b59cb5d6ae1d87b1cf5" title="Metodo que te devuelve el entero que contine la cadena. " alt="" coords="755,82,922,124"/>
+<area shape="rect" id="node8" href="$group___auxiliares.html#ga115fa1a1d9c876f4e7cc647563af0c4a" title="Devuelve true si el ultimo movimiento del ArrayList movimientos contiene el String move..." alt="" coords="469,47,684,74"/>
+</map>

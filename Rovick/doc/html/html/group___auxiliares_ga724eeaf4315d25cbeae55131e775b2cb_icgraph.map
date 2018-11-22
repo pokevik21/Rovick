@@ -1,0 +1,4 @@
+<map id="rovick.MainFrame.sumarNumeroMove" name="rovick.MainFrame.sumarNumeroMove">
+<area shape="rect" id="node2" href="$group___auxiliares.html#ga49c8ae6bbd67d575b5b9c8ee575a82ff" title="Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea. " alt="" coords="292,5,471,32"/>
+<area shape="rect" id="node3" href="$group___principales.html#gae2c42cbf5cab358d9b60d6c7a50ab85f" title="Metodo al que llaman los Botones de los movimientos, Si el checkBox cb_hacerSegunPulsas esta activado..." alt="" coords="519,5,744,32"/>
+</map>

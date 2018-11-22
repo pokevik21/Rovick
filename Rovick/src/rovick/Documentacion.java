@@ -33,7 +33,7 @@
 
 
 /**
- * \page Diagramas Diagramas
+ * \page _Diagramas Diagramas
  * \section De_Uso De uso
  * 
  * \subsection Hacer_movimiento Hacer movimiento
