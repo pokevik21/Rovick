@@ -48,6 +48,19 @@ var NAVTREE =
         [ "Total", "_materiales.html#total", null ]
       ] ]
     ] ],
+    [ "Rescusos", "_rescusos.html", [
+      [ "Modelo 3D", "_rescusos.html#Modelo_3d", null ],
+      [ "Librerias", "_rescusos.html#Librerias", null ],
+      [ "Clases externas", "_rescusos.html#clases_externas", null ]
+    ] ],
+    [ "Electronica", "_electronica.html", [
+      [ "Montaje", "_electronica.html#Montaje", null ],
+      [ "Esquemas", "_electronica.html#Esquemas", null ]
+    ] ],
+    [ "Creditos", "_creditos.html", [
+      [ "Testers", "_creditos.html#Testers", null ],
+      [ "Ayudantes", "_creditos.html#Ayudantes", null ]
+    ] ],
     [ "Módulos", "modules.html", "modules" ],
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],

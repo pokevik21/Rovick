@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['diagramas',['Diagramas',['../_diagramas.html',1,'']]]
+  ['creditos',['Creditos',['../_creditos.html',1,'']]]
 ];

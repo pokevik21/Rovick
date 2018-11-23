@@ -11,7 +11,7 @@
  *
  *Este proyecto es un proyecto fin de modulo superior, para ser más exacto, 
  *DAM (Desarrollo de aplicaciones en multiplataforma), de un alumno del centro Gregorio Fernandez (Valladolid),
- *cuyo nombre es Víctor Pastor Urueña, el objetivo de este proyecto es que dicho alumno saque un 10.<br>
+ *cuyo nombre es Víctor Pastor Urueña, el objetivo es crear un proyecto real.<br>
  *Cumpliendo con los requisitos del dicho proyecto, es decir, que resuelva cubos de Rubik.
  *
  * \section Requisitos Requisitos
@@ -147,3 +147,61 @@
  */
 
 /********************************************************************************************************/
+
+//      ____                                                   
+//     |  _ \    ___    ___   _   _   _ __   ___    ___    ___ 
+//     | |_) |  / _ \  / __| | | | | | '__| / __|  / _ \  / __|
+//     |  _ <  |  __/ | (__  | |_| | | |    \__ \ | (_) | \__ \
+//     |_| \_\  \___|  \___|  \__,_| |_|    |___/  \___/  |___/
+
+
+/**
+ * \page Rescusos Rescusos
+ * \section Modelo_3d Modelo 3D
+ * [Model 3D] (https://www.thingiverse.com/thing:2471044)<br>
+ * [Pagina Oficial] (http://www.otvinta.com/)
+ * \section Librerias Librerias
+ * 
+ * \section clases_externas Clases externas
+ * 
+ */
+
+/********************************************************************************************************/
+
+//      _____   _                 _                            _                
+//     | ____| | |   ___    ___  | |_   _ __    ___    _ __   (_)   ___    __ _ 
+//     |  _|   | |  / _ \  / __| | __| | '__|  / _ \  | '_ \  | |  / __|  / _` |
+//     | |___  | | |  __/ | (__  | |_  | |    | (_) | | | | | | | | (__  | (_| |
+//     |_____| |_|  \___|  \___|  \__| |_|     \___/  |_| |_| |_|  \___|  \__,_|
+
+/**
+ * \page Electronica Electronica
+ * \section Montaje Montaje
+ * El montaje del robot esta detellado en la página oficial del robot
+ * 
+ * \section Esquemas Esquemas
+ * 
+ * \section clases_externas Clases externas
+ * 
+ */
+
+/********************************************************************************************************/
+
+//       ____                     _   _   _                 
+//      / ___|  _ __    ___    __| | (_) | |_    ___    ___ 
+//     | |     | '__|  / _ \  / _` | | | | __|  / _ \  / __|
+//     | |___  | |    |  __/ | (_| | | | | |_  | (_) | \__ \
+//      \____| |_|     \___|  \__,_| |_|  \__|  \___/  |___/
+
+/**
+ * \page Creditos Creditos
+ * \section Testers Testers
+ * 
+ * \section Ayudantes Ayudantes
+ * 
+ * 
+ */
+
+
+/********************************************************************************************************/
+
