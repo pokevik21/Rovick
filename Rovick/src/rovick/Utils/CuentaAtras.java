@@ -18,12 +18,19 @@ public class CuentaAtras extends Thread{
     private MainFrame vistaPrincipal = null;
     private SimpleDateFormat sdf = new SimpleDateFormat("mm' min' ss' seg'");
     private String estado = "";
+    private boolean impMng = true; 
     
     public CuentaAtras(MainFrame vista,String estado) {
         this.vistaPrincipal = vista;
         this.estado = estado;
     }
 
+    public CuentaAtras(MainFrame vista,String estado,boolean mensaje) {
+        this.vistaPrincipal = vista;
+        this.estado = estado;
+        this.impMng = mensaje;
+    }
+    
     @Override
     public void run() {
         vistaPrincipal.getPb_progreso().setValue(0);
@@ -44,9 +51,11 @@ public class CuentaAtras extends Thread{
             p_pb.join();
         } catch (InterruptedException ex) {
         }
-        JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
+        if(impMng){
+            JOptionPane.showMessageDialog(vistaPrincipal, "TERMINADO :)");
+            vistaPrincipal.desableButtons(true);
+        }
         vistaPrincipal.resetMoves();
-        vistaPrincipal.desableButtons(true);
     }
      
 }

@@ -154,6 +154,8 @@ public class CubeController{
     }
 
     public String resolverCubo(WebCamController camara){
+        prc= null;
+        camara.cleeanPhotos();
         this.prc = new ProcesoResolverCubo(vistaPrincipal,camara,this);
         prc.start();
         return "";

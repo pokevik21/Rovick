@@ -21,12 +21,31 @@ import rovick.Utils.WebCamController;
  */
 public class ProcesoResolverCubo extends Thread{
     
-    static int POS_X_LEFT = 85;
+    private int range_centro = 40;
+    private int range_cara = 40;
+    private int range_X_cara = 10;
+    private int range_Y_cara = 10;
+    
+    /*static int POS_X_LEFT = 85;
     static int POS_X_CENTER = 269;
     static int POS_X_RIGHT = 514;
     static int POS_Y_UP = 45;
     static int POS_Y_MID = 240;
-    static int POS_Y_BOT = 450;
+    static int POS_Y_BOT = 450;*/
+    
+    /*static int POS_X_LEFT = 17;
+    static int POS_X_CENTER = 242;
+    static int POS_X_RIGHT = 466;
+    static int POS_Y_UP = 12;
+    static int POS_Y_MID = 203;
+    static int POS_Y_BOT = 434;*/
+    
+    static int POS_X_LEFT = 60;
+    static int POS_X_CENTER = 333;
+    static int POS_X_RIGHT = 579;
+    static int POS_Y_UP = 23;
+    static int POS_Y_MID = 172;
+    static int POS_Y_BOT = 419;
     
     private ArrayList<float[]> centros;
     private byte[][] cube = null;
@@ -93,7 +112,7 @@ public class ProcesoResolverCubo extends Thread{
      * @return 
      */
     private byte sacarColor(BufferedImage image, int pos_x, int pos_y){
-        float[] color = avg(image, pos_x, pos_y, 10);
+        float[] color = avg(image, pos_x, pos_y, range_X_cara, range_Y_cara);
         
         //System.out.println("\t"+color[0] +"\t"+color[1]+"\t"+color[2]);
         
@@ -256,6 +275,44 @@ public class ProcesoResolverCubo extends Thread{
      return RGB;
     }
     
+    /**
+     * Calcula el promedio de RGB de la imagen en las coordenadas especificadas 
+     * y en un cubo de tamaño especificado en el parametro tam.
+     * @param image Imagen a analizar.
+     * @param coord_x Coordendas en X. tamaño del cuadrado X
+     * @param coord_y Coordendas en Y. tamaño del cuadrado Y
+     * @param tam Tamaño del cubo del cual sacará el promedio.
+     * @return Array con los promedios de RGB en las posiciones 0,1,2 en orden.
+     */
+    private float[] avg(BufferedImage image, int coord_x , int coord_y, int tam_x, int tam_y){
+        
+        float[] RGB = new float[3];
+        
+        float totalR = 0;
+        float totalG = 0;
+        float totalB = 0;
+        
+        for (int i = 0; i < tam_y; i++) {
+            for (int j = 0; j < tam_x; j++) {
+                Color c_pos = new Color(image.getRGB(coord_x + j, coord_y +i));
+                
+                totalR += c_pos.getRed();
+                totalG += c_pos.getGreen();
+                totalB += c_pos.getBlue();
+            }
+        }
+        
+        RGB[0] = (float)(totalR/(tam_x*tam_y));
+        RGB[1] = (float)(totalG/(tam_x*tam_y));
+        RGB[2] = (float)(totalB/(tam_x*tam_y));
+
+     return RGB;
+    }
+    
+    /**
+     * Devuelve un string con los movimientos para resolver el cubo
+     * @return 
+     */
     private String getSolution(){
         String solucion = "";
         try {
@@ -272,16 +329,16 @@ public class ProcesoResolverCubo extends Thread{
     
     @Override
     public void run() {
-        vistaPrincipal.addTimeCalendar(55);
-        new CuentaAtras(vistaPrincipal, "Analizando cubo").start();
+        vistaPrincipal.addTimeCalendar(27);
+        CuentaAtras cuenta = new CuentaAtras(vistaPrincipal, "Analizando cubo",false);
+        cuenta.start();
         vistaPrincipal.desableButtons(false);
         vistaPrincipal.getBt_parar().setEnabled(true);
-        camara.cleeanPhotos();
         boolean old_luzEstado = vistaPrincipal.isLuz_encendida();
         vistaPrincipal.encenderLuz();
 
         //Hacer movimientos y fotos
-        /*try {
+        try {
             hacerPaso("1", "5_1", 2500);
             hacerPaso("2", "5_2", 1000);
             hacerPaso("3", "4",   1000);
@@ -293,10 +350,12 @@ public class ProcesoResolverCubo extends Thread{
             hacerPaso("9", "",    6000);
         } catch (Exception e) {
             System.err.println("Interrumpido");
-        }*/
+            cuenta.interrupt();
+            cubo.doMove("E", false);
+        }
         
         try {
-            String dir = "test_images";
+            String dir = "tmp_images";
             image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/1.png")));
             image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/2.png")));
             image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_1.png")));
@@ -308,13 +367,12 @@ public class ProcesoResolverCubo extends Thread{
             
             centros = new ArrayList<>();
             
-            int rango_avg = 10;
-            centros.add(avg(image_1,237 ,250,rango_avg));
-            centros.add(avg(image_2,237 ,250,rango_avg));
-            centros.add(avg(image_3_1,237 ,250,rango_avg));
-            centros.add(avg(image_4,237 ,250,rango_avg));
-            centros.add(avg(image_5_1,237 ,250,rango_avg));
-            centros.add(avg(image_6,237 ,250,rango_avg));
+            centros.add(avg(image_1,237 ,250,range_centro));
+            centros.add(avg(image_2,237 ,250,range_centro));
+            centros.add(avg(image_3_1,237 ,250,range_centro));
+            centros.add(avg(image_4,237 ,250,range_centro));
+            centros.add(avg(image_5_1,237 ,250,range_centro));
+            centros.add(avg(image_6,237 ,250,range_centro));
 
             cube = new byte[6][9];
             int[] orInversa = {8,7,6,5,4,3,2,1,0};
@@ -326,7 +384,7 @@ public class ProcesoResolverCubo extends Thread{
             cube[5]=analizarCara(image_6,orInversa);
             
             //imprimir cubo:
-            imprimirCubo("Bl", "Na", "Ve", "Ro", "Az", "Am");
+            //imprimirCubo("Bl", "Na", "Ve", "Ro", "Az", "Am");
             
             //sacar numero de colores repetidos:
             int[] colores = new int[6];
@@ -339,15 +397,18 @@ public class ProcesoResolverCubo extends Thread{
             
             //imprimir repetidos:
             boolean fallo = false;
+            String[] posiciones = {"Arriba","Izquierda","Frontal","Derecha","Trasera","Abajo"};
             String txt_repetidos = "";
             for (int i = 0; i < colores.length; i++) {
                 int color = colores[i];
                 if(color != 9) fallo = true;
-                System.out.println("Color num "+i+", está repetido: "+color);
-                txt_repetidos += "Color num "+i+", está repetido: "+color +"\n";
+                System.out.println("Color de la posición "+posiciones[i]+", está repetido: "+color);
+                txt_repetidos += "Color de la posición "+posiciones[i]+", está repetido: "+color +"\n";
             }
             
             if (fallo){
+                cubo.doMove("E", false);
+                if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
                 JOptionPane.showMessageDialog(vistaPrincipal, "La lectura de colores ha fallado.\n Asegurate de tener una buena iluminacion y vuelve a intentarlo.\nResultados:\n"+txt_repetidos, "Fallo lectura de colores", JOptionPane.ERROR_MESSAGE);
             }else{
                 StringTokenizer solucion = new StringTokenizer(getSolution()," ");
@@ -366,27 +427,28 @@ public class ProcesoResolverCubo extends Thread{
                 
                 if(!vistaPrincipal.getCb_soloAlg().isSelected()){
                     vistaPrincipal.doAllMovs();
+                }else{
+                    cubo.doMove("E", false);
                 }
             }
         } catch (IOException ex) {
             Logger.getLogger(ProcesoResolverCubo.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-        //cubo.doMove("E", false);
         vistaPrincipal.desableButtons(true);
         if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
         
-        image_1.flush();
-        image_2.flush();
-        image_3_1.flush();
-        image_3_2.flush();
-        image_4.flush();
-        image_5_1.flush();
-        image_5_2.flush();
-        image_6.flush();
-        centros.clear();
+        image_1 = null;
+        image_2= null;
+        image_3_1= null;
+        image_3_2= null;
+        image_4= null;
+        image_5_1= null;
+        image_5_2= null;
+        image_6= null;
+        centros= null;
         this.cube=null;
-        vistaPrincipal.clearPhotos();
+        //vistaPrincipal.clearPhotos();
     }
 
 }

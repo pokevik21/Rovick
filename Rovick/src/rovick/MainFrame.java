@@ -9,6 +9,7 @@ package rovick;
 import rovick.Utils.WebCamController;
 import rovick.Utils.Utiles;
 import com.panamahitek.ArduinoException;
+import com.sun.glass.events.KeyEvent;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Desktop;
@@ -16,10 +17,6 @@ import java.awt.Toolkit;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,13 +77,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         @Override
         public void keyPressed(java.awt.event.KeyEvent e) {
-            try {
-                File htmlFile = new File("doc/html/index.html");
-                Desktop.getDesktop().browse(htmlFile.toURI());
-            } catch (IOException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            if(e.getKeyCode() == KeyEvent.VK_F1){
+                try {
+                    File htmlFile = new File("doc/html/index.html");
+                    Desktop.getDesktop().browse(htmlFile.toURI());
+                } catch (IOException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            
         }
 
         @Override
@@ -371,7 +369,7 @@ public class MainFrame extends javax.swing.JFrame {
      * Envia orden al arduino para encender los LEDs del robot
      */
     public void encenderLuz(){
-        if(luz_encendida){
+        if(!luz_encendida){
             try {
                 cuboController.getArduino().sendData("Z;");
                 luz_encendida=true;
