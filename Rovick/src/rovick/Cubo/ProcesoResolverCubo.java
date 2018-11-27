@@ -21,24 +21,15 @@ import rovick.Utils.WebCamController;
  */
 public class ProcesoResolverCubo extends Thread{
     
+    
+//        __     __                 _           _       _              
+//        \ \   / /   __ _   _ __  (_)   __ _  | |__   | |   ___   ___ 
+//         \ \ / /   / _` | | '__| | |  / _` | | '_ \  | |  / _ \ / __|
+//          \ V /   | (_| | | |    | | | (_| | | |_) | | | |  __/ \__ \
+//           \_/     \__,_| |_|    |_|  \__,_| |_.__/  |_|  \___| |___/
+    
     private int range_centro = 40;
-    private int range_cara = 40;
-    private int range_X_cara = 10;
-    private int range_Y_cara = 10;
-    
-    /*static int POS_X_LEFT = 85;
-    static int POS_X_CENTER = 269;
-    static int POS_X_RIGHT = 514;
-    static int POS_Y_UP = 45;
-    static int POS_Y_MID = 240;
-    static int POS_Y_BOT = 450;*/
-    
-    /*static int POS_X_LEFT = 17;
-    static int POS_X_CENTER = 242;
-    static int POS_X_RIGHT = 466;
-    static int POS_Y_UP = 12;
-    static int POS_Y_MID = 203;
-    static int POS_Y_BOT = 434;*/
+    private int range_cara = 10;
     
     static int POS_X_LEFT = 60;
     static int POS_X_CENTER = 333;
@@ -63,6 +54,16 @@ public class ProcesoResolverCubo extends Thread{
     private WebCamController camara = null;
     private CubeController cubo = null;
 
+/****************************************** END VARIABLES ***********************************************/ 
+    
+    
+    
+//       ____                         _                           _                  
+//      / ___|   ___    _ __    ___  | |_   _ __   _   _    ___  | |_    ___    _ __ 
+//     | |      / _ \  | '_ \  / __| | __| | '__| | | | |  / __| | __|  / _ \  | '__|
+//     | |___  | (_) | | | | | \__ \ | |_  | |    | |_| | | (__  | |_  | (_) | | |   
+//      \____|  \___/  |_| |_| |___/  \__| |_|     \__,_|  \___|  \__|  \___/  |_|   
+    
     /**
      * Contructor del proceso, el cual se encarga de resolver el cubo.
      * @param vistaPrincipal Clase de la vista para modificar la acrivacion de botones
@@ -76,7 +77,17 @@ public class ProcesoResolverCubo extends Thread{
 
     }
 
-/**
+/****************************************** END CONSTRUCTOR ***********************************************/    
+    
+    
+    
+//        __  __          _                 _               
+//       |  \/  |   ___  | |_    ___     __| |   ___    ___ 
+//       | |\/| |  / _ \ | __|  / _ \   / _` |  / _ \  / __|
+//       | |  | | |  __/ | |_  | (_) | | (_| | | (_) | \__ \
+//       |_|  |_|  \___|  \__|  \___/   \__,_|  \___/  |___/
+    
+ /**
  * 
  * @param move Movimiento ha realizar
  * @param foto Nombre de la foto que se pone.
@@ -88,7 +99,6 @@ public class ProcesoResolverCubo extends Thread{
             sleep(seg + 300);
             if(!foto.isEmpty())camara.takePhoto(foto);
     }
-    
     
     /**
      * Metodo que calcula la distanci de colores entre el centro y el color pasado
@@ -112,7 +122,7 @@ public class ProcesoResolverCubo extends Thread{
      * @return 
      */
     private byte sacarColor(BufferedImage image, int pos_x, int pos_y){
-        float[] color = avg(image, pos_x, pos_y, range_X_cara, range_Y_cara);
+        float[] color = avg(image, pos_x, pos_y, range_cara);
         
         //System.out.println("\t"+color[0] +"\t"+color[1]+"\t"+color[2]);
         
@@ -128,51 +138,6 @@ public class ProcesoResolverCubo extends Thread{
        //System.out.println("intesidad:"+Arrays.toString(color) +"  ; mejor_distancia:"+mejor_distancia  +"  mejor:"+mejor_color);
         return (byte)mejor_color;  
     }   
-    
-    /**
-     * Metodo para imprimir todo el cubo, esto se es un metodo de Debug,
-     * hay que pasrle los nombres de los colores en el orden de las imágenes.
-     * @param c1 centro 1
-     * @param c2 centro 2
-     * @param c3 centro 3
-     * @param c4 centro 4
-     * @param c5 centro 5
-     * @param c6 centro 6
-     */
-    private void imprimirCubo(String c1,String c2,String c3,String c4,String c5,String c6){
-        for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 9; j++) {
-                       String color = "";
-                    switch (cube[i][j]) {
-                        case 0:
-                            color = c1;
-                            break;
-                        case 1:
-                            color = c2;
-                            break;
-                        case 2:
-                            color = c3;
-                            break;
-                        case 3:
-                            color = c4;
-                            break;
-                        case 4:
-                            color = c5;
-                            break;
-                        case 5:
-                            color = c6;
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-                    System.out.print(" ["+color+"] "); 
-                    int lin = j+1;
-                    if(lin!=0 && lin!=1 && lin%3 == 0)System.out.println("");
-
-                }
-                System.out.println("*********************************************");
-            }
-    }
     
     /**
      * Metodo encargado de analizar todas las caras de una imagen,
@@ -196,7 +161,7 @@ public class ProcesoResolverCubo extends Thread{
         return colores;
     }
     
-        /**
+    /**
      * Metodo encargado de analizar todas las caras de una imagen,
      * con determinadas posiciones.
      * @param image Imagen a analizar
@@ -276,40 +241,6 @@ public class ProcesoResolverCubo extends Thread{
     }
     
     /**
-     * Calcula el promedio de RGB de la imagen en las coordenadas especificadas 
-     * y en un cubo de tamaño especificado en el parametro tam.
-     * @param image Imagen a analizar.
-     * @param coord_x Coordendas en X. tamaño del cuadrado X
-     * @param coord_y Coordendas en Y. tamaño del cuadrado Y
-     * @param tam Tamaño del cubo del cual sacará el promedio.
-     * @return Array con los promedios de RGB en las posiciones 0,1,2 en orden.
-     */
-    private float[] avg(BufferedImage image, int coord_x , int coord_y, int tam_x, int tam_y){
-        
-        float[] RGB = new float[3];
-        
-        float totalR = 0;
-        float totalG = 0;
-        float totalB = 0;
-        
-        for (int i = 0; i < tam_y; i++) {
-            for (int j = 0; j < tam_x; j++) {
-                Color c_pos = new Color(image.getRGB(coord_x + j, coord_y +i));
-                
-                totalR += c_pos.getRed();
-                totalG += c_pos.getGreen();
-                totalB += c_pos.getBlue();
-            }
-        }
-        
-        RGB[0] = (float)(totalR/(tam_x*tam_y));
-        RGB[1] = (float)(totalG/(tam_x*tam_y));
-        RGB[2] = (float)(totalB/(tam_x*tam_y));
-
-     return RGB;
-    }
-    
-    /**
      * Devuelve un string con los movimientos para resolver el cubo
      * @return 
      */
@@ -327,6 +258,59 @@ public class ProcesoResolverCubo extends Thread{
         return solucion;
     }
     
+    /**
+     * Metodo para imprimir todo el cubo, esto se es un metodo de Debug,
+     * hay que pasrle los nombres de los colores en el orden de las imágenes.
+     * @param c1 centro 1
+     * @param c2 centro 2
+     * @param c3 centro 3
+     * @param c4 centro 4
+     * @param c5 centro 5
+     * @param c6 centro 6
+     */
+    private void imprimirCubo(String c1,String c2,String c3,String c4,String c5,String c6){
+        for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 9; j++) {
+                       String color = "";
+                    switch (cube[i][j]) {
+                        case 0:
+                            color = c1;
+                            break;
+                        case 1:
+                            color = c2;
+                            break;
+                        case 2:
+                            color = c3;
+                            break;
+                        case 3:
+                            color = c4;
+                            break;
+                        case 4:
+                            color = c5;
+                            break;
+                        case 5:
+                            color = c6;
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                    System.out.print(" ["+color+"] "); 
+                    int lin = j+1;
+                    if(lin!=0 && lin!=1 && lin%3 == 0)System.out.println("");
+
+                }
+                System.out.println("*********************************************");
+            }
+    }
+    
+    /****************************************** END METODOS ***********************************************/ 
+    
+//       ____                  
+//      |  _ \   _   _   _ __  
+//      | |_) | | | | | | '_ \ 
+//      |  _ <  | |_| | | | | |
+//      |_| \_\  \__,_| |_| |_|
+    
     @Override
     public void run() {
         vistaPrincipal.addTimeCalendar(27);
@@ -338,7 +322,7 @@ public class ProcesoResolverCubo extends Thread{
         vistaPrincipal.encenderLuz();
 
         //Hacer movimientos y fotos
-        /*try {
+        try {
             hacerPaso("1", "5_1", 2500);
             hacerPaso("2", "5_2", 1000);
             hacerPaso("3", "4",   1000);
@@ -352,7 +336,7 @@ public class ProcesoResolverCubo extends Thread{
             System.err.println("Interrumpido");
             cuenta.interrupt();
             cubo.doMove("E", false);
-        }*/
+        }
         
         try {
             String dir = "test_images";
@@ -451,4 +435,6 @@ public class ProcesoResolverCubo extends Thread{
         //vistaPrincipal.clearPhotos();
     }
 
+    /****************************************** END RUN ***********************************************/ 
+    
 }
