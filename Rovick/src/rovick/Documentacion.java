@@ -136,11 +136,23 @@
  * 
  * \subsection Tabla Tabla materiales
  * 
- * |Matrial|Cantidad|Precio(euros)|
+ * |Matrial|Cantidad|Precio(€)|
  * |:-----:|:-----:|:-------:|
- * |PLA-negro |1Kg|16,00|
- * |PLA-blanco|1Kg|16,00|
- * | | | |
+ * |PLA-negro |1Kg|16,00€|
+ * |PLA-blanco|1Kg|16,00€|
+ * |DS3218 Servo Motor with Horn|4|En pack de 4 - 24,38€|
+ * |Hitec HS-311 Servo Motor|4|En pack de 4 - 36,60€|
+ * |150mm Servo Extension Lead, Male-to-Female|4|En pack de 10 - 1,24€|
+ * |PCA9685 16 Canal 12-bit PWM/servo Driver|1|3,13€|
+ * |Arduino NANO|1|2,15€|
+ * |Rock PD cargador(alimentar motores)|1|8,97€|
+ * |Kebidumei USB 30 m(camara)|1|3,78€|
+ * |Cables macho y hembras para Arduino|1|Pack - 1,71|
+ * |Metrica M3-12 Tornillo cabeza avellanda|80|5,00€|
+ * |Metrica 12 - Tuercas|40|3,00€|
+ * |Tornillo perforante - 2mm|10|1,00€|
+ * |Tira de LED's luz fria|1|12,36€|
+ * ||||
  * 
  * \subsection total Total
  * 
@@ -159,7 +171,7 @@
  * \page Rescusos Rescusos
  * \section Modelo_3d Modelo 3D
  * [Model 3D] (https://www.thingiverse.com/thing:2471044)<br>
- * [Pagina Oficial] (http://www.otvinta.com/)
+ * [Pagina Oficial] (http://www.rcr3d.com/)
  * \section Librerias Librerias
  * 
  * \section clases_externas Clases externas
@@ -205,3 +217,23 @@
 
 /********************************************************************************************************/
 
+//       _____   _                                          
+//      |_   _| (_)   ___   _ __ ___    _ __     ___    ___ 
+//        | |   | |  / _ \ | '_ ` _ \  | '_ \   / _ \  / __|
+//        | |   | | |  __/ | | | | | | | |_) | | (_) | \__ \
+//        |_|   |_|  \___| |_| |_| |_| | .__/   \___/  |___/
+//                                     |_|               
+
+/**
+ * \page Tiempos Tiempos
+ * \section Montaje Montaje
+ * 
+ * \subsection Hardware Hardware
+ * 
+ * \section Software Software
+ * 
+ * \subsection Arduino Arduino
+ * 
+ * \subsection Java Java
+ * 
+ */
