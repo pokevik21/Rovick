@@ -338,7 +338,7 @@ public class ProcesoResolverCubo extends Thread{
         vistaPrincipal.encenderLuz();
 
         //Hacer movimientos y fotos
-        try {
+        /*try {
             hacerPaso("1", "5_1", 2500);
             hacerPaso("2", "5_2", 1000);
             hacerPaso("3", "4",   1000);
@@ -352,10 +352,10 @@ public class ProcesoResolverCubo extends Thread{
             System.err.println("Interrumpido");
             cuenta.interrupt();
             cubo.doMove("E", false);
-        }
+        }*/
         
         try {
-            String dir = "tmp_images";
+            String dir = "test_images";
             image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/1.png")));
             image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/2.png")));
             image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_1.png")));
