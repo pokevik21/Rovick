@@ -339,7 +339,7 @@ public class ProcesoResolverCubo extends Thread{
         }
         
         try {
-            String dir = "test_images";
+            String dir = "tmp_images";
             image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/1.png")));
             image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/2.png")));
             image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_1.png")));
@@ -421,7 +421,15 @@ public class ProcesoResolverCubo extends Thread{
     
         vistaPrincipal.desableButtons(true);
         if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
-        
+       
+        image_1.flush();
+        image_2.flush();
+        image_3_1.flush();
+        image_3_2.flush();
+        image_4.flush();
+        image_5_1.flush();
+        image_5_2.flush();
+        image_6.flush();
         image_1 = null;
         image_2= null;
         image_3_1= null;
@@ -431,6 +439,7 @@ public class ProcesoResolverCubo extends Thread{
         image_5_2= null;
         image_6= null;
         centros= null;
+
         this.cube=null;
         //vistaPrincipal.clearPhotos();
     }
