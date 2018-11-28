@@ -441,7 +441,7 @@ public class ProcesoResolverCubo extends Thread{
         centros= null;
 
         this.cube=null;
-        //vistaPrincipal.clearPhotos();
+        vistaPrincipal.clearPhotos();
     }
 
     /****************************************** END RUN ***********************************************/ 

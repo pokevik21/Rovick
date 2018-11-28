@@ -18,7 +18,7 @@
  * - Cubo de rubik sin pegatina en la cara del blanco
  * 
  * \section Instrucciones  Instrucciones
- * - Conectar el Arduino a uno de los USB del ordenador <b>antes</b> de cargar la aplicación.
+ * - Conectar el Arduino y la camara a uno de los USB del ordenador <b>antes</b> de cargar la aplicación.
  * - Ejecutar el .jar de la aplicacion Rovick.jar
  * - Colocar el cubo en el gancho inferior de froma centrada.
  * - Disfrutar de esta increible aplicacion.

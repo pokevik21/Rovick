@@ -714,7 +714,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         lb_txtPort.setText("Puerto:");
 
-        lb_port.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lb_port.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         lb_port.setForeground(new java.awt.Color(0, 102, 255));
         lb_port.setText("port");
 
@@ -812,21 +812,23 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(117, 117, 117)
-                                        .addComponent(cb_soloAlg)
-                                        .addGap(106, 106, 106)
-                                        .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(bt_deshacer)
-                                        .addGap(84, 84, 84)
-                                        .addComponent(lb_txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lb_port))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(cb_hacerSegunPulsas)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(sp_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(bt_resolver))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(117, 117, 117)
+                                                .addComponent(cb_soloAlg)
+                                                .addGap(106, 106, 106)
+                                                .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(bt_deshacer))
+                                            .addComponent(bt_resolver))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lb_txtPort)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lb_port)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -917,11 +919,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(bt_resolver)
                         .addComponent(cb_soloAlg))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lb_port)
-                        .addComponent(lb_txtPort))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sp_deshacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bt_deshacer))
+                        .addComponent(bt_deshacer)
+                        .addComponent(lb_txtPort)
+                        .addComponent(lb_port))
                     .addComponent(bt_realizarMovs))
                 .addContainerGap())
         );
