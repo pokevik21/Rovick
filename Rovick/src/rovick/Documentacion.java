@@ -245,19 +245,19 @@
  * \page Tiempos Tiempos
  * Cuenta del tiempo invertido en el proyecto.
  * \section Hardware Hardware
- * - Tiempo total de impresion: 98h 50min  [Mas detalle...](DoxyRecursos/Tiempos.txt)
+ * - Tiempo total de impresion: 98h 50min  [Mas detalle...](https://github.com/pokevik21/Rovick/blob/master/Rovick/doc/DoxyRecursos/Tiempos.txt)
  * - Preparacion de las piezas: 40min
  * - Retirar piezas y configurar sigiente: 20min
  * - Tiempo de calibrar la impresora: 1h(varias veces) 
  * - Lijado de piezas: 1h 30min
- * - Montaje del Robot: 2h
+ * - Montaje del Robot: 2h 30min
  * - Calibrar un brazo: 2h 30min
  * - Calibrar el resto: 2h 30min
  * - Clasificar cables y conectarlos : 30min
  * - Soldar tira LEDs: 1h 30min
  * - Colocar LEDs: 20min
  * <br><br>
- * - Total hardware: 10h 50min
+ * - Total hardware: 11h 20min
  * \section Software Software
  * - Movimientos, Aruino: 5h 30min
  * - Interfaz, sin nada: 1h
@@ -271,12 +271,13 @@
  * - Clase de Utils: 30min
  * - Clase de Camara: 30min
  * - Detector de color: 5h
+ * - Calibrar coodenadas de colores: 1h
  * - Documentar: 3h
  * - Aprender Doxigen: 2h
  * - Diseñar imagenes: 1h 30min
  * <br><br>
- * - Total software: 33h 15min
+ * - Total software: 34h 15min
  *  
  * \section Total Total
- * 44h 05min 
+ * <h2>45h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
  */
