@@ -1,0 +1,4 @@
+<map id="rovick.MainFrame.removeTime" name="rovick.MainFrame.removeTime">
+<area shape="rect" id="node2" href="$classrovick_1_1_main_frame.html#a27c198265fb7a3f149b95aaac12bf9f0" title="Borra el ultimo movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos. " alt="" coords="251,5,475,32"/>
+<area shape="rect" id="node3" href="$classrovick_1_1_main_frame.html#ae86ba9303e2d718d8d06fb9a46a7836c" title="Borra el primer movimiento del ArrayList movimientos, y ajusta los tiempos y los movimientos. " alt="" coords="251,56,476,83"/>
+</map>

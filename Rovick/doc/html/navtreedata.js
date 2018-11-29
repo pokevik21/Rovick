@@ -25,7 +25,7 @@ var NAVTREE =
 [
   [ "Rovick", "index.html", [
     [ "Pagina principal", "index.html", [
-      [ "Concepto del proyecto", "index.html#intro_sec", null ],
+      [ "Concepto del proyecto", "index.html#Concepto", null ],
       [ "Requisitos", "index.html#Requisitos", null ],
       [ "Instrucciones", "index.html#Instrucciones", null ]
     ] ],
@@ -41,25 +41,25 @@ var NAVTREE =
         [ "Resolver cubo", "_diagramas.html#Resolver_cubo", null ]
       ] ]
     ] ],
-    [ "Materiales", "_materiales.html", [
-      [ "Impresora 3D", "_materiales.html#Impresora_3D", null ],
-      [ "material-precio", "_materiales.html#material-precio", [
-        [ "Tabla materiales", "_materiales.html#Tabla", null ],
-        [ "Total", "_materiales.html#total", null ]
-      ] ]
-    ] ],
     [ "Rescusos", "_rescusos.html", [
+      [ "Impresora 3D", "_rescusos.html#Impresora_3D", null ],
       [ "Modelo 3D", "_rescusos.html#Modelo_3d", null ],
-      [ "Librerias", "_rescusos.html#Librerias", null ],
-      [ "Clases externas", "_rescusos.html#clases_externas", null ]
+      [ "material-precio", "_rescusos.html#material-precio", null ],
+      [ "Clases externas", "_rescusos.html#clases_externas", null ],
+      [ "Librerias", "_rescusos.html#Librerias", null ]
     ] ],
     [ "Electronica", "_electronica.html", [
       [ "Montaje", "_electronica.html#Montaje", null ],
-      [ "Esquemas", "_electronica.html#Esquemas", null ]
+      [ "Esquema", "_electronica.html#Esquemas", null ]
     ] ],
     [ "Creditos", "_creditos.html", [
       [ "Testers", "_creditos.html#Testers", null ],
       [ "Ayudantes", "_creditos.html#Ayudantes", null ]
+    ] ],
+    [ "Tiempos", "_tiempos.html", [
+      [ "Hardware", "_tiempos.html#Hardware", null ],
+      [ "Software", "_tiempos.html#Software", null ],
+      [ "Total", "_tiempos.html#Total", null ]
     ] ],
     [ "Módulos", "modules.html", "modules" ],
     [ "Clases", "annotated.html", [

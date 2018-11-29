@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['materiales',['Materiales',['../_materiales.html',1,'']]]
+  ['pagina_20principal',['Pagina principal',['../index.html',1,'']]]
 ];

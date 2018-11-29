@@ -16,6 +16,14 @@ public class ProgressBar extends Thread{
     private JLabel lb_estado = null;
     private String estado = "";
     
+    /**
+     * Contructor del proceso.
+     * @param pb JProgressBar a la que añade.
+     * @param segs Segundos.
+     * @param equiv Cuanto vale cada segundo. Ej,10 => 1s=1/10s.
+     * @param lb_estado JLabel a la que pone en que estado se encuetra.
+     * @param estado String del estado.
+     */
     public ProgressBar(JProgressBar pb,long segs,int equiv,JLabel lb_estado, String estado) {
         this.pb=pb;
         this.equiv = equiv;
@@ -23,6 +31,7 @@ public class ProgressBar extends Thread{
         this.lb_estado = lb_estado;
         this.estado = estado;
     }
+
 
     /**
      * Metodo para iniciar el proceso de la ProgressBar

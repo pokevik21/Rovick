@@ -7,19 +7,25 @@
 
 /** \mainpage Pagina principal
  *
- * \section intro_sec Concepto del proyecto
+ * \section Concepto Concepto del proyecto
  *
  *Este proyecto es un proyecto fin de modulo superior, para ser más exacto, 
  *DAM (Desarrollo de aplicaciones en multiplataforma), de un alumno del centro Gregorio Fernandez (Valladolid),
  *cuyo nombre es Víctor Pastor Urueña, el objetivo es crear un proyecto real.<br>
  *Cumpliendo con los requisitos del dicho proyecto, es decir, que resuelva cubos de Rubik.
- *
+ *<h3>A dejar en claro</h3>
+ * El proyecto no lo he hecho yo al 100% algunas partes de el la he reutilizado de 
+ * otros proyectos, por ejemplo el modelo 3D no lo he diseñado yo ni tampoco
+ * la clase de java que me genera el algoritomo de resolucion, los detalles 
+ * sobre los esto está en el pagina de [Recursos](@ref Rescusos)
+ * 
  * \section Requisitos Requisitos
- * - Cubo de rubik sin pegatina en la cara del blanco
+ * - Cubo de rubik sin pegatina de la marca en el centro blanco.
+ * - 2 puetos USB's libres en el ordenador al que lo conecteis.
  * 
  * \section Instrucciones  Instrucciones
  * - Conectar el Arduino y la camara a uno de los USB del ordenador <b>antes</b> de cargar la aplicación.
- * - Ejecutar el .jar de la aplicacion Rovick.jar
+ * - Ejecutar el .jar o .exe de la aplicacion Rovick
  * - Colocar el cubo en el gancho inferior de froma centrada.
  * - Disfrutar de esta increible aplicacion.
  *  
@@ -36,6 +42,7 @@
 
 /**
  * \page Uso Guia de uso
+ * Descripcion de como utilizar esta aplicación.
  * \section Botones Botones de movimiento
  * Los botones de movimiento son como este:
  * ![boton de movimiento] (DoxyRecursos/images/R.png)
@@ -103,6 +110,8 @@
 
 /**
  * \page Diagramas Diagramas
+ * Pagina donde se visualizan los diversos diagramas.
+ * 
  * \section De_Uso De uso
  * 
  * \subsection Hacer_movimiento Hacer movimiento
@@ -117,49 +126,6 @@
 
 /********************************************************************************************************/
 
-
-//        __  __           _                   _           _              
-//       |  \/  |   __ _  | |_    ___   _ __  (_)   __ _  | |   ___   ___ 
-//       | |\/| |  / _` | | __|  / _ \ | '__| | |  / _` | | |  / _ \ / __|
-//       | |  | | | (_| | | |_  |  __/ | |    | | | (_| | | | |  __/ \__ \
-//       |_|  |_|  \__,_|  \__|  \___| |_|    |_|  \__,_| |_|  \___| |___/
-
-
-/**
- * \page Materiales Materiales
- * \section Impresora_3D Impresora 3D
- * 
- * El modelo de la impresora con que se hizo este proyecto ha sido una Anet-8,
- * pero se puede hacer con cualquir impresora 3d.
- * 
- * \section material-precio material-precio
- * 
- * \subsection Tabla Tabla materiales
- * 
- * |Matrial|Cantidad|Precio(€)|
- * |:-----:|:-----:|:-------:|
- * |PLA-negro |1Kg|16,00€|
- * |PLA-blanco|1Kg|16,00€|
- * |DS3218 Servo Motor with Horn|4|En pack de 4 - 24,38€|
- * |Hitec HS-311 Servo Motor|4|En pack de 4 - 36,60€|
- * |150mm Servo Extension Lead, Male-to-Female|4|En pack de 10 - 1,24€|
- * |PCA9685 16 Canal 12-bit PWM/servo Driver|1|3,13€|
- * |Arduino NANO|1|2,15€|
- * |Rock PD cargador(alimentar motores)|1|8,97€|
- * |Kebidumei USB 30 m(camara)|1|3,78€|
- * |Cables macho y hembras para Arduino|1|Pack - 1,71|
- * |Metrica M3-12 Tornillo cabeza avellanda|80|5,00€|
- * |Metrica 12 - Tuercas|40|3,00€|
- * |Tornillo perforante - 2mm|10|1,00€|
- * |Tira de LED's luz fria|1|12,36€|
- * ||||
- * 
- * \subsection total Total
- * 
- */
-
-/********************************************************************************************************/
-
 //      ____                                                   
 //     |  _ \    ___    ___   _   _   _ __   ___    ___    ___ 
 //     | |_) |  / _ \  / __| | | | | | '__| / __|  / _ \  / __|
@@ -169,13 +135,53 @@
 
 /**
  * \page Rescusos Rescusos
+ * Pagina en la que se muestran todo
+ * 
+ * \section Impresora_3D Impresora 3D
+ * El modelo de la impresora con que se hizo este proyecto ha sido una Anet-8,
+ * pero se puede hacer con cualquir impresora 3d.
+ * 
  * \section Modelo_3d Modelo 3D
  * [Model 3D] (https://www.thingiverse.com/thing:2471044)<br>
  * [Pagina Oficial] (http://www.rcr3d.com/)
- * \section Librerias Librerias
+ * 
+ * \section material-precio material-precio
+ * <h3>Tabla materiales</h3>
+ * |Matrial|Cantidad|Precio|
+ * |:-----|:-----:|:-------|
+ * |PLA-negro |1Kg|16,00€|
+ * |PLA-blanco|1Kg|16,00€|
+ * |DS3218 Servo Motor with Horn|4|En pack de 4 - 24,38€|
+ * |Hitec HS-311 Servo Motor|4|En pack de 4 - 36,60€|
+ * |150mm Servo Extension Lead, Male-to-Female|4|En pack de 10 - 1,24€|
+ * |PCA9685 16 Canal 12-bit PWM/servo Driver|1|3,13€|
+ * |Arduino NANO - CH340|1|2,15€|
+ * |Rock PD cargador(alimentar motores)|1|8,97€|
+ * |Kebidumei USB 30 m(camara)|1|3,78€|
+ * |Cables macho y hembras para Arduino|1|Pack - 1,71€|
+ * |Metrica M3-12 Tornillo cabeza avellanda|80|5,00€|
+ * |Metrica 12 - Tuercas|40|3,00€|
+ * |Tornillo perforante - 2mm|10|1,00€|
+ * |Tira de LED's luz fria|1|12,36€|
+ * |Cubo de Rubick|1|12,00€|
+ * <h3>Total</h3>
+ * 
+ * Sumando todo lo anterior el total es: 147,32€
  * 
  * \section clases_externas Clases externas
- * 
+ * Las clses extrenas son:
+ * - [SolverCube](@ref SolveCube.java), principal<br>
+ * Y las necesarias para que esta clase funcione:
+ * - [TableGenerator](@ref TableGenerator.java)
+ * - stage0.txt
+ * - stage1.txt
+ * - stage2.txt
+ * - stage3.txt<br>
+ * Estas clases están sacadas del otro proyecto de gitHub:<br>
+ * [GitHub del proyecto] (https://github.com/HaginCodes/3x3x3-Rubiks-Cube-Solver)
+ * \section Librerias Librerias
+ * - Libreria de Arduino, [PanamaHitek] (http://panamahitek.com/arduino-java/)
+ * - Libreria de WebCam, [webcam-capture] (http://www.webcam-capture.sarxos.pl/)
  */
 
 /********************************************************************************************************/
@@ -188,13 +194,22 @@
 
 /**
  * \page Electronica Electronica
+ * Apartado de conexiones y hardware.
  * \section Montaje Montaje
- * El montaje del robot esta detellado en la página oficial del robot
+ * El montaje del robot esta detellado en la página oficial del robot, apartado de hardware:<br>
+ * [Pagina Oficial - Hardware] (http://www.rcr3d.com/hardware.html)<br>
  * 
- * \section Esquemas Esquemas
- * 
- * \section clases_externas Clases externas
- * 
+ * Fotos de todas las piezas:<br>
+ * ![Bóton Realizar movimientos] (DoxyRecursos/images/TodasLasPiezas.jpg)
+ * Puedes seguir el montaje hasta el punto numero 6, luego seguir el siguiente esquema:
+ * \section Esquemas Esquema
+ * ![Esquema de conexiones] (DoxyRecursos/images/esquema_elecronica.png)
+ * Para verlo con mas prespetiva:
+ * ![Pines] (DoxyRecursos/images/visual_pines.jpg)
+ * Recomiendo fuerte mente clasificar los cables, es decir, poner un papelito donde se van a conectar.<br>
+ * Recomiendo unsar unar herramienta llamada Dynamo para clasificar, pero también se puede hacer con un poco de
+ * celo y papel:
+ * ![Cables clasificados] (DoxyRecursos/images/cabes_cladificados.jpg)
  */
 
 /********************************************************************************************************/
@@ -207,10 +222,12 @@
 
 /**
  * \page Creditos Creditos
+ * Reconocimiento a las personas que han ayudado en el proyecto.
  * \section Testers Testers
+ * - Jesús Martín Maderos
  * 
  * \section Ayudantes Ayudantes
- * 
+ * - Máximo Castañeda (compañero de Atos), Ayuda con el reconocimiento de colores.
  * 
  */
 
@@ -226,14 +243,40 @@
 
 /**
  * \page Tiempos Tiempos
- * \section Montaje Montaje
- * 
- * \subsection Hardware Hardware
- * 
+ * Cuenta del tiempo invertido en el proyecto.
+ * \section Hardware Hardware
+ * - Tiempo total de impresion: 98h 50min  [Mas detalle...](DoxyRecursos/Tiempos.txt)
+ * - Preparacion de las piezas: 40min
+ * - Retirar piezas y configurar sigiente: 20min
+ * - Tiempo de calibrar la impresora: 1h(varias veces) 
+ * - Lijado de piezas: 1h 30min
+ * - Montaje del Robot: 2h
+ * - Calibrar un brazo: 2h 30min
+ * - Calibrar el resto: 2h 30min
+ * - Clasificar cables y conectarlos : 30min
+ * - Soldar tira LEDs: 1h 30min
+ * - Colocar LEDs: 20min
+ * <br><br>
+ * - Total hardware: 10h 50min
  * \section Software Software
- * 
- * \subsection Arduino Arduino
- * 
- * \subsection Java Java
- * 
+ * - Movimientos, Aruino: 5h 30min
+ * - Interfaz, sin nada: 1h
+ * - Evento de movimiento, acumular, sumar tiempo... : 5h
+ * - Evento de hacer todos los movimientos: 2h
+ * - Proceso de cunta atras y progress bar: 1h 30min
+ * - Pantalla de carga: 3h
+ * - Auto-detectar pueto de Arduino: 1h
+ * - Generar random: 15min
+ * - Controles de borrar acumulados: 1h 30min
+ * - Clase de Utils: 30min
+ * - Clase de Camara: 30min
+ * - Detector de color: 5h
+ * - Documentar: 3h
+ * - Aprender Doxigen: 2h
+ * - Diseñar imagenes: 1h 30min
+ * <br><br>
+ * - Total software: 33h 15min
+ *  
+ * \section Total Total
+ * 44h 05min 
  */

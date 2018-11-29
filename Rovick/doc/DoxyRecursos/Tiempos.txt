@@ -1,7 +1,6 @@
 IMPRESION:
 
-negro
-
+Negro:
 Gancho          --> 1h 30 min   x4
 Tornillo largo  --> 1h 30 min   x4
 tuerca          --> 22min       x4
@@ -12,7 +11,7 @@ brazo           --> 3h 05min    x4
 
 TOTAL negro     --> 52h 50min
 
-banco:
+Banco:
 agarrador       --> 1h 10min    x4
 esqueleto       --> 3h          x2
 piernas         --> 3h 20 min   x2
@@ -23,25 +22,4 @@ rail            --> 2h 40min    x4
 
 TOTAL blanco    --> 46h
 
-Tiempo de calibrar la impresora --> 1h(varias veces)
-
-         TOTAL --> 98 h 50min
-
-Tiempo de instalacion de SO
-
-3h
-
-LIJADO DE PIEZAS:
-
-2h
-
-MONTAR ROBOT:
-
-2h
-
-Calibrar un brazo:
-(hacer prueba de giro y de agarre)
-2,30h
-
-Programar movimientos:
-6,30h
+TOTAL --> 98 h 50min

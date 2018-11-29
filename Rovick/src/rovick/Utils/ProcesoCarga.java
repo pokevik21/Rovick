@@ -18,6 +18,9 @@ public class ProcesoCarga extends Thread{
         pdc = new PantallaDeCarga();
     }
 
+     /**
+     * Metodo para iniciar el proceso de la ProgressBar
+     */
     @Override
     public void run() {
         pdc.setVisible(true);

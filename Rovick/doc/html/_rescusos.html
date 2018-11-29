@@ -32,7 +32,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rovick
    </div>
-   <div id="projectbrief">Robot resolvedor de cubos de rubik</div>
+   <div id="projectbrief">Robot resolvedor de cubos de rubik. Por: Víctor Pastor Urueña</div>
   </td>
  </tr>
  </tbody>
@@ -91,14 +91,72 @@ $(document).ready(function(){initNavTree('_rescusos.html','');});
 <div class="title">Rescusos </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="Modelo_3d"></a>
+<div class="textblock"><p>Pagina en la que se muestran todo</p>
+<h1><a class="anchor" id="Impresora_3D"></a>
+Impresora 3D</h1>
+<p>El modelo de la impresora con que se hizo este proyecto ha sido una Anet-8, pero se puede hacer con cualquir impresora 3d.</p>
+<h1><a class="anchor" id="Modelo_3d"></a>
 Modelo 3D</h1>
 <p><a href="https://www.thingiverse.com/thing:2471044">Model 3D</a><br />
- <a href="http://www.otvinta.com/">Pagina Oficial</a> </p>
-<h1><a class="anchor" id="Librerias"></a>
-Librerias</h1>
+ <a href="http://www.rcr3d.com/">Pagina Oficial</a></p>
+<h1><a class="anchor" id="material-precio"></a>
+material-precio</h1>
+<h3>Tabla materiales</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Matrial  </th><th class="markdownTableHeadCenter">Cantidad  </th><th class="markdownTableHeadLeft">Precio   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">PLA-negro  </td><td class="markdownTableBodyCenter">1Kg  </td><td class="markdownTableBodyLeft">16,00€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PLA-blanco  </td><td class="markdownTableBodyCenter">1Kg  </td><td class="markdownTableBodyLeft">16,00€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">DS3218 Servo Motor with Horn  </td><td class="markdownTableBodyCenter">4  </td><td class="markdownTableBodyLeft">En pack de 4 - 24,38€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Hitec HS-311 Servo Motor  </td><td class="markdownTableBodyCenter">4  </td><td class="markdownTableBodyLeft">En pack de 4 - 36,60€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">150mm Servo Extension Lead, Male-to-Female  </td><td class="markdownTableBodyCenter">4  </td><td class="markdownTableBodyLeft">En pack de 10 - 1,24€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PCA9685 16 Canal 12-bit PWM/servo Driver  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">3,13€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Arduino NANO - CH340  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">2,15€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Rock PD cargador(alimentar motores)  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">8,97€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Kebidumei USB 30 m(camara)  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">3,78€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Cables macho y hembras para Arduino  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">Pack - 1,71€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Metrica M3-12 Tornillo cabeza avellanda  </td><td class="markdownTableBodyCenter">80  </td><td class="markdownTableBodyLeft">5,00€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Metrica 12 - Tuercas  </td><td class="markdownTableBodyCenter">40  </td><td class="markdownTableBodyLeft">3,00€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Tornillo perforante - 2mm  </td><td class="markdownTableBodyCenter">10  </td><td class="markdownTableBodyLeft">1,00€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Tira de LED's luz fria  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">12,36€   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Cubo de Rubick  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">12,00€   </td></tr>
+</table>
+<h3>Total</h3>
+<p>Sumando todo lo anterior el total es: 147,32€</p>
 <h1><a class="anchor" id="clases_externas"></a>
 Clases externas</h1>
+<p>Las clses extrenas son:</p><ul>
+<li><a class="el" href="_solve_cube_8java_source.html">SolverCube</a>, principal<br />
+ Y las necesarias para que esta clase funcione:</li>
+<li><a class="el" href="_table_generator_8java_source.html">TableGenerator</a></li>
+<li>stage0.txt</li>
+<li>stage1.txt</li>
+<li>stage2.txt</li>
+<li>stage3.txt<br />
+ Estas clases están sacadas del otro proyecto de gitHub:<br />
+ <a href="https://github.com/HaginCodes/3x3x3-Rubiks-Cube-Solver">GitHub del proyecto</a> </li>
+</ul>
+<h1><a class="anchor" id="Librerias"></a>
+Librerias</h1>
+<ul>
+<li>Libreria de Arduino, <a href="http://panamahitek.com/arduino-java/">PanamaHitek</a></li>
+<li>Libreria de WebCam, <a href="http://www.webcam-capture.sarxos.pl/">webcam-capture</a> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

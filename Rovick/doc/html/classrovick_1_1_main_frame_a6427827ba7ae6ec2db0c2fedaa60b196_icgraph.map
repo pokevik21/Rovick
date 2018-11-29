@@ -1,0 +1,4 @@
+<map id="rovick.MainFrame.addTime" name="rovick.MainFrame.addTime">
+<area shape="rect" id="node2" href="$classrovick_1_1_main_frame.html#a49c8ae6bbd67d575b5b9c8ee575a82ff" title="Añade el movimiento al ArrayLista movimientos dependiendo de que movimiento sea. " alt="" coords="231,5,409,32"/>
+<area shape="rect" id="node3" href="$classrovick_1_1_main_frame.html#ae2c42cbf5cab358d9b60d6c7a50ab85f" title="Metodo al que llaman los Botones de los movimientos, Si el checkBox cb_hacerSegunPulsas esta activado..." alt="" coords="457,5,683,32"/>
+</map>
