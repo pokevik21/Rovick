@@ -114,13 +114,10 @@
  * 
  * \section De_Uso De uso
  * 
- * \subsection Hacer_movimiento Hacer movimiento
- * 
- * \subsection Acumular_movimientos Acumular movimientos
- * 
- * \subsection Hacer_todos_los_movimientos Hacer todos los movimientos
- * 
+ * \subsection Hacer_movimiento Hacer movimiento y acumular
+ * ![Diagrama hacer movimiento] (DoxyRecursos/images/uso_clickMov.png)
  * \subsection Resolver_cubo Resolver cubo
+ * ![Diagrama hacer movimiento] (DoxyRecursos/images/uso_resolverCubo.png)
  * 
  */
 
