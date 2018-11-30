@@ -1,11 +1,6 @@
 package rovick.Utils;
 
 /**
- * \defgroup Utiles
- * 
- */
-
-/**
  * Clase que contiene metodos estaticos auximires.
  */
 public class Utiles {

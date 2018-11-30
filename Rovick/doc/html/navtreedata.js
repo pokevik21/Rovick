@@ -35,9 +35,7 @@ var NAVTREE =
     ] ],
     [ "Diagramas", "_diagramas.html", [
       [ "De uso", "_diagramas.html#De_Uso", [
-        [ "Hacer movimiento", "_diagramas.html#Hacer_movimiento", null ],
-        [ "Acumular movimientos", "_diagramas.html#Acumular_movimientos", null ],
-        [ "Hacer todos los movimientos", "_diagramas.html#Hacer_todos_los_movimientos", null ],
+        [ "Hacer movimiento y acumular", "_diagramas.html#Hacer_movimiento", null ],
         [ "Resolver cubo", "_diagramas.html#Resolver_cubo", null ]
       ] ]
     ] ],

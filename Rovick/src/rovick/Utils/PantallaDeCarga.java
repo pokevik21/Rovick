@@ -1,10 +1,5 @@
 package rovick.Utils;
 
-/**
- * \defgroup Procesos
- * @{
- * @}
- */
 
 import com.sun.awt.AWTUtilities;
 import java.awt.Toolkit;

@@ -251,14 +251,16 @@
  * - Calibrar un brazo: 2h 30min
  * - Calibrar el resto: 2h 30min
  * - Clasificar cables y conectarlos : 30min
+ * - Ajustar camara: 1h
  * - Soldar tira LEDs: 1h 30min
  * - Colocar LEDs: 20min
  * <br><br>
- * - Total hardware: 11h 20min
+ * - Total hardware: 12h 20min
  * \section Software Software
+ * - Calibrar variables de posiciones: 1h 30min
  * - Movimientos, Aruino: 5h 30min
  * - Interfaz, sin nada: 1h
- * - Evento de movimiento, acumular, sumar tiempo... : 5h
+ * - Evento de movimiento, acumular, sumar tiempo... : 6h
  * - Evento de hacer todos los movimientos: 2h
  * - Proceso de cunta atras y progress bar: 1h 30min
  * - Pantalla de carga: 3h
@@ -266,15 +268,15 @@
  * - Generar random: 15min
  * - Controles de borrar acumulados: 1h 30min
  * - Clase de Utils: 30min
- * - Clase de Camara: 30min
+ * - Clase de Camara: 1h
  * - Detector de color: 5h
  * - Calibrar coodenadas de colores: 1h
- * - Documentar: 3h
+ * - Documentar: 4h
  * - Aprender Doxigen: 2h
  * - Diseñar imagenes: 1h 30min
  * <br><br>
- * - Total software: 34h 15min
+ * - Total software: 38h 15min
  *  
  * \section Total Total
- * <h2>45h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
+ * <h2>50h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
  */

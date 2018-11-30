@@ -9,9 +9,6 @@ import rovick.MainFrame;
  * Proceso que se encarga de llevar la cuenta atrás del tiempo,
  * este llama al proceso de PrograssBar a su vez.
  * Cuando termina muesta un mensaje de Terminado.
- * \degroup CuentaAtras
- * \ingroup Procesos
- * @{
  */
 public class CuentaAtras extends Thread{
     
@@ -59,4 +56,3 @@ public class CuentaAtras extends Thread{
     }
      
 }
-/** @}*/
