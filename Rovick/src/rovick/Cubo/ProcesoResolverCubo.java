@@ -395,6 +395,7 @@ public class ProcesoResolverCubo extends Thread{
                 if(!old_luzEstado)vistaPrincipal.apagarLuz(); //si no estaba encendido, la apagamos.
                 JOptionPane.showMessageDialog(vistaPrincipal, "La lectura de colores ha fallado.\n Asegurate de tener una buena iluminacion y vuelve a intentarlo.\nResultados:\n"+txt_repetidos, "Fallo lectura de colores", JOptionPane.ERROR_MESSAGE);
             }else{
+                vistaPrincipal.getLb_estadoPrograssBar().setText("Calculando...");
                 StringTokenizer solucion = new StringTokenizer(getSolution()," ");
                 while (solucion.hasMoreTokens()) {
                     String token = solucion.nextToken();

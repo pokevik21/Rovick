@@ -363,6 +363,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.sp_deshacer.setEnabled(estado);
         this.cb_soloAlg.setEnabled(estado);
         this.bl_borrarPrimero.setEnabled(estado);
+        this.cb_luz.setEnabled(estado);
     }
     
     /**
@@ -1048,7 +1049,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_realizarMovsActionPerformed
 
     private void cb_hacerSegunPulsasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hacerSegunPulsasActionPerformed
-        if (this.cuboController.isAgarrado()){
+        if (this.cuboController.isAgarrado() && ! this.cb_hacerSegunPulsas.isSelected()){
             cuboController.doMove("E", false);
         }else{
             cuboController.doMove("S", false);

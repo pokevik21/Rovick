@@ -26,7 +26,7 @@ public class DoAllMoves extends Thread{
     public void doMove(String move,boolean borrar) throws InterruptedException{
         DoMove hacerMovimiento = new DoMove(move,arduino,vistaPrincipal,true);
         hacerMovimiento.start();
-            hacerMovimiento.join();
+        hacerMovimiento.join();
         if(borrar)vistaPrincipal.finisMove(move);
     }
     

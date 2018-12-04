@@ -26,6 +26,7 @@ var NAVTREE =
   [ "Rovick", "index.html", [
     [ "Pagina principal", "index.html", [
       [ "Concepto del proyecto", "index.html#Concepto", null ],
+      [ "Demostracion", "index.html#Demostracion", null ],
       [ "Requisitos", "index.html#Requisitos", null ],
       [ "Instrucciones", "index.html#Instrucciones", null ]
     ] ],
@@ -37,7 +38,8 @@ var NAVTREE =
       [ "De uso", "_diagramas.html#De_Uso", [
         [ "Hacer movimiento y acumular", "_diagramas.html#Hacer_movimiento", null ],
         [ "Resolver cubo", "_diagramas.html#Resolver_cubo", null ]
-      ] ]
+      ] ],
+      [ "Reconocimiento de color", "_diagramas.html#color", null ]
     ] ],
     [ "Rescusos", "_rescusos.html", [
       [ "Impresora 3D", "_rescusos.html#Impresora_3D", null ],
@@ -52,7 +54,8 @@ var NAVTREE =
     ] ],
     [ "Creditos", "_creditos.html", [
       [ "Testers", "_creditos.html#Testers", null ],
-      [ "Ayudantes", "_creditos.html#Ayudantes", null ]
+      [ "Ayudantes", "_creditos.html#Ayudantes", null ],
+      [ "Impresion", "_creditos.html#impresion", null ]
     ] ],
     [ "Tiempos", "_tiempos.html", [
       [ "Hardware", "_tiempos.html#Hardware", null ],

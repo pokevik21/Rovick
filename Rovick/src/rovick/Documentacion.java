@@ -19,6 +19,9 @@
  * la clase de java que me genera el algoritomo de resolucion, los detalles 
  * sobre los esto está en el pagina de [Recursos](@ref Rescusos)
  * 
+ * \section Demostracion Demostración
+ * [Video de demostracion](youtube.com)
+ * 
  * \section Requisitos Requisitos
  * - Cubo de rubik sin pegatina de la marca en el centro blanco.
  * - 2 puetos USB's libres en el ordenador al que lo conecteis.
@@ -119,6 +122,7 @@
  * \subsection Resolver_cubo Resolver cubo
  * ![Diagrama hacer movimiento] (DoxyRecursos/images/uso_resolverCubo.png)
  * 
+ * \section color Reconocimiento de color
  */
 
 /********************************************************************************************************/
@@ -224,8 +228,11 @@
  * - Jesús Martín Maderos
  * 
  * \section Ayudantes Ayudantes
- * - Máximo Castañeda (compañero de Atos), Ayuda con el reconocimiento de colores.
+ * - Máximo Castañeda (compañero de Atos).<br> Ayuda con el reconocimiento de colores.
  * 
+ * \section impresion Impresion
+ * - Angel Urueña Mieguel.<br> De la empresa [3DSouvenirs](https://drive.google.com/open?id=1Vcz_chFV9uM-dkAUWGEENjm8wSkfJtXG)
+ * , ayudo imprimiendo el logo, la palabra "ROVICK" y el código QR. Ya que no podia imprimir en varios colores.
  */
 
 
@@ -280,3 +287,6 @@
  * \section Total Total
  * <h2>50h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
  */
+
+
+/********************************************************************************************************/
