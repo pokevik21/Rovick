@@ -443,6 +443,7 @@ public class ProcesoResolverCubo extends Thread{
 
         this.cube=null;
         vistaPrincipal.clearPhotos();
+        vistaPrincipal.getLb_estadoPrograssBar().setText("");
     }
 
     /****************************************** END RUN ***********************************************/ 

@@ -20,7 +20,6 @@ public class CubeController{
     
     private MainFrame vistaPrincipal = null;
     private PanamaHitek_Arduino arduino;
-    private SelectPort selPort = null;
     private boolean agarrado = false;
     private DoAllMoves doAllMoves = null;
     private boolean respuesta = false;
@@ -29,7 +28,6 @@ public class CubeController{
     public CubeController(MainFrame vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
         arduino=new PanamaHitek_Arduino();
-        selPort=new SelectPort(vistaPrincipal, true);
         confArduinoConnection();
     }
 
@@ -83,28 +81,9 @@ public class CubeController{
         }
         
        if (!encontrado){
-           System.out.println("No se ha encontrado puetos automaticamente");
-           try {
-               arduino.killArduinoConnection();
-           } catch (ArduinoException ex) {
-               System.err.println("No hay conexion, por lo que no se le puede desconectar..."); 
-           }
-           
-            if (arduino.getPortsAvailable()>1){ 
-               selPort.setVisible(true);
-               int result = selPort.getReturnStatus();
-               if (result == SelectPort.RET_OK){
-                    connection= selPort.getPort();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Nose ha podido conectar a nungun puerto", "Error", JOptionPane.ERROR_MESSAGE);
-                    System.exit(0);
-               }
-            }else if (arduino.getPortsAvailable()==1){
-                  connection = arduino.getSerialPorts().get(0).toString();
-           }else{
-                JOptionPane.showMessageDialog(null, "Nose ha podido conectar a nungun puerto", "Error", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
-            }
+           System.err.println("No se ha encontrado puetos automaticamente");
+           JOptionPane.showMessageDialog(null, "Nose ha podido conectar a nungun puerto", "Error", JOptionPane.ERROR_MESSAGE);
+           System.exit(0);
        }
 
            try {

@@ -144,6 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public void addTimeCalendar(int segs){
         this.tiempo.add(GregorianCalendar.SECOND,segs);
+        this.tiempo.add(GregorianCalendar.MILLISECOND,50*segs);
         this.lb_tiempo.setText(this.sdf.format(this.tiempo.getTime()));
     }
     
@@ -1001,7 +1002,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_BDMouseClicked
 
     private void bt_soltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_soltarActionPerformed
-        if(cuboController.isAgarrado())cuboController.doMove("E",false);
+        cuboController.doMove("E",false);
         cuboController.setAgarrado(false);
     }//GEN-LAST:event_bt_soltarActionPerformed
     /**@} */

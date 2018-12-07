@@ -59,12 +59,13 @@ public class DoMove extends Thread{
                 break;
             case "E":
             case "S":
-                espera = 1;
+                espera = 2;
                 break;
         }
         try {
+            //System.out.println("Enviado: ["+move+";]");
             arduino.sendData(move+";");
-            Thread.sleep(espera * 1000);
+            Thread.sleep(espera * 1050);
             
         } catch (ArduinoException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,7 +75,6 @@ public class DoMove extends Thread{
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     if(!desdeAllMovs) vistaPrincipal.desableButtons(true);
-    System.out.println("Terminado: "+move);
     }
     
     
