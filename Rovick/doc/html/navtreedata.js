@@ -26,7 +26,7 @@ var NAVTREE =
   [ "Rovick", "index.html", [
     [ "Pagina principal", "index.html", [
       [ "Concepto del proyecto", "index.html#Concepto", null ],
-      [ "Demostracion", "index.html#Demostracion", null ],
+      [ "Demostración", "index.html#Demostracion", null ],
       [ "Requisitos", "index.html#Requisitos", null ],
       [ "Instrucciones", "index.html#Instrucciones", null ]
     ] ],
@@ -39,7 +39,7 @@ var NAVTREE =
         [ "Hacer movimiento y acumular", "_diagramas.html#Hacer_movimiento", null ],
         [ "Resolver cubo", "_diagramas.html#Resolver_cubo", null ]
       ] ],
-      [ "Reconocimiento de color", "_diagramas.html#color", null ]
+      [ "Reconocimiento de colores", "_diagramas.html#color", null ]
     ] ],
     [ "Rescusos", "_rescusos.html", [
       [ "Impresora 3D", "_rescusos.html#Impresora_3D", null ],

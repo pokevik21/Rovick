@@ -106,8 +106,21 @@ Resolver cubo</h2>
 <img src="uso_resolverCubo.png" alt="uso_resolverCubo.png"/>
 <div class="caption">
 Diagrama hacer movimiento</div></div>
- <h1><a class="anchor" id="color"></a>
-Reconocimiento de color</h1>
+<h1><a class="anchor" id="color"></a>
+Reconocimiento de colores</h1>
+<p>Una de las primeras estrategias, es desenfocar la cámara, con ello conseguimos unos colores suavizados. Quedando una imagen tal que esta: </p><div class="image">
+<img src="coords.PNG" alt="coords.PNG"/>
+<div class="caption">
+Foto y coodenadas</div></div>
+<p>Hacemos que el robot enseñe todas las caras a la cámara haciendo fotos de cada una. Luego analizamos las fotos de esta manera: (las coordenadas estan mapeadas)</p><ul>
+<li>Por cada imagen cogemos las coodenadas centrales, y de esta posición cogemos un cadrado de 40x40 pixeles y hacemos la media de RGB de dicha zona, obteniendo así todos los colores de todos los centros.</li>
+<li>Por cada imagen vamos a cada coordenada iterando de arriba abajo y de izquierda a derecha.<br />
+ De cada posición cogemos un de 10x10 pixeles y calculamos su media de RGB, calculamos una distancia con la fórmula: <div class="image">
+<img src="Formula.PNG" alt="Formula.PNG"/>
+</div>
+</li>
+<li>Y nos quedamos con la distancia más pequeña, y ese será su color. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

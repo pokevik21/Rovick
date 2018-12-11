@@ -1,9 +1,6 @@
 var hierarchy =
 [
     [ "rovick.Cubo.CubeController", "classrovick_1_1_cubo_1_1_cube_controller.html", null ],
-    [ "JDialog", null, [
-      [ "rovick.Cubo.SelectPort", "classrovick_1_1_cubo_1_1_select_port.html", null ]
-    ] ],
     [ "JFrame", null, [
       [ "rovick.MainFrame", "classrovick_1_1_main_frame.html", null ],
       [ "rovick.Utils.PantallaDeCarga", "classrovick_1_1_utils_1_1_pantalla_de_carga.html", null ]

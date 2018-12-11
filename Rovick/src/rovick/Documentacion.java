@@ -121,8 +121,18 @@
  * ![Diagrama hacer movimiento] (DoxyRecursos/images/uso_clickMov.png)
  * \subsection Resolver_cubo Resolver cubo
  * ![Diagrama hacer movimiento] (DoxyRecursos/images/uso_resolverCubo.png)
- * 
- * \section color Reconocimiento de color
+ * \section color Reconocimiento de colores
+ * Una de las primeras estrategias, es desenfocar la cámara, con ello conseguimos unos colores suavizados.
+ * Quedando una imagen tal que esta:
+ * ![Foto y coodenadas] (DoxyRecursos/images/coords.PNG)
+ * Hacemos que el robot enseñe todas las caras a la cámara haciendo fotos de cada una.
+ * Luego analizamos las fotos de esta manera: (las coordenadas estan mapeadas)
+ * - Por cada imagen cogemos las coodenadas centrales, y de esta posición cogemos un cadrado de 40x40 pixeles y hacemos la media de RGB de dicha zona, obteniendo así todos los colores de todos los centros.
+ * - Por cada imagen vamos a cada coordenada iterando de arriba abajo y de izquierda a derecha.<br>
+ * De cada posición cogemos un de 10x10 pixeles y calculamos su media de RGB, calculamos una distancia con la fórmula:
+ * ![] (DoxyRecursos/images/Formula.PNG)
+ * - Y nos quedamos con la distancia más pequeña, y ese será su color.
+
  */
 
 /********************************************************************************************************/
@@ -231,7 +241,7 @@
  * - Máximo Castañeda (compañero de Atos).<br> Ayuda con el reconocimiento de colores.
  * 
  * \section impresion Impresion
- * - Angel Urueña Mieguel.<br> De la empresa [3DSouvenirs](https://drive.google.com/open?id=1Vcz_chFV9uM-dkAUWGEENjm8wSkfJtXG)
+ * - Angel Urueña Miguel.<br> De la empresa [3DSouvenirs](https://drive.google.com/open?id=1Vcz_chFV9uM-dkAUWGEENjm8wSkfJtXG)
  * , ayudo imprimiendo el logo, la palabra "ROVICK" y el código QR. Ya que no podia imprimir en varios colores.
  */
 
@@ -261,8 +271,9 @@
  * - Ajustar camara: 1h
  * - Soldar tira LEDs: 1h 30min
  * - Colocar LEDs: 20min
+ * - Añadir el nombre, QR y logo : 1h 
  * <br><br>
- * - Total hardware: 12h 20min
+ * - Total hardware: 13h 20min
  * \section Software Software
  * - Calibrar variables de posiciones: 1h 30min
  * - Movimientos, Aruino: 5h 30min
@@ -285,7 +296,7 @@
  * - Total software: 38h 15min
  *  
  * \section Total Total
- * <h2>50h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
+ * <h2>51h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
  */
 
 

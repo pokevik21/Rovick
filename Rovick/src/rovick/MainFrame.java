@@ -144,7 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public void addTimeCalendar(int segs){
         this.tiempo.add(GregorianCalendar.SECOND,segs);
-        this.tiempo.add(GregorianCalendar.MILLISECOND,50*segs);
+        this.tiempo.add(GregorianCalendar.MILLISECOND,50);
         this.lb_tiempo.setText(this.sdf.format(this.tiempo.getTime()));
     }
     
