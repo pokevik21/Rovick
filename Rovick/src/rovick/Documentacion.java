@@ -211,7 +211,7 @@
  * [Pagina Oficial - Hardware] (http://www.rcr3d.com/hardware.html)<br>
  * 
  * Fotos de todas las piezas:<br>
- * ![Bóton Realizar movimientos] (DoxyRecursos/images/TodasLasPiezas.jpg)
+ * ![Todas las piezas] (DoxyRecursos/images/TodasLasPiezas.jpg)
  * Puedes seguir el montaje hasta el punto numero 6, luego seguir el siguiente esquema:
  * \section Esquemas Esquema
  * ![Esquema de conexiones] (DoxyRecursos/images/esquema_elecronica.png)
