@@ -28,7 +28,8 @@ var NAVTREE =
       [ "Concepto del proyecto", "index.html#Concepto", null ],
       [ "Demostración", "index.html#Demostracion", null ],
       [ "Requisitos", "index.html#Requisitos", null ],
-      [ "Instrucciones", "index.html#Instrucciones", null ]
+      [ "Instrucciones", "index.html#Instrucciones", null ],
+      [ "Enlaces", "index.html#Enlaces", null ]
     ] ],
     [ "Guia de uso", "_uso.html", [
       [ "Botones de movimiento", "_uso.html#Botones", null ],

@@ -20,7 +20,7 @@
  * sobre los esto está en el pagina de [Recursos](@ref Rescusos)
  * 
  * \section Demostracion Demostración
- * [Video de demostracion](youtube.com)
+ * [Video de demostracion](https://www.youtube.com/watch?v=c-J2XP4FGs8&feature=youtu.be)
  * 
  * \section Requisitos Requisitos
  * - Cubo de rubik sin pegatina de la marca en el centro blanco.
@@ -32,6 +32,9 @@
  * - Colocar el cubo en el gancho inferior de froma centrada.
  * - Disfrutar de esta increible aplicacion.
  *  
+ * \section Enlaces Enlaces
+ * - [Página web de Victor Pastor](http://victorpastor.com/)
+ * - [GitHub del proyecto](https://github.com/pokevik21/Rovick)
  */
 
 /********************************************************************************************************/
