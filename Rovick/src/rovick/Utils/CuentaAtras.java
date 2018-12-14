@@ -15,13 +15,24 @@ public class CuentaAtras extends Thread{
     private MainFrame vistaPrincipal = null;
     private SimpleDateFormat sdf = new SimpleDateFormat("mm' min' ss' seg'");
     private String estado = "";
-    private boolean impMng = true; 
+    private boolean impMng = true;//si es false no imprime el mensaje final 
     
+    /**
+     * Constructor del proceso de la cuenta atrás.
+     * @param vista vistaPrincipal.
+     * @param estado String estado al que se le pondra el contador.
+     */
     public CuentaAtras(MainFrame vista,String estado) {
         this.vistaPrincipal = vista;
         this.estado = estado;
     }
 
+    /**
+     * Constructor del proceso de la cuenta atrás.
+     * @param vista vistaPrincipal.
+     * @param estado String estado al que se le pondra el contador.
+     * @param mensaje false, si no se quiere imprimir un mesaje cuando termine.
+     */
     public CuentaAtras(MainFrame vista,String estado,boolean mensaje) {
         this.vistaPrincipal = vista;
         this.estado = estado;

@@ -85,7 +85,6 @@ public class DoAllMoves extends Thread{
             } catch (InterruptedException interruptedException) {
                 System.out.println("interrupt");
                 if(cuentsAtas.isAlive()){
-                    System.out.println("cuneta atras viva");
                     cuentsAtas.interrupt();
                 }
             }

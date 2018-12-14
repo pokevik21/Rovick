@@ -20,6 +20,9 @@ public class WebCamController {
     private Webcam wc = null;
     private File imagesPath = null;
     
+    /**
+     * Contructor del controlador de la webcam.
+     */
     public WebCamController() {
         wc = Webcam.getDefault();
         imagesPath = new File("./tmp_images");

@@ -12,7 +12,7 @@ public class ProcesoCarga extends Thread{
     
     private PantallaDeCarga pdc = null;
     private int sleep = 500;
-    private boolean cerrar = false;
+    private boolean cerrar = false;//true cuando quieres que se cierre.
     
     public ProcesoCarga() {
         pdc = new PantallaDeCarga();

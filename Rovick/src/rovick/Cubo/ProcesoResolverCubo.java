@@ -1,4 +1,4 @@
-package rovick.Cubo;
+ package rovick.Cubo;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

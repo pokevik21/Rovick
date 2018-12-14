@@ -105,6 +105,9 @@ public class PantallaDeCarga extends javax.swing.JFrame {
     private javax.swing.JLabel lb_texto;
     // End of variables declaration//GEN-END:variables
 
+    
+    //GETTER Y SETTER
+    
     public String getTexto_carga() {
         return texto_carga;
     }
