@@ -25,7 +25,7 @@ public class WebCamController {
      */
     public WebCamController() {
         wc = Webcam.getDefault();
-        imagesPath = new File("./tmp_images");
+        imagesPath = new File("tmp_images");    
         Dimension imga_size = new Dimension(640,480);
         wc.setViewSize(imga_size);
         wc.open();
@@ -52,10 +52,16 @@ public class WebCamController {
      */
     public void cleeanPhotos(){
         try {
+            File[] files = imagesPath.listFiles();
+            if (files != null) {
+                for (int i = 0; i < files.length; i++) {
+                    File file = files[i];
+                    file.delete();
+                }
+            }
             FileUtils.deleteDirectory(imagesPath);
-            //if (crear)imagesPath.mkdir();
         } catch (IOException ex) {
-            Logger.getLogger(WebCamController.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("No hay ficheros");
         }
     }
     

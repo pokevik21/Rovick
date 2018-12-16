@@ -17,6 +17,8 @@ import java.awt.Toolkit;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -78,12 +80,20 @@ public class MainFrame extends javax.swing.JFrame {
         @Override
         public void keyPressed(java.awt.event.KeyEvent e) {
             if(e.getKeyCode() == KeyEvent.VK_F1){
+
+                if (java.awt.Desktop.isDesktopSupported()) {
+            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+
+            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
                 try {
-                    File htmlFile = new File("doc/html/index.html");
-                    Desktop.getDesktop().browse(htmlFile.toURI());
-                } catch (IOException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    java.net.URI uri = new java.net.URI("http://pokevik21.github.io/Rovick/");
+                    desktop.browse(uri);
+                } catch (URISyntaxException | IOException ex) {
+                    ex.getCause();
                 }
+            }
+        }
+
             }
         }
 

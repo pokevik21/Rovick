@@ -340,14 +340,14 @@ public class ProcesoResolverCubo extends Thread{
         
         try {
             String dir = "tmp_images";
-            image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/1.png")));
-            image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/2.png")));
-            image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_1.png")));
-            image_3_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/3_2.png")));
-            image_4 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/4.png")));
-            image_5_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/5_1.png")));
-            image_5_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/5_2.png")));
-            image_6 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream("./"+dir+"/6.png")));
+            image_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/1.png")));
+            image_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/2.png")));
+            image_3_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/3_1.png")));
+            image_3_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/3_2.png")));
+            image_4 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/4.png")));
+            image_5_1 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/5_1.png")));
+            image_5_2 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/5_2.png")));
+            image_6 = ImageIO.read(ImageIO.createImageInputStream(new FileInputStream(dir+"/6.png")));
             
             centros = new ArrayList<>();
             
