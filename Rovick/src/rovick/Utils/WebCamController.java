@@ -12,8 +12,7 @@ import org.apache.commons.io.FileUtils;
 
 
 /**
- * Clase encargada de el control de la Camara Web.
- * @author Victor Pastor Urueña
+ * Clase encargada de el control de la Cśmara Web.
  */
 public class WebCamController {
     

@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
 /**
- * Proceso que se encarga de aumentar los valores la ProgresBar de la vista principal.
+ * Proceso que se encarga de aumentar los valores de la ProgresBar de la vista principal.
  * @author Victor Pastor Urueña
  */
 public class ProgressBar extends Thread{

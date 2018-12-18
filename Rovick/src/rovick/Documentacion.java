@@ -5,35 +5,33 @@
 //     |_|      \__,_|  \__, | (_)   |_|     |_|    |_| |_| |_|  \___| |_| | .__/   \__,_| |_|
 //                      |___/                                              |_|                
 
-/** \mainpage Pagina principal
+/** \mainpage Página principal
  *
  * \section Concepto Concepto del proyecto
  *
- *Este proyecto es un proyecto fin de modulo superior, para ser más exacto, 
- *DAM (Desarrollo de aplicaciones en multiplataforma), de un alumno del centro Gregorio Fernandez (Valladolid),
- *cuyo nombre es Víctor Pastor Urueña, el objetivo es crear un proyecto real.<br>
- *Cumpliendo con los requisitos del dicho proyecto, es decir, que resuelva cubos de Rubik.
- *<h3>A dejar en claro</h3>
- * El proyecto no lo he hecho yo al 100% algunas partes de el la he reutilizado de 
- * otros proyectos, por ejemplo el modelo 3D no lo he diseñado yo ni tampoco
- * la clase de java que me genera el algoritomo de resolucion, los detalles 
- * sobre los esto está en el pagina de [Recursos](@ref Rescusos)
+ *Este proyecto es el trabajo final del grado superior DAM (Desarrollo de Aplicaciones en Multiplataforma), 
+ *cursado en el centro Gregorio Fernández (Valladolid), realizado por Víctor Pastor Urueña.<br>
+ *El objetivo es crear un robot real y funcional que cumpla el requisito de resolver un cubo de Rubik.
+ *<h3>Quiero destacar</h3>
+ * Que en la realizacion de éste, he aprovechar partes de otros proyectos como por ejemplo,
+ * el modelo 3D de las piezas o la clase de Java que genera el algoritmo de resolución.<br>
+ * Más detalles sobre esto en el página de [Recursos](@ref Rescusos)
  * 
  * \section Demostracion Demostración
- * [Video de demostracion](https://www.youtube.com/watch?v=c-J2XP4FGs8&feature=youtu.be)
+ * [Vídeo de demostración](https://www.youtube.com/watch?v=c-J2XP4FGs8&feature=youtu.be)
  * 
  * \section Requisitos Requisitos
  * - Cubo de rubik sin pegatina de la marca en el centro blanco.
- * - 2 puetos USB's libres en el ordenador al que lo conecteis.
+ * - 2 puetos USB's libres.
  * 
  * \section Instrucciones  Instrucciones
- * - Conectar el Arduino y la camara a uno de los USB del ordenador <b>antes</b> de cargar la aplicación.
- * - Ejecutar el .jar o .exe de la aplicacion Rovick
- * - Colocar el cubo en el gancho inferior de froma centrada.
- * - Disfrutar de esta increible aplicacion.
+ * - Conectar el Arduino y la cámara a los USB's del ordenador <b>antes</b> de cargar la aplicación.
+ * - Ejecutar el ".jar" de la aplicacion Rovick
+ * - Colocar el cubo en el gancho inferior de forma centrada.
+ * - Disfrutar de esta increíble aplicación.
  *  
  * \section Enlaces Enlaces
- * - [Página web de Victor Pastor](http://victorpastor.com/)
+ * - [Página web de Víctor Pastor](http://victorpastor.com/)
  * - [GitHub del proyecto](https://github.com/pokevik21/Rovick)
  */
 
@@ -47,26 +45,24 @@
 
 
 /**
- * \page Uso Guia de uso
- * Descripcion de como utilizar esta aplicación.
+ * \page Uso Guía de uso
+ * Descripción de como utilizar la interface.
  * \section Botones Botones de movimiento
- * Los botones de movimiento son como este:
- * ![boton de movimiento] (DoxyRecursos/images/R.png)
+ * ![botón de movimiento] (DoxyRecursos/images/R.png)
  * Cuando lo pulsamos y no esta activado el CheckBox de "Según pulsas", se acumulará 
  * visualizándose en el el área de texto:
  * ![Ejemplo boton movimiento] (DoxyRecursos/images/BotonesMov_ej.png)
- * Hay unos botones a la derecha de área de texto que sirven para borrar los movimientos,
- * El primer movimiento, El ultimo o todos.
+ * Hay unos botones a la derecha del área de texto que sirven para borrar los movimientos:<br>
+ * el primer movimiento, el ultimo o todos.<br>
  * 
- * Cada vez que añadimos un movimiento acumulado o lo eliminamos se ajusta el tiempo y
- * el número de movimientos en el contador del tiempo de arriba a la izquierda.
+ * Cada vez que añadimos un movimiento acumulado o lo eliminamos, se ajusta el tiempo y
+ * el número de movimientos en el contador de tiempo, arriba a la izquierda.
  * ![Contador de tiempo] (DoxyRecursos/images/contadoTiempoMovs.png)
  * 
  * \section Otros_controles Otros controles
  * <h3>Botón "Soltar"</h3>
- * Este botón sirve para cuando el robot tiene el cubo agarrado 
- * y por lo que sea queremos que lo suelte, para que lo vuelva a agarrar solo 
- * tienes que dar a un movimiento y antes de hacer dicho movimiento lo volverá a agarrar.
+ * Sirve para que el robot suelte el cubo.<br>
+ * Para que lo vuelva a agarrar solo tienes que dar a un movimiento y antes de hacerlo, lo agarrará.
  * ![Botón soltar] (DoxyRecursos/images/BotonSoltar.png)
  * 
  * <h3>Botón "Parar"</h3>
@@ -75,7 +71,7 @@
  * ![Botón Parar] (DoxyRecursos/images/BotonParar.png)
  * 
  * <h3>CheckBox "Luz"</h3>
- * Cuando está activada las luces del robot se encienden y cuando lo desactivamos se apagan.
+ * Controla el apagado y el encendido de la luz.
  * ![CheckBox Luz] (DoxyRecursos/images/BLuz.png)
  * 
  * <h3>Botón "Gen. Random"</h3>
@@ -84,23 +80,22 @@
  * ![Botón Gen. Random] (DoxyRecursos/images/GenRandom.png)
  * 
  * <h3>Botón "Realizar movimientos"</h3>
- * Realiza todos los movimientos acumulados en el área de texto,
- * empezará un proceso que hará la cuenta atrás de tiempo he ira avanzando la 
- * barra de progreso cuando esta y el tiempo acaben, significara que se han 
- * realizado todos los movimientos.
+ * Realiza todos los movimientos acumulados en el área de texto.<br>
+ * Empezará un proceso de cuenta atrás e irá avanzando la 
+ * barra de progreso hasta que finalice.
  * ![Bóton Realizar movimientos] (DoxyRecursos/images/RMovs.png)
  * 
  * <h3>Botón "Resolver cubo"</h3>
- * Analiza el cubo usando la cámara del robot, si detecta todos los colores
- * bien genera el algoritmo para resolverlo y lo pone en el área de texto,
- * a continuación, si no está activado el CheckBox "Solo algoritom"
- * realizará dichos movimientos ,resolviendo el cubo, de lo contrario,
- * no hará ningún movimiento.
+ * Analiza el cubo usando la cámara del robot. Si detecta todos los colores, 
+ * genera el algorítmo para resolverlo y lo pone en el área de texto.<br>
+ * No obstante, hay que tener en cuenta el CheckBox "Sólo algoritmo".<br>
+ * Si está activado, al terminar el análisis del cubo, 
+ * mostrará los movimientos necesarios para su resolución.<br>
+ * Si no lo está, lo resolverá automáticamente.  
  * ![Botón Resolver cubo] (DoxyRecursos/images/Rcubo.png)
  * 
  * <h3>Puerto</h3>
- * Informa de en que puesto se ha conectado, si todo salió bien en la configuración,
- * será el puerto en el que esté el Arduino.
+ * Informa del puerto al que se ha conectado.
  * ![Botón Puerto] (DoxyRecursos/images/puerto.png)
  */
 
@@ -116,7 +111,7 @@
 
 /**
  * \page Diagramas Diagramas
- * Pagina donde se visualizan los diversos diagramas.
+ * Página donde se visualizan los diversos diagramas.
  * 
  * \section De_Uso De uso
  * 
@@ -125,17 +120,17 @@
  * \subsection Resolver_cubo Resolver cubo
  * ![Diagrama hacer movimiento] (DoxyRecursos/images/uso_resolverCubo.png)
  * \section color Reconocimiento de colores
- * Una de las primeras estrategias, es desenfocar la cámara, con ello conseguimos unos colores suavizados.
- * Quedando una imagen tal que esta:
- * ![Foto y coodenadas] (DoxyRecursos/images/coords.PNG)
+ * Una de las primeras estrategias es desenfocar la cámara. Con ello conseguimos unos colores suavizados 
+ * quedando una imagen como la siguiente:
+ * ![Foto y coordenadas] (DoxyRecursos/images/coords.PNG)
  * Hacemos que el robot enseñe todas las caras a la cámara haciendo fotos de cada una.
- * Luego analizamos las fotos de esta manera: (las coordenadas estan mapeadas)
- * - Por cada imagen cogemos las coodenadas centrales, y de esta posición cogemos un cadrado de 40x40 pixeles y hacemos la media de RGB de dicha zona, obteniendo así todos los colores de todos los centros.
+ * Luego las analizamos de esta manera: (las coordenadas estan mapeadas)
+ * - Por cada imagen cogemos las coordenadas centrales, y de esta posición cogemos un cuadrado de 40x40 pixeles. Hacemos la media de RGB de dicha zona, obteniendo así colores centrslrd.
  * - Por cada imagen vamos a cada coordenada iterando de arriba abajo y de izquierda a derecha.<br>
- * De cada posición cogemos un de 10x10 pixeles y calculamos su media de RGB, calculamos una distancia con la fórmula:
+ * De cada posición cogemos un área de 10x10 pixeles y calculamos su media de RGB.
+ * - A continuación calculamos una distancia entre la media y los colores centrales, con la fórmula:
  * ![] (DoxyRecursos/images/Formula.PNG)
- * - Y nos quedamos con la distancia más pequeña, y ese será su color.
-
+ * - Nos quedamos con la distancia más pequeña, y ese será su color.
  */
 
 /********************************************************************************************************/
@@ -148,20 +143,19 @@
 
 
 /**
- * \page Rescusos Rescusos
- * Pagina en la que se muestran todo
+ * \page Recusos Recusos
+ * Página en la que se muestran los materiales usados.
  * 
  * \section Impresora_3D Impresora 3D
- * El modelo de la impresora con que se hizo este proyecto ha sido una Anet-8,
- * pero se puede hacer con cualquir impresora 3d.
+ * El modelo de la impresora 3D es una Anet-8,
+ * pero se puede hacer con cualquier otra.
  * 
  * \section Modelo_3d Modelo 3D
  * [Model 3D] (https://www.thingiverse.com/thing:2471044)<br>
- * [Pagina Oficial] (http://www.rcr3d.com/)
+ * [Página Oficial] (http://www.rcr3d.com/)
  * 
- * \section material-precio material-precio
- * <h3>Tabla materiales</h3>
- * |Matrial|Cantidad|Precio|
+ * \section material-precio Material-precio
+ * |Material|Cantidad|Precio|
  * |:-----|:-----:|:-------|
  * |PLA-negro |1Kg|16,00€|
  * |PLA-blanco|1Kg|16,00€|
@@ -173,29 +167,27 @@
  * |Rock PD cargador(alimentar motores)|1|8,97€|
  * |Kebidumei USB 30 m(camara)|1|3,78€|
  * |Cables macho y hembras para Arduino|1|Pack - 1,71€|
- * |Metrica M3-12 Tornillo cabeza avellanda|80|5,00€|
- * |Metrica 12 - Tuercas|40|3,00€|
+ * |Métrica M3-12 Tornillo cabeza avellanada|80|5,00€|
+ * |Métrica 12 - Tuercas|40|3,00€|
  * |Tornillo perforante - 2mm|10|1,00€|
- * |Tira de LED's luz fria|1|12,36€|
- * |Cubo de Rubick|1|12,00€|
- * <h3>Total</h3>
- * 
- * Sumando todo lo anterior el total es: 147,32€
+ * |Tira de LED's luz fría|1|12,36€|
+ * |Cubo de Rubik|1|12,00€|
+ * |TOTAL||147,32€|
  * 
  * \section clases_externas Clases externas
- * Las clses extrenas son:
  * - [SolverCube](@ref SolveCube.java), principal<br>
  * Y las necesarias para que esta clase funcione:
  * - [TableGenerator](@ref TableGenerator.java)
  * - stage0.txt
  * - stage1.txt
  * - stage2.txt
- * - stage3.txt<br>
- * Estas clases están sacadas del otro proyecto de gitHub:<br>
+ * - stage3.txt
+ * 
+ * Estas clases están sacadas de otro proyecto de gitHub:<br>
  * [GitHub del proyecto] (https://github.com/HaginCodes/3x3x3-Rubiks-Cube-Solver)
- * \section Librerias Librerias
- * - Libreria de Arduino, [PanamaHitek] (http://panamahitek.com/arduino-java/)
- * - Libreria de WebCam, [webcam-capture] (http://www.webcam-capture.sarxos.pl/)
+ * \section Librerias Librerías
+ * - Librería de Arduino, [PanamaHitek] (http://panamahitek.com/arduino-java/)
+ * - Librería de WebCam, [webcam-capture] (http://www.webcam-capture.sarxos.pl/)
  */
 
 /********************************************************************************************************/
@@ -207,22 +199,21 @@
 //     |_____| |_|  \___|  \___|  \__| |_|     \___/  |_| |_| |_|  \___|  \__,_|
 
 /**
- * \page Electronica Electronica
+ * \page Electrónica Electrónica
  * Apartado de conexiones y hardware.
  * \section Montaje Montaje
- * El montaje del robot esta detellado en la página oficial del robot, apartado de hardware:<br>
- * [Pagina Oficial - Hardware] (http://www.rcr3d.com/hardware.html)<br>
+ * El montaje está detallado en la página oficial del robot, apartado de hardware:<br>
+ * [Página Oficial - Hardware] (http://www.rcr3d.com/hardware.html)<br>
  * 
  * Fotos de todas las piezas:<br>
  * ![Todas las piezas] (DoxyRecursos/images/TodasLasPiezas.jpg)
- * Puedes seguir el montaje hasta el punto numero 6, luego seguir el siguiente esquema:
+ * Puedes seguir el montaje hasta el punto número 6, luego seguir el siguiente esquema:
  * \section Esquemas Esquema
  * ![Esquema de conexiones] (DoxyRecursos/images/esquema_elecronica.png)
- * Para verlo con mas prespetiva:
+ * Para verlo con más perspectiva:
  * ![Pines] (DoxyRecursos/images/visual_pines.jpg)
- * Recomiendo fuerte mente clasificar los cables, es decir, poner un papelito donde se van a conectar.<br>
- * Recomiendo unsar unar herramienta llamada Dynamo para clasificar, pero también se puede hacer con un poco de
- * celo y papel:
+ * Recomiendo fuertemente clasificar los cables, es decir, poner un distintivo en cada uno de ellos.<br>
+ * Puedes usar unar herramienta llamada Dynamo o celo y papel:
  * ![Cables clasificados] (DoxyRecursos/images/cabes_cladificados.jpg)
  */
 
@@ -235,7 +226,7 @@
 //      \____| |_|     \___|  \__,_| |_|  \__|  \___/  |___/
 
 /**
- * \page Creditos Creditos
+ * \page Créditos Créditos
  * Reconocimiento a las personas que han ayudado en el proyecto.
  * \section Testers Testers
  * - Jesús Martín Maderos
@@ -244,8 +235,11 @@
  * - Máximo Castañeda (compañero de Atos).<br> Ayuda con el reconocimiento de colores.
  * 
  * \section impresion Impresion
- * - Angel Urueña Miguel.<br> De la empresa [3DSouvenirs](https://drive.google.com/open?id=1Vcz_chFV9uM-dkAUWGEENjm8wSkfJtXG)
- * , ayudo imprimiendo el logo, la palabra "ROVICK" y el código QR. Ya que no podia imprimir en varios colores.
+ * - Ángel Urueña Miguel.<br> De la empresa [3DSouvenirs](https://drive.google.com/open?id=1Vcz_chFV9uM-dkAUWGEENjm8wSkfJtXG)
+ * , ayudo imprimiendo el logo, la palabra "ROVICK" y el código QR. Ya que no podía imprimir en varios colores.
+ * 
+ * \section correctora Correctora
+ * - Isabel Durán Pérez, ayuda con la ortografía y gramática de la documentacion.
  */
 
 
@@ -260,18 +254,18 @@
 
 /**
  * \page Tiempos Tiempos
- * Cuenta del tiempo invertido en el proyecto.
+ * Tiempo invertido en el proyecto.
  * \section Hardware Hardware
- * - Tiempo total de impresion: 98h 50min  [Mas detalle...](https://github.com/pokevik21/Rovick/blob/master/Rovick/doc/DoxyRecursos/Tiempos.txt)
- * - Preparacion de las piezas: 40min
- * - Retirar piezas y configurar sigiente: 20min
+ * - Tiempo total de impresión: 98h 50min  [Más detalle...](https://github.com/pokevik21/Rovick/blob/master/Rovick/doc/DoxyRecursos/Tiempos.txt)
+ * - Preparación de las piezas: 40min
+ * - Retirar piezas y configurar siguiente: 20min
  * - Tiempo de calibrar la impresora: 1h(varias veces) 
  * - Lijado de piezas: 1h 30min
  * - Montaje del Robot: 2h 30min
  * - Calibrar un brazo: 2h 30min
  * - Calibrar el resto: 2h 30min
  * - Clasificar cables y conectarlos : 30min
- * - Ajustar camara: 1h
+ * - Ajustar cámara: 1h
  * - Soldar tira LEDs: 1h 30min
  * - Colocar LEDs: 20min
  * - Añadir el nombre, QR y logo : 1h 
@@ -279,27 +273,27 @@
  * - Total hardware: 13h 20min
  * \section Software Software
  * - Calibrar variables de posiciones: 1h 30min
- * - Movimientos, Aruino: 5h 30min
+ * - Movimientos, Arduino: 5h 30min
  * - Interfaz, sin nada: 1h
  * - Evento de movimiento, acumular, sumar tiempo... : 6h
  * - Evento de hacer todos los movimientos: 2h
- * - Proceso de cunta atras y progress bar: 1h 30min
+ * - Proceso de cuenta atras y progress bar: 1h 30min
  * - Pantalla de carga: 3h
- * - Auto-detectar pueto de Arduino: 1h
+ * - Auto-detectar puerto de Arduino: 1h
  * - Generar random: 15min
  * - Controles de borrar acumulados: 1h 30min
  * - Clase de Utils: 30min
- * - Clase de Camara: 1h
+ * - Clase de WebCamController: 1h
  * - Detector de color: 5h
- * - Calibrar coodenadas de colores: 1h
+ * - Calibrar coordenadas de colores: 1h
  * - Documentar: 4h
  * - Aprender Doxigen: 2h
- * - Diseñar imagenes: 1h 30min
+ * - Diseñar imágenes: 1h 30min
  * <br><br>
  * - Total software: 38h 15min
  *  
  * \section Total Total
- * <h2>51h 35min</h2> Aproximada, pues no me he conometrado en cada parte. 
+ * <h2>51h 35min</h2> Aproximado. 
  */
 
 

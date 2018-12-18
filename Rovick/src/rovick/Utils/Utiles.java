@@ -1,7 +1,7 @@
 package rovick.Utils;
 
 /**
- * Clase que contiene metodos estaticos auximires.
+ * Clase que contiene métodos estáticos auxiliares.
  */
 public class Utiles {
     

@@ -8,8 +8,8 @@ import jssc.SerialPortException;
 import rovick.MainFrame;
 
 /**
- * Proceso que se encoraga de realizar un movimiento,
- * el que se le pasa en el contructor.
+ * Proceso que se encaraga de realizar un movimiento,
+ * el que se pasa por el constructor.
  */
 public class DoMove extends Thread{
     

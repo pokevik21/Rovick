@@ -1,14 +1,15 @@
 package rovick.Cubo;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import rovick.MainFrame;
 
 public class SolveCube {
 
@@ -30,25 +31,29 @@ public class SolveCube {
 
 
 	public SolveCube () throws IOException{
-		List<String> firstLookupTable = Files.readAllLines(Paths.get("stage0.txt"));
-		for(String i : firstLookupTable)
-			firstStageSolutions.add(i);
+ 
+            BufferedReader br; 
+            String linea;
+            try {
+                br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/stage/stage0.txt")));
+                while ((linea = br.readLine()) != null) firstStageSolutions.add(linea);
 
-		List<String> secondLookupTable = Files.readAllLines(Paths.get("stage1.txt"));
-		for(String i : secondLookupTable)
-			secondStageSolutions.add(i);
+                br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/stage/stage1.txt")));
+                while ((linea = br.readLine()) != null) secondStageSolutions.add(linea);
 
-		List<String> thirdLookupTable = Files.readAllLines(Paths.get("stage2.txt"));
-		for(String i : thirdLookupTable)
-			thirdStageSolutions.add(i);
+                br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/stage/stage2.txt")));
+                while ((linea = br.readLine()) != null) thirdStageSolutions.add(linea);
 
-		List<String> fourthLookupTable = Files.readAllLines(Paths.get("stage3.txt"));
-		for(String i : fourthLookupTable)
-			fourthStageSolutions.add(i);
+                br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/stage/stage3.txt")));
+                while ((linea = br.readLine()) != null) fourthStageSolutions.add(linea);
 
-		List<String> testMoves = Files.readAllLines(Paths.get("testMoves.txt"));
-		for(String i : testMoves)
-			allTestMoves.add(i);
+                br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/stage/testMoves.txt")));
+                while ((linea = br.readLine()) != null) allTestMoves.add(linea);
+
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
 	}
 
 

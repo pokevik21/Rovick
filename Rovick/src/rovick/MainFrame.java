@@ -12,12 +12,9 @@ import com.panamahitek.ArduinoException;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.event.KeyListener;
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,13 +33,12 @@ import rovick.Utils.ProcesoCarga;
 import rovick.Cubo.CubeController;
 
 /**
- * Vista pincipal del resolvedor de cubos de rubick
+ * Vista principal del resolvedor de cubos de rubick
  * @author Victor Pastor Urueña
  */
 public class MainFrame extends javax.swing.JFrame {
     
-   
-    
+      
 //        __     __                 _           _       _              
 //        \ \   / /   __ _   _ __  (_)   __ _  | |__   | |   ___   ___ 
 //         \ \ / /   / _` | | '__| | |  / _` | | '_ \  | |  / _ \ / __|
@@ -76,24 +72,22 @@ public class MainFrame extends javax.swing.JFrame {
     private boolean luz_encendida = false;
     /** Para cuando se pulse F1 */
     private KeyListener lisenerF1 = new KeyListener() {
-
         @Override
         public void keyPressed(java.awt.event.KeyEvent e) {
             if(e.getKeyCode() == KeyEvent.VK_F1){
 
                 if (java.awt.Desktop.isDesktopSupported()) {
-            java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+                    java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
 
-            if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
-                try {
-                    java.net.URI uri = new java.net.URI("http://pokevik21.github.io/Rovick/");
-                    desktop.browse(uri);
-                } catch (URISyntaxException | IOException ex) {
-                    ex.getCause();
+                    if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+                        try {
+                            java.net.URI uri = new java.net.URI("http://pokevik21.github.io/Rovick/");
+                            desktop.browse(uri);
+                        } catch (URISyntaxException | IOException ex) {
+                            ex.getCause();
+                        }
+                    }
                 }
-            }
-        }
-
             }
         }
 
@@ -132,7 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
      * \defgroup Auxiliares
      * \ingroup Metodos
      * @{
-     * Grupo de Metodos utilizados por los metodos principales
+     * Grupo de métodos utilizados.
      */
     
     /**
@@ -569,11 +563,6 @@ public class MainFrame extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
-            }
-        });
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
             }
         });
 
@@ -1080,10 +1069,6 @@ public class MainFrame extends javax.swing.JFrame {
             apagarLuz();
         }
     }//GEN-LAST:event_cb_luzActionPerformed
-
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-            System.out.println("DESDE LISENER");
-    }//GEN-LAST:event_formKeyPressed
 
     private void bl_borrarPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bl_borrarPrimeroActionPerformed
         removeFirstMove();

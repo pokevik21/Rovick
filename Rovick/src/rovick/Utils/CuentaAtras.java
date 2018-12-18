@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 import rovick.MainFrame;
 
 /**
- * Proceso que se encarga de llevar la cuenta atrás del tiempo,
+ * Proceso que se encarga de llevar la cuenta atrás, 
  * este llama al proceso de PrograssBar a su vez.
- * Cuando termina muesta un mensaje de Terminado.
+ * Cuando termina muesta un mensaje de terminado si no tiene un 'false' en el parámetro tercero.
  */
 public class CuentaAtras extends Thread{
     
