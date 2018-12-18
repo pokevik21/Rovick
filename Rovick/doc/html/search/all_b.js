@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['pagina_20principal',['Pagina principal',['../index.html',1,'']]],
+  ['página_20principal',['Página principal',['../index.html',1,'']]],
   ['pantalladecarga',['PantallaDeCarga',['../classrovick_1_1_utils_1_1_pantalla_de_carga.html',1,'rovick::Utils']]],
   ['primernum',['primerNum',['../classrovick_1_1_utils_1_1_utiles.html#a6844ffe69749214354abe47b5a4d19ba',1,'rovick::Utils::Utiles']]],
   ['principales',['Principales',['../group___principales.html',1,'']]],

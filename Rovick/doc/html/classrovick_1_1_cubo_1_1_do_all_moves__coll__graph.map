@@ -1,3 +1,3 @@
 <map id="rovick.Cubo.DoAllMoves" name="rovick.Cubo.DoAllMoves">
-<area shape="rect" id="node3" href="$classrovick_1_1_utils_1_1_cuenta_atras.html" title="Proceso que se encarga de llevar la cuenta atrás del tiempo, este llama al proceso de PrograssBar a s..." alt="" coords="103,81,264,108"/>
+<area shape="rect" id="node3" href="$classrovick_1_1_utils_1_1_cuenta_atras.html" title="Proceso que se encarga de llevar la cuenta atrás, este llama al proceso de PrograssBar a su vez..." alt="" coords="103,81,264,108"/>
 </map>

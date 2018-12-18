@@ -24,14 +24,14 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Rovick", "index.html", [
-    [ "Pagina principal", "index.html", [
+    [ "Página principal", "index.html", [
       [ "Concepto del proyecto", "index.html#Concepto", null ],
       [ "Demostración", "index.html#Demostracion", null ],
       [ "Requisitos", "index.html#Requisitos", null ],
       [ "Instrucciones", "index.html#Instrucciones", null ],
       [ "Enlaces", "index.html#Enlaces", null ]
     ] ],
-    [ "Guia de uso", "_uso.html", [
+    [ "Guía de uso", "_uso.html", [
       [ "Botones de movimiento", "_uso.html#Botones", null ],
       [ "Otros controles", "_uso.html#Otros_controles", null ]
     ] ],
@@ -42,21 +42,22 @@ var NAVTREE =
       ] ],
       [ "Reconocimiento de colores", "_diagramas.html#color", null ]
     ] ],
-    [ "Rescusos", "_rescusos.html", [
-      [ "Impresora 3D", "_rescusos.html#Impresora_3D", null ],
-      [ "Modelo 3D", "_rescusos.html#Modelo_3d", null ],
-      [ "material-precio", "_rescusos.html#material-precio", null ],
-      [ "Clases externas", "_rescusos.html#clases_externas", null ],
-      [ "Librerias", "_rescusos.html#Librerias", null ]
+    [ "Recusos", "_recusos.html", [
+      [ "Impresora 3D", "_recusos.html#Impresora_3D", null ],
+      [ "Modelo 3D", "_recusos.html#Modelo_3d", null ],
+      [ "Material-precio", "_recusos.html#material-precio", null ],
+      [ "Clases externas", "_recusos.html#clases_externas", null ],
+      [ "Librerías", "_recusos.html#Librerias", null ]
     ] ],
-    [ "Electronica", "_electronica.html", [
-      [ "Montaje", "_electronica.html#Montaje", null ],
-      [ "Esquema", "_electronica.html#Esquemas", null ]
+    [ "Electrónica", "_electr_xC3_xB3nica.html", [
+      [ "Montaje", "_electr_xC3_xB3nica.html#Montaje", null ],
+      [ "Esquema", "_electr_xC3_xB3nica.html#Esquemas", null ]
     ] ],
-    [ "Creditos", "_creditos.html", [
-      [ "Testers", "_creditos.html#Testers", null ],
-      [ "Ayudantes", "_creditos.html#Ayudantes", null ],
-      [ "Impresion", "_creditos.html#impresion", null ]
+    [ "Créditos", "_cr_xC3_xA9ditos.html", [
+      [ "Testers", "_cr_xC3_xA9ditos.html#Testers", null ],
+      [ "Ayudantes", "_cr_xC3_xA9ditos.html#Ayudantes", null ],
+      [ "Impresion", "_cr_xC3_xA9ditos.html#impresion", null ],
+      [ "Correctora", "_cr_xC3_xA9ditos.html#correctora", null ]
     ] ],
     [ "Tiempos", "_tiempos.html", [
       [ "Hardware", "_tiempos.html#Hardware", null ],

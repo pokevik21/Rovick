@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rescusos',['Rescusos',['../_rescusos.html',1,'']]]
+  ['recusos',['Recusos',['../_recusos.html',1,'']]]
 ];

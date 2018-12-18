@@ -26,6 +26,7 @@
  * 
  * \section Instrucciones  Instrucciones
  * - Conectar el Arduino y la cámara a los USB's del ordenador <b>antes</b> de cargar la aplicación.
+ * - Si estás con un portatil, asegurate de que se usa la cámara correcta.
  * - Ejecutar el ".jar" de la aplicacion Rovick
  * - Colocar el cubo en el gancho inferior de forma centrada.
  * - Disfrutar de esta increíble aplicación.

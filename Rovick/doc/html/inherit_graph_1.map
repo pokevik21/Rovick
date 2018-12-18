@@ -1,8 +1,8 @@
 <map id="Representación gráfica de la clase" name="Representación gráfica de la clase">
 <area shape="rect" id="node2" href="$classrovick_1_1_cubo_1_1_do_all_moves.html" title="Proceso que se encarga de hacer todos los movimientos del ArrayList movimientos. " alt="" coords="144,5,305,32"/>
-<area shape="rect" id="node3" href="$classrovick_1_1_cubo_1_1_do_move.html" title="Proceso que se encoraga de realizar un movimiento, el que se le pasa en el contructor. " alt="" coords="155,56,294,83"/>
+<area shape="rect" id="node3" href="$classrovick_1_1_cubo_1_1_do_move.html" title="Proceso que se encaraga de realizar un movimiento, el que se pasa por el constructor. " alt="" coords="155,56,294,83"/>
 <area shape="rect" id="node4" href="$classrovick_1_1_cubo_1_1_proceso_resolver_cubo.html" title="Proceso que se encarga de resolver el cubo. " alt="" coords="115,107,335,133"/>
-<area shape="rect" id="node5" href="$classrovick_1_1_utils_1_1_cuenta_atras.html" title="Proceso que se encarga de llevar la cuenta atrás del tiempo, este llama al proceso de PrograssBar a s..." alt="" coords="144,157,305,184"/>
+<area shape="rect" id="node5" href="$classrovick_1_1_utils_1_1_cuenta_atras.html" title="Proceso que se encarga de llevar la cuenta atrás, este llama al proceso de PrograssBar a su vez..." alt="" coords="144,157,305,184"/>
 <area shape="rect" id="node6" href="$classrovick_1_1_utils_1_1_proceso_carga.html" title="Proceso que se encarga de hacer la animación de poner puntos suspensivos. " alt="" coords="139,208,310,235"/>
-<area shape="rect" id="node7" href="$classrovick_1_1_utils_1_1_progress_bar.html" title="Proceso que se encarga de aumentar los valores la ProgresBar de la vista principal. " alt="" coords="144,259,305,285"/>
+<area shape="rect" id="node7" href="$classrovick_1_1_utils_1_1_progress_bar.html" title="Proceso que se encarga de aumentar los valores de la ProgresBar de la vista principal. " alt="" coords="144,259,305,285"/>
 </map>

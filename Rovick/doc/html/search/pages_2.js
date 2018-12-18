@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['electronica',['Electronica',['../_electronica.html',1,'']]]
+  ['electrónica',['Electrónica',['../_electr_xC3_xB3nica.html',1,'']]]
 ];
